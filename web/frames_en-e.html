@@ -1,0 +1,412 @@
+<html>
+	<default>
+		<textposition>
+			<x>75</x>
+			<y>40</y>
+		</textposition>
+		<headline></headline>
+		<explanation></explanation>
+		<task></task>
+		<objectOfInterest button="false" textbox="false" locked="false"></objectOfInterest>
+		<taskDoneValue></taskDoneValue>
+	</default>
+
+	<frame number="0">
+	<textposition>
+		<x>50</x>
+		<y>50</y>
+	</textposition>
+	<headline>
+		General Remarks
+	</headline>
+	<explanation>
+	        This tutorial gives a fast introduction how to use Cosmic@Web.
+		The most important functions to create a diagram will be 
+		described step by step. Just follow the blue arrows on top.
+	</explanation>
+	<task>
+		Click: NEXT to continue.
+	</task>
+	<objectOfInterest button="false" textbox="false"></objectOfInterest>
+	<taskDoneValue></taskDoneValue>
+	</frame>
+
+<frame number="1">
+<headline>
+        Setting of Detail Level
+</headline>
+<explanation>
+        You can choose between two levels to create a diagram. The Standard 
+	level used in the following example is for beginners. The Detailed 
+	level provides many additional options to analyse and to create 
+	diagrams (see the manual). 
+</explanation>
+<task>
+	Choose: Standard
+</task>
+<objectOfInterest button="false" textbox="false">select[name=detaillevel]</objectOfInterest>
+<taskDoneValue>minimal</taskDoneValue>
+</frame>
+
+<frame number="2">
+<headline>
+	Experiment
+</headline>
+<explanation>
+        This function allows to choose the experiment, whose data set you want 
+	to analyse. You will find more detailed information about the different
+	experiments <label for="checkbox_experiments" style="pointer-events: auto; padding: 0; margin: 0;">here</label>.
+	<input type="checkbox" style="display: none;" name="checkbox_experiments" id="checkbox_experiments" />
+	<ul>
+		<li><a href="https://physik-begreifen-zeuthen.desy.de/angebote/kosmische_teilchen/cosmicweb/trigger_hodoskop/index_ger.html" target="_blank">Information on Trigger-Hodoskop</a></li>
+		<li><a href="https://physik-begreifen-zeuthen.desy.de/angebote/kosmische_teilchen/cosmicweb/cosmo_muehle/index_ger.html" target="_blank">Information on CosMO-Mühle</a></li>
+		<li><a href="https://physik-begreifen-zeuthen.desy.de/angebote/kosmische_teilchen/cosmicweb/lido/index_ger.html" target="_blank">Information on LiDO</a></li>
+		<li><a href="https://physik-begreifen-zeuthen.desy.de/angebote/kosmische_teilchen/cosmicweb/polarstern_projekt/index_ger.html" target="_blank">Information on Polarstern Project</a></li>
+		<li><a href="https://physik-begreifen-zeuthen.desy.de/angebote/kosmische_teilchen/cosmicweb/neumayer_station_iii/index_ger.html" target="_blank">Information on Neumayer Station Project</a></li>
+		<li><a href="https://physik-begreifen-zeuthen.desy.de/angebote/kosmische_teilchen/cosmicweb/wetterdaten_zeuthen/index_ger.html" target="_blank">Information on Zeuthen Weather Station</a></li>
+	</ul>
+</explanation>
+<task>
+	Choose: Polarstern
+</task>
+<objectOfInterest button="false" textbox="false">select[name=experiment0]</objectOfInterest>
+<taskDoneValue>Polarstern</taskDoneValue>
+</frame>
+
+<frame number="3">
+<headline>
+	Data Set
+</headline>
+<explanation>
+        You will see a list of all available data sets for the choosen 
+	experiment. They are labeled as follows: 
+	time-period_experiment-label - description
+</explanation>
+<task>
+	Choose: 2014_PS-nm-my
+</task>
+<objectOfInterest button="false" textbox="false">select[name=s0]</objectOfInterest>
+<taskDoneValue>Polarstern/2014_PS-nm-my.h5:/raw/PS_mu_nm_data</taskDoneValue>
+</frame>
+
+<frame number="4">
+<headline>
+	Diagram Type
+</headline>
+<explanation>
+        Choose a diagram type to present the data. There are 4 different types 
+	available:	
+	<ol>
+		<li>
+		  <b>1D-Histogram:</b> It creates a frequency diagram of a 
+		  single variable. The range of values of the variable is given
+		  at the x-axis. The ordinate shows the number of entries for 
+		  a given value-bin.
+		</li>
+		<li>
+		  <b>xy-Diagram:</b> It represents the dependency of 
+		  one variable from another one as it is known from school.
+		</li>
+		<li>
+		  <b>2D-Histogram:</b> Dependency of one variable from another 
+		  one (as for xy-Diagram). Here, the frequency will be 
+		  represented  by a color scale.
+		</li>
+		<li>
+		  <b>Profile:</b> This diagram type will be used mainly in the 
+		  Detailed Level. A description can be found <a href = 'https://physik-begreifen-zeuthen.desy.de/angebote/kosmische_teilchen/cosmicweb/wiki/#submenu020' target = 'blank_'>here</a>.
+		</li>
+		<li>
+		  <b>Map:</b> Diagram of the geographical coordinates 
+		  (longitude and latitude) of the Polarstern research vessel.  
+		  There is an option to represent an additional variable in 
+		  dependence on the coordinates as color scale.
+		</li>
+	</ol>
+</explanation>
+<task>
+	Choose: xy-Diagram
+</task>
+<objectOfInterest button="false" textbox="false">select[name=m0]</objectOfInterest>
+<taskDoneValue>xy</taskDoneValue>
+</frame>
+
+<frame number="5">
+<headline>
+	x-Variable
+</headline>
+<explanation>
+        Choose the variable which should be displayed at the x-axis. <br />
+	<p> The description of the corresponding variable will be found 
+	  <a href='https://physik-begreifen-zeuthen.desy.de/angebote/kosmische_teilchen/cosmicweb/wiki/#Achsen' target="_blank">here</a>.</p>
+<!-- TODO 
+	<p>Eine Beschreibung und Erklärung der vorhandenen Daten zu jedem Experiment findest du auf der jeweiligen Unterseite unter dem Punkt Datenstruktur. <br />
+		<a href='https://physik-begreifen-zeuthen.desy.de/e2198/e203474/e203596/e204023/index_ger.html' target='_blank'>Beispiel Polarstern </a></p><!--TODO-->
+</explanation>
+<task>
+        For our example the rate of muons should be displayed in dependence on 
+	the time. <br />
+	Choose: time [s]
+</task>
+<objectOfInterest button="false" textbox="false">select[name=x0]</objectOfInterest>
+<taskDoneValue>time</taskDoneValue>
+</frame>
+
+<frame number="6">
+<headline>
+	y-Variable
+</headline>
+<explanation>
+         Choose the variable which should be displayed at the y-axis.	
+</explanation>
+<task>
+         Choose: mu_rate [1/h] <br /> 
+	 The variable represents the number of measured muons per hour.
+</task>
+<objectOfInterest button="false" textbox="false">select[name=y0]</objectOfInterest>
+<taskDoneValue>mu_rate</taskDoneValue>
+</frame>
+
+<frame number="7">
+<headline>
+	Titel
+</headline>
+<explanation>
+	You can give now the diagram a headline.
+</explanation>
+<task>
+	Insert: A headline.
+</task>
+<objectOfInterest button="false" textbox="true">input[name=t]</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="8">
+<headline>
+	Position of the Legend
+</headline>
+<explanation>
+        You can choose the position of the legend within the diagram.	
+</explanation>
+<task></task>
+<objectOfInterest button="false" textbox="false">select[name=l]</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="9">
+<headline>
+	This command starts the creation of the diagram 
+</headline>
+<explanation></explanation>
+<task>
+	Click on: Diagram Creation
+</task>
+<objectOfInterest button="true" textbox="false">button[type=submit]</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="10">
+<headline>
+	Diagram
+</headline>
+<explanation>
+        If it is not clear for you, which dimension the choosen variable has, 
+	look into the dataset definition. For the given example the time is 
+	presented in seconds starting at the 1.1.2010. This is the year where 
+	all most of the experiments started data taking. <br />
+	You will find information to change the representation of the time
+	variable in  <a href='https://physik-begreifen-zeuthen.desy.de/e2198/e203474/e203596/e204023/index_ger.html#e222540' target='blank_'>Data Structure</a>.
+</explanation>
+<task></task>
+<objectOfInterest button="false" textbox="false">#plotImage</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="11">
+<headline>
+	Save Diagram as:
+</headline>
+<explanation>
+        There are different possibilities to save the diagram and to load it 
+        back: <br /> 
+	One possibiity is to save it as ".pdf,.svg oder .png"
+</explanation>
+<task></task>
+<objectOfInterest button="false" textbox="false">#downloadButtons</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="12">
+<headline>
+	Plot speichern
+</headline>
+<explanation>
+	Es gibt mehrere Möglichkeiten, Diagramme speichern und wieder aufrufen zu können:
+	<ol>
+		<li>Eine Möglichkeit ist es, sich die Diagramme in den Formaten "pdf,svg oder png" herunterzuladen.
+		</li>
+		<li>Indem man die hier dargestellten Einstellungen beispielsweise als externe Textdatei speichert, kann man durch Kopieren in das untere Feld das Diagramm erneut laden.
+		</li>
+	</ol>
+</explanation>
+<task></task>
+<objectOfInterest button="false" textbox="false">#plotsettings,#loadsettings</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="13">
+<headline>
+	Plot speichern
+</headline>
+<explanation>
+	Es gibt mehrere Möglichkeiten, Diagramme speichern und wieder aufrufen zu können:
+	<ol>
+		<li>Eine Möglichkeit ist es, sich die Diagramme in den Formaten "pdf,svg oder png" herunterzuladen.
+		</li>
+		<li>Indem man die hier dargestellten Einstellungen beispielsweise als externe Textdatei speichert, kann man durch kopieren in das untere Feld das Diagramm erneut laden.
+		</li>
+		<li>Mithilfe der Session-ID, welche das Tutorial in den nächsten Schritten erklären wird.</li>
+	</ol>
+</explanation>
+<task></task>
+<objectOfInterest button="false" textbox="false">#session</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="14">
+<textposition>
+	<x>25</x>
+	<y>40</y>
+</textposition>
+<headline>
+	Plot
+</headline>
+<explanation>
+	Um ein Diagramm zu deiner Session-ID zu speichern, musst du auf diesen Button klicken.
+</explanation>
+<task>
+	Speichere das angezeigte Diagramm.
+</task>
+<objectOfInterest button="true" textbox="false">#savePlotButton</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="15">
+<headline>
+	Gespeicherte Diagramme
+</headline>
+<explanation>
+	Hier siehst du, welche Diagramme du unter deiner Session-ID gespeichert hast.
+</explanation>
+<task></task>
+<objectOfInterest button="false" textbox="false" locked="true">.savedPlotImage</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="16">
+<headline>
+	Gespeicherte Diagramme
+</headline>
+<explanation>
+	Mit diesen beiden Buttons kannst du das Diagramm laden oder löschen.
+</explanation>
+<task></task>
+<objectOfInterest button="false" textbox="false" locked="true">.btns</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="17">
+<textposition>
+	<x>50</x>
+	<y>50</y>
+</textposition>
+<headline>
+	Ende
+</headline>
+<explanation>
+	Wir hoffen dir mit diesem Tutorial geholfen zu haben. Eine detaillierte Anleitung  findest du <a href='https://physik-begreifen-zeuthen.desy.de/angebote/kosmische_teilchen/cosmicweb/wiki' target="_blank">hier</a>. Bei Fragen, Unklarheiten oder Programmfehlern, schreibe bitte eine E-Mail an <a href='mailto:cosmicatweb@desy.de' target="_blank">cosmicatweb@desy.de</a>.
+</explanation>
+<task></task>
+<objectOfInterest button="false" textbox="false"></objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+</html>
+
+
+<!--
+<frame number="12">
+<textposition>
+	<x>25</x>
+	<y>40</y>
+</textposition>
+<headline>
+	Add to the saved Diagrams	
+</headline>
+<explanation>
+        To save the diagram together with its settings within your analysis 
+   	session on the cosmic@web server, a session ID is given for every 
+	user (see more details in the following steps of the tutorial).
+</explanation>
+<task>
+	Click on: Add to the saved Diagrams
+</task>
+<objectOfInterest button="true" textbox="false">#savePlotButton</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="13">
+<headline>
+	Setting of the Diagram:
+</headline>
+<explanation>
+        This possibility allows to copy and paste the diagram settings into an
+	own file and to store it for a later use on your computer. Then, you 
+	can copy and paste it back into this field to restart the diagram 
+	creation
+</explanation>
+<task></task>
+<objectOfInterest button="false" textbox="false">#plotsettings,#loadsettings</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="14">
+<headline>
+	Stored Diagrams
+</headline>
+<explanation>
+        Here you can see which diagrams are stored under your Session ID.	
+</explanation>
+<task></task>
+<objectOfInterest button="false" textbox="false" locked="true">.savedPlotImage</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="15">
+<headline>
+	Gespeicherte Diagramme
+</headline>
+<explanation>
+	Mit diesen beiden Buttons kannst du das Diagramm laden oder löschen.
+</explanation>
+<task></task>
+<objectOfInterest button="false" textbox="false" locked="true">.btns</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="16">
+<textposition>
+	<x>50</x>
+	<y>50</y>
+</textposition>
+<headline>
+	Ende
+</headline>
+<explanation>
+	Wir hoffen dir mit diesem Tutorial geholfen zu haben. Eine detaillierte Anleitung  findest du <a href='https://physik-begreifen-zeuthen.desy.de/angebote/kosmische_teilchen/cosmicweb/wiki' target="_blank">hier</a>. Bei Fragen, Unklarheiten oder Programmfehlern, schreibe bitte eine E-Mail an <a href='mailto:cosmicatweb@desy.de' target="_blank">cosmicatweb@desy.de</a>.
+</explanation>
+<task></task>
+<objectOfInterest button="false" textbox="false"></objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+</html>
+-->

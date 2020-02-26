@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+    pyplot - python based data plotting tools
+    created for DESY Zeuthen
+    Copyright (C) 2012  Adam Lucke
+    Copyright (C) 2015  Martin Ohmann
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    -->
+    <head>
+	<title>Cosmic@Web</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="colorpicker.css" />
+	<link rel="stylesheet" type="text/css" href="colorbox.css" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="tutorial.css" />
+	<script src="js/00-browser-update.js"></script>
+	<script src="js/05-jquery.js"></script>
+	<script src="js/10-jquery.smooth-scroll.js"></script>
+	<script src="js/20-jquery.cookie.js"></script>
+	<script src="js/30-jquery.colorbox.js"></script>
+	<script src="js/40-simplestorage.js"></script>
+	<script src="js/50-colorpicker.js"></script>
+	<script src="js/90-web_en.js"></script>
+	<script src="js/99-tutorial.js"></script>
+	<--!  <script src="js/99-tutorial_en.js"></script> --> 
+    </head>
+    <body>
+
+    	<div class="popup-background" style="display: none;">
+		<div class="popup">
+		  Do you want to start the tutorial? <br /> It takes only 5-10 minutes of your time.
+			<div class="buttonwrapper">
+				<button class="startTutorial" autofocus onclick="$('.popup-background').hide();">
+					Yes
+				</button>
+				<button onclick="stopTutorial();">
+					No
+				</button>
+			</div>
+		</div>
+	</div>
+	<div id="spacer" class="tutorial"></div>
+	<div id="tutorial" class="tutorial">
+		<div id="navigation">
+			<table>
+				<tr>
+					<td><img src="img/back.svg" class="arrows" id="back"></td>
+					<td><p id="progress"></p></td>
+					<td><img src="img/next.svg" class="arrows" id="next"></td>
+				</tr>
+			</table>
+		</div>
+		<canvas id="overlay"></canvas>
+		<div id="stopTutorial">+</div>
+		<div id="textwrapper">
+			<p id="explanation"></p>
+			<hr>
+			<p id="task"></p>
+		</div>
+	</div>
+
+	<header>
+	   <img src="img/header_engl.png" alt="COSMICLAB" />
+	</header>
+	<div id="content">
+	    <nav>
+	        <ul>
+	            <li>
+	                <a href="#settings">Settings</a>
+	            </li>
+	            <li>
+	                <a href="#output">Plots</a>
+	            </li>
+	            <li>
+	                <a href="#saved">Saved Plots</a>
+	            </li>
+	        </ul>
+	    </nav>
+	    <div class="container">
+	        <noscript>
+	            <div class="errorbox">
+	                <p>
+			  This browser does not support JavaScript or JavaScript is not activated
+	                </p>
+	                <p>
+	                    You must activate JavaScript or use <a
+	                    href="http://www.google.com/chrome" target="_blank">Chrome</a>).
+	                </p>
+	            </div>
+	        </noscript>
+	        <div id="browser-warning" class="errorbox">
+	            This webinterface is optimized for Mozilla Firefox and
+	            Chrome. For other browsers a full functionality is not guaranteed!
+	        </div>
+		<div align="right">
+	            Language: <b>English</b> / <a href="index.html">German</a>
+	        </div>
+
+                <p>                
+                  With Cosmic@Web's online analysis tools, you can easily analyse real experimental data from a global network of cosmic particle detectors. Read more about the tools of Cosmic@Web in the <a href="http://physik-begreifen-zeuthen.desy.de/offers/cosmic_particles/cosmicweb/documentation/index_eng.html" target="_blank"> documentation</a>. The tutorial (only in German until now) explains how to start with an analysis. Introductory materials to the topic of <a href="http://physik-begreifen-zeuthen.desy.de/offers/cosmic_particles/index_eng.html" target="_blank"> cosmic particles</a> and <a href="http://physik-begreifen-zeuthen.desy.de/offers/cosmic_particles/experiments/index_eng.html" target="_blank"> descriptions of the experiments</a> can be found on the websites. <a href="http://physik-begreifen-zeuthen.desy.de/offers/cosmic_particles/scientific_work/index_eng.html" target="_blank"> Work like a real scientist</a> and do your own astroparticle research!
+                </p>
+
+	        <div id="settings">
+	            <h1>Plot Creation</h2>
+	            <form>
+	                <input type="hidden" name="plots" id="plotcount" value>
+	                <fieldset class="global">
+	                    <legend>
+	                        Setting of detail level
+	                    </legend>
+	                    <label data-help="defines how many plot details can be defined">
+	                        <select name="detaillevel">
+	                            <option value="minimal">Standard</option>
+	                            <option value="expert">Detailed</option>
+	                        </select> </label>
+	                </fieldset>
+	                <div id="plots">
+	                    <div id="varsbox">
+	                        Available Variables: <span id="vars">a, b, c, &hellip;</span>
+	                    </div>
+	                    <fieldset class="plot">
+	                        <legend>
+	                            *. Dataset
+	                        </legend>
+	                        <!--<span class="fa fa-close fa-2x icon-red delplot" title="Click here to remove the Diagram Settings"></span>-->
+	                        <span class="del-btn delplot" title="Click here to remove the diagram settings"></span>
+	                        <h2>Choose Dataset</h2>
+	                        <label class="advanced" data-help="Title of the plot, will be shown in plot's legend">Plot Title
+	                            <input type="text" name="n*">
+	                        </label>
+	                        <label class="required" data-help="Defines the display format of data. More information about plot types in the manual">Plot Type
+	                            <select name="m*">
+	                                <option value="h1">1D-Histogram</option>
+	                                <option value="xy">xy-Plot</option>
+	                                <option value="h2">2D-Histogram</option>
+	                                <option value="p">Profile</option>
+	                                <option value="map">Map</option>
+	                            </select> </label>
+	                        <h3>Choose Variables</h3>
+	                        <label class="required" data-help="Value shown at the x-axis. On can choose a given variable name (e.g. time) or a formula which transforms given variables (e.g. T_a-T_i oder log(p))"> x-Variable
+	                            <select name="x*"></select>
+	                        </label>
+	                        <label data-help="Correction function for x-variable, e.g. to display the variable time in days instead of sec" class="expert">Correction Function for x-Variable
+	                            <input type="text" name="x*a">
+	                        </label>
+	                        <label data-help="Binning of the x-axis. One number n means, that the data are shown in n bins (e.g. 10 produces 10 bins). Three numbers, separated by a commata (a,b,n) produces n bins starting on the left with a and ends on the right with bin b. With more than three numbers one can show several goups of binning." class="t-h1 t-h2 t-p advanced"> Number of x-Bins
+	                            <input type="text" name="x*b">
+	                        </label>
+	                        <label data-help="Activates the display of x-error bars" class="t-h1 t-p advanced">x-Error Bars
+	                            <input type="checkbox" name="o*xerr">
+	                        </label>
+	                        <label data-help="Value shown at the y-axis , analogously to x" class="required t-xy t-h2 t-p t-map">y-Variable
+	                            <select name="y*"></select>
+	                        </label>
+	                        <label data-help="Correction function for the y-variable, e.g. to display pressure corrected rate" class="t-xy t-h2 t-map t-p expert">Correction Function for y-Variable
+	                            <input type="text" name="y*a">
+	                        </label>
+	                        <label data-help="Binning of the y-axis, analogously to x-bins" class="t-h2 advanced">Number of y-Bins
+	                            <input type="text" name="y*b">
+	                        </label>
+	                        <label data-help="Activates the display of y-error bars" class="t-h1 t-p advanced">y-Error Bars
+	                            <input type="checkbox" name="o*yerr">
+	                        </label>
+	                        <label data-help="Defines a second x- or y-axis for this plot. The x-/y-values will be displayed independently on a separate axis, with its own scale" class="t-xy t-h1 t-p expert">Second Axis
+	                            <select name="tw*">
+	                                <option value=""></option>
+	                                <option value="x">x-Axis</option>
+	                                <option value="y">y-Axis</option>
+	                            </select> </label>
+	                        <label data-help="Value displayed on the z-axis, analogously to x-axis, The values are displayed with the color of the data points" class="t-xy t-map">z-Variable
+	                            <select name="z*"></select>
+	                        </label>
+	                        <label data-help="Correction function of the z-variable" class="t-xy t-map expert">Correction Function for z-Variable
+	                            <input type="text" name="z*a">
+	                        </label>
+	                        <h2 class="advanced">Data Analysis</h2>
+	                        <h3 class="advanced" >Data Reduction</h3>
+
+	                        <label class="advanced" data-help="Data selection/reduction with help of a boolean condition. Only data for which the condition is true will be displayed, (e.g. T_a&gt;20 means that all data are cut for which this condition is not fulfilled.">Condition
+	                            <input type="text" name="c*">
+	                        </label>
+
+	                        <!-- fit options -->
+	                        <h3 class="t-xy t-h1 t-p advanced">Fit</h3>
+	                        <label data-help="Fit function, independent variable is x, parameters are p[0], p[1], ... Example: p[0]+p[1]*x" class="t-xy t-h1 t-p advanced">Fit Function
+	                            <input type="text" name="ff*">
+	                        </label>
+	                        <label data-help="Start values of the fit-parameter, separated by commatas" class="t-xy t-h1 t-p advanced">Start Parameters
+	                            <input type="text" name="fp*">
+	                        </label>
+	                        <h2 class="expert" >Presentation Option</h2>
+	                        <label data-help="You can choose the map option" class="t-map expert">Projektion
+	                            <select name="o*projection">
+	                                <option value=""></option>
+	                                <option value="cyl">cylindrical</option>
+	                                <option value="ortho">orthographical</option>
+	                                <option value="merc">Mercator</option>
+	                                <option value="robin">Robinson</option>
+	                                <option value="aeqd" class="expert">equidistant</option>
+	                                <option value="laea" class="expert">Lambert-Azimutal</option>
+	                                <option value="stere" class="expert">stereographical</option>
+	                                <option value="npaeqd" class="expert">north-polar, equidistant</option>
+	                                <option value="nplaea" class="expert">north-polar, Lambert-Azimutal</option>
+	                                <option value="npstere" class="expert">north-polar, stereographical</option>
+	                                <option value="spaeqd" class="expert">south-polar, equidistant</option>
+	                                <option value="splaea" class="expert">south-polar, Lambert-Azimutal</option>
+	                                <option value="spstere" class="expert">south-polar, stereographical</option>
+	                            </select> </label>
+	                        <label data-help="" class="t-map expert">Country Borders
+	                            <input type="checkbox" name="o*drawcountries">
+	                        </label>
+	                        <label data-help="1D-Histogram display format" class="t-h1 expert">1-dim Display Format
+	                            <select name="o*style">
+	                                <option value=""></option>
+	                                <option value="hist">Histogram</option>
+	                                <option value="fill">Histogram, filled</option>
+	                                <option value="histline">Line</option>
+	                                <option value="linefill">Line, filled</option>
+	                                <option value="scat">Scatter</option>
+	                            </select> </label>
+	                        <label data-help="2D-Histogram display format" class="t-h2 expert">2-dim Display Format
+	                            <select name="o*style">
+	                                <option value=""></option>
+	                                <option value="color">Color</option>
+	                                <option value="contour">Contour</option>
+	                                <option value="contourfilled">Contour, filled</option>
+	                                <option value="box">Box</option>
+	                            </select> </label>
+	                        <label data-help="Includes a box with statistical information of the plot: n=number of entries, u=underflow, o=overflow, m=mean value, s=standard variation, for 1D-histogr: [p=mode (most frequent value), e=median, w=skew, k=curtosis, x=excess], for 2D-histogr: [c=covariance, a=all" class="t-h1 t-h2 expert">Statistics Box
+	                            <input type="text" name="sb*">
+	                        </label>
+	                        <label data-help="Number of contour lines" class="t-h2 expert">Contour Lines
+	                            <input type="text" name="o*levels">
+	                        </label>
+	                        <label data-help="Presents the probability density instead of the number of entries per bin" class="t-h1 t-h2 expert">Density
+	                            <input type="checkbox" name="o*density">
+	                        </label>
+	                        <label data-help="Cumulative presentation of the histogram, summing up the bins as indicated" class="t-h1 expert">Cumulative
+	                            <select name="o*cumulative">
+	                                <option value=""></option>
+	                                <option value="1">left -&gt; right</option>
+	                                <option value="-1">right -&gt; left</option>
+	                            </select> </label>
+	                        <label data-help="Defines the placement of the plot, low number in background, high number in foreground" class="t-xy t-h1 t-p t-map expert">Placement
+	                            <select name="o*zorder">
+	                                <option value=""></option>
+	                                <option value="1">1. Plane</option>
+	                                <option value="2">2. Plane</option>
+	                                <option value="3">3. Plane</option>
+	                                <option value="4">4. Plane</option>
+	                            </select> </label>
+	                        </label>
+	                        <label data-help="Color of line/points" class="t-xy t-h1 t-p t-map expert">Color
+	                            <input type="hidden" name="o*color">
+	                        </label>
+	                        <label data-help="Transparency of line/points (0=transparent, 1=opaque)" class="t-xy t-h1 t-h2 t-p t-map expert">Transparency
+	                            <select name="o*alpha">
+	                                <option value="1">0%</option>
+	                                <option value="0.9">10%</option>
+	                                <option value="0.8">20%</option>
+	                                <option value="0.7">30%</option>
+	                                <option value="0.6">40%</option>
+	                                <option value="0.5">50%</option>
+	                                <option value="0.4">60%</option>
+	                                <option value="0.3">70%</option>
+	                                <option value="0.2">80%</option>
+	                                <option value="0.1">90%</option>
+	                                <option value="0">100%</option>
+	                            </select> </label>
+	                        <label data-help="Data point symbols" class="t-xy t-h1 t-p t-map expert">Data Point Symbols
+	                            <select name="o*marker">
+	                                <option value="">No Symbol</option>
+	                                <option value=",">Pixel</option>
+	                                <option value="." selected="selected">Point</option>
+	                                <option value="o">Circle</option>
+	                                <option value="*">Star</option>
+	                                <option value="s">Square</option>
+	                                <option value="+">Plus</option>
+	                                <option value="x">Cross</option>
+	                                <option value="^">Triangle</option>
+	                            </select> </label>
+	                        <label data-help="Symbol size" class="t-xy t-h1 t-p t-map expert">Symbol Size
+	                            <input type="text" name="o*markersize">
+	                        </label>
+	                        <label data-help="Line style" class="t-xy t-h1 t-p t-map expert">Line Style
+	                            <select name="o*linestyle">
+	                                <option value="none">No Line</option>
+	                                <option value="-">Full Line</option>
+	                                <option value="--">dashed</option>
+	                                <option value=":">dotted</option>
+	                                <option value="-.">dashed-dotted</option>
+	                            </select> </label>
+	                        <label data-help="Line thickness" class="t-xy t-h1 t-p t-map expert">Line Width
+	                            <input type="text" name="o*linewidth">
+	                        </label>
+	                        <label data-help="Line option for fit (color and style), e.g. 'r-' = red, full line" class="t-xy t-h1 t-p expert">Line Option for Fit
+	                            <input type="text" name="fl*">
+	                        </label>
+	                    </fieldset>
+	                    <button type="button" id="addplot" class="btn" title="Click to open an additional diagram">
+	                      <i class="fa fa-plus-square"></i>
+	                      Add Data Array
+	                    </button>
+	                </div>
+
+	                <fieldset class="global global2">
+	                    <legend>
+	                        Plot Option
+	                    </legend>
+	                    <label data-help="Head line of the plot">Title
+	                        <input type="text" name="t">
+	                    </label>
+	                    <label  class="advanced" data-help="Width of the plot in cm (default=25)">Width
+	                        <input type="text" name="w">
+	                    </label>
+	                    <label  class="advanced" data-help="Height of the plot in cm">Height
+	                        <input type="text" name="h">
+	                    </label>
+	                    <H2 class="advanced">Axes</h2>
+	                    <!-- x -->
+	                    <h3 class="advanced">x-Axis</h3>
+	                    <label  class="advanced" data-help="Caption of x-axis">Caption
+	                        <input type="text" name="xl">
+	                    </label>
+	                    <label class="advanced" data-help="Lower edge of x-axis">Start Value
+	                        <input type="text" name="xr-min">
+	                    </label>
+	                    <label class="advanced" data-help="Upper edge of x-axis">Maximum Value
+	                        <input type="text" name="xr-max">
+	                    </label>
+	                    <input type="hidden" name="xr">
+	                    <label class="advanced" data-help="Scaling of x-axis">Scaling
+	                        <select name="xs">
+	                            <option value="linear">linear</option>
+	                            <option value="log">logarithmic</option>
+	                            <option value="symlog">symmetrical-logarithmic</option>
+	                        </select> </label>
+
+	                    <!-- x2 -->
+	                    <label data-help="Caption of x2-axis" class="twinx expert">Caption x2
+	                        <input type="text" name="xltw">
+	                    </label>
+	                    <label data-help="Lower edge of x2-axis" class="twinx expert">Start Value x2
+	                        <input type="text" name="xrtw-min">
+	                    </label>
+	                    <label data-help="Upper edge of x2-axis" class="twinx expert">Maximum Value x2
+	                        <input type="text" name="xrtw-max">
+	                    </label>
+	                    <input type="hidden" name="xrtw">
+	                    <label data-help="Scaling of x2-axis" class="twinx expert">Scaling x2
+	                        <select name="xstw">
+	                            <option value="linear">linear</option>
+	                            <option value="log">logarithmic</option>
+	                            <option value="symlog">symmetrical-logarithmic</option>
+	                        </select> </label>
+
+	                    <!-- y -->
+	                    <h3 class="advanced">y-Axis</h3>
+	                    <label  class="advanced" data-help="Caption of y-axis">Caption
+	                        <input type="text" name="yl">
+	                    </label>
+	                    <label class="advanced" data-help="Lower edge of y-axis">Start Value
+	                        <input type="text" name="yr-min">
+	                    </label>
+	                    <label class="advanced" data-help="Upper edge of y-axis">Maximum Value
+	                        <input type="text" name="yr-max">
+	                    </label>
+	                    <input type="hidden" name="yr">
+	                    <label class="advanced" data-help="Scaling of y-axis">Scaling
+	                        <select name="ys">
+	                            <option value="linear">linear</option>
+	                            <option value="log">logarithmisch</option>
+	                            <option value="symlog">symmetrical-logarithmic</option>
+	                        </select> </label>
+
+	                    <!-- y2 -->
+	                    <label data-help="Caption of y2-axis" class="twiny expert">Caption y2
+	                        <input type="text" name="yltw">
+	                    </label>
+	                    <label data-help="Lower edge of y2-axis" class="twiny expert">Start Value y2
+	                        <input type="text" name="yrtw-min">
+	                    </label>
+	                    <label data-help="Upper edge of y2-axis" class="twiny expert">Maximum Value y2
+	                        <input type="text" name="yrtw-max">
+	                    </label>
+	                    <input type="hidden" name="yrtw">
+	                    <label data-help="Scaling of y2-axis" class="twiny expert">Scaling y2
+	                        <select name="ystw">
+	                            <option value="linear">linear</option>
+	                            <option value="log">logarithmisch</option>
+	                            <option value="symlog">symmetrical-logarithmic</option>
+	                        </select> </label>
+
+	                    <!-- Z -->
+	                    <h3 class="advanced">z-Axis</h3>
+	                    <label class="advanced" data-help="Caption of z-axis (color)">Caption z
+	                        <input type="text" name="zl">
+	                    </label>
+	                    <label class="advanced" data-help="Lower edge of z-axis">Start Value
+	                        <input type="text" name="zr-min">
+	                    </label>
+	                    <label class="advanced" data-help="Upper edge of z-axis">Maximum Value
+	                        <input type="text" name="zr-max">
+	                    </label>
+	                    <input type="hidden" name="zr">
+	                    <label class="advanced" data-help="Scaling of z-axis (colored axis)">Scaling
+	                        <select name="zs">
+	                            <option value="linear">linear</option>
+	                            <option value="log">logarithmisch</option>
+	                            <option value="symlog">symmetrical-logarithmic</option>
+	                        </select> </label>
+	                    <h2>Legend</h2>
+	                    <label data-help="Defines the position of the legend. In case of 1 diagram only, there is no legend displayd">Position
+	                        <select name="l">
+	                            <option value="">automatically</option>
+	                            <option value="none">no legend</option>
+	                            <option value="upper left">top left</option>
+	                            <option value="upper center">top center </option>
+	                            <option value="upper right">top right</option>
+	                            <option value="center left">center left</option>
+	                            <option value="center">center</option>
+	                            <option value="center right">center right</option>
+	                            <option value="lower left">bottom left</option>
+	                            <option value="lower center">bottom center</option>
+	                            <option value="lower right">bottom right</option>
+	                        </select> </label>
+	                </fieldset>
+	                <div class="buttons">
+	                    <input type="hidden" name="a" value="plot">
+	                    <button class="btn btn-secondary" type="reset" title="Click here, to remove all plot settings">
+	                      <i class="fa fa-undo"></i>
+	                      Reset
+	                    </button>
+	                    <button class="btn" type="submit">
+	                      <i class="fa fa-bar-chart"></i>
+	                      Plot Creation
+	                    </button>
+	                </div>
+	            </form>
+	        </div>
+	        <div id="output">
+	            <h1>Plot</h2>
+	            <div id="result">
+	                <p>
+	                    Please, click on <em>"Plot Creation "</em> 
+	                </p>
+	            </div>
+	            <div id="error"></div>
+	        </div>
+	        <div id="saved">
+	            <h1>Stored Plots</h1>
+	            <p>
+	                You can load stored plots and their settings clicking on:
+			<i class="fa fa-repeat fa-lg icon-green"></i>. Clicking on 
+	                <i class="del-btn inverse text"></i> the plot will be removed.  
+	                Clicking on the plot will diplay it in full size.
+	            </p>
+	            <p id="nosavedplots">
+	                No stored plots available for you.
+	            </p>
+	            <div id="savedplots"></div>
+	        </div>
+	        <div id="loadsettings">
+	            <h1>Load Settings</h1>
+	            <p>
+	                To load stored settings you must copy it into this field and click then Load Settings
+	            </p>
+	            <p>
+	                <textarea name="settingstoload"></textarea>
+	            </p>
+	            <p>
+	                <button class="btn" type="button" name="load">
+	                  <i class="fa fa-upload"></i> 
+	                  Load Settings
+	                </button>
+	            </p>
+	        </div>
+	        <div id="session">
+	            <h1>Session ID</h1>
+			<p>
+			  The plots and their settings can be stored at the server for 4 weeks. The identification is realized by a Session ID. With this ID they can be called back.
+			</p>
+			<p>
+	                <label>Session-ID
+	                    <input type="text" id="sessionid">
+	                </label>
+	                <button class="btn" type="button" id="newid">
+	                  <i class="fa fa-refresh"></i> 
+	                  new ID
+	                </button>
+	                <button class="btn" type="button" id="loadid">
+	                  <i class="fa fa-upload"></i> 
+	                  Load Session
+	                </button>
+			</p>
+		        <p>
+			  You can define your own Session ID. The ID should consist of 8 or more characters, click then on 'Load Session'.
+			</p>
+		        <p>
+			  If you want to store a plot into the session, click on:
+			  'Add to stored plots'.
+			</p>
+		        <p>
+			  Remember the Session ID for future work.
+			</p>
+		        <p>
+			  If you want to load a Session, click on 'Load Session'. Then you can choose a plot to modify the settings by clicking on the green arrow.
+			</p>
+                    <h1>Example Plots</h1>
+                    <p>
+		      To load the example plots given in the manual for each experiment, choose one of the following Session-ID's:
+		    </p>  
+                    <ul>
+                     <li>Trigger-Hodoskop</li>
+                     <li>CosMO-Muehle</li>
+		     <li>LIDO-Experiment</li>
+		     <li>Polarstern</li>
+		     <li>Neumayer</li>
+                     <li>Sevan-Aragats</li>		
+		     <li>Wetterdaten-Zeuthen</li>
+                    </ul>
+		    <p> 
+		      Then click on 'Load Session'. These example plots can be modified. However, they must be stored choosing another, (own) Session-ID, otherwise an error message will appear.
+		    </p>
+
+	        </div>
+	    </div>
+	    <footer>
+	        &copy; 2010 &ndash; 2019, Deutsches Elektronen-Synchrotron
+	    </footer>
+	</div>
+    </body>
+</html>
