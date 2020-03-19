@@ -880,7 +880,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
                     // $('<img>').attr('src', 'img/disk.png').prependTo(saveButton);
 
-                    // plot settings
+                    /*// plot settings
                     container.append('<h2>Einstellungen dieses Diagramms</h2>');
                     container.append('<p>Um dieses Diagramm in eine andere Session zu importieren, speichere die folgenden Einstellungen und lade sie in <a class="scrollto" href="#loadsettings">die andere Session</a>.</p>');
                     jsonSettings = JSON.stringify(settings);
@@ -895,7 +895,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     plotUrl = currentUrl.substr(0, currentUrl.lastIndexOf('/')) + '/plot?' + query.replace(/a=plot/, 'a=png');
 
                     p = $('<p>').appendTo(container);
-                    $('<textarea id="ploturl">').text('<img src="' + plotUrl + '" />').appendTo(p);
+                    $('<textarea id="ploturl">').text('<img src="' + plotUrl + '" />').appendTo(p);*/
 
                     // store settings in cookie
                     $.extend(settings, data);
