@@ -1,0 +1,401 @@
+% -*- TeX:DE:UTF-8 -*-
+\documentclass[version=last,
+	a4paper,			% alle weiteren Papierformat einstellbar
+	pagesize, 			% Diese Option reicht die Papiergröße an alle Ausgabeformate weiter
+	11pt,				% Schriftgröße
+	BCOR1cm,			% Bindekorrektur, bspw. 1 cm
+	DIV12,	 			% Errechnet einen guten Satzspiegel
+	pointlessnumbers,   % Überschriftennummerierung ohne abschließenden Punkt
+%	smallheadings,		% kleinere Überschriften
+	halfparskip,		% Absätze nicht einrücken, sondern Abstand davor
+%	draft				% Entwurfsansicht, überlangen Zeilen in Ausgabe gekennzeichnet
+]{scrreprt}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english,ngerman]{babel}
+\usepackage[strict,style=english,autostyle=true]{csquotes} \MakeOuterQuote{"}  % Automatische
+\usepackage{marvosym}
+\usepackage{textcomp}
+\usepackage{lmodern}
+%\renewcommand*\familydefault{\sfdefault} %% base font is to be sans serif
+\usepackage{scrpage2}
+\usepackage{booktabs}
+\usepackage{icomma}
+\usepackage{siunitx}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{fixltx2e}
+\usepackage{lastpage}
+\usepackage{hyperref}
+\hypersetup{pdfpagelabels=true,pdfborder={0 0 0},breaklinks=true,
+            bookmarksnumbered=true,pdfpagelayout=OneColumn,pdfstartview={XYZ null null 1},bookmarks=false}
+\usepackage{xcolor}
+\usepackage{xspace}
+\usepackage{listings}
+
+%% Satzenginetuning %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clubpenalty = 10000 \widowpenalty = 10000 \displaywidowpenalty = 10000
+
+
+\lstset{
+   basicstyle=\footnotesize\ttfamily,
+%   numbers=right,
+   numberstyle=\tiny,
+	breaklines=true, breakautoindent=true,
+%	columns=flexible,
+	frame=single,
+%	backgroundcolor=\color{lightgray},
+%	xleftmargin=1em,
+%	xrightmargin=1em,
+	captionpos=b,
+	aboveskip=2ex
+}
+
+\newcommand{\zb}{z.\,B.\xspace}
+
+\begin{document}
+
+%\extratitle{extra}
+%\titlehead{Kopf}
+%\subject{Typisierung}
+\title{\texttt{ctplot}-Handbuch}
+%\subtitle{Untertitel}
+\author{Adam Lucke}
+\date{\today}
+%\publishers{Herausgeber}
+%\thanks{Fußnote}
+\maketitle
+
+\tableofcontents
+\chapter{Installation}
+Eine Installation des Softwarepaketes ist eigentlich nicht notwendig. Unter Installation ist hier zu verstehen, dass das Paket \texttt{ctplot.zip} in das gewünschte Verzeichnis entpackt wird.
+
+Die Software ist in Python geschrieben und sollte daher auf allen Systemen laufen, auf denen Python und die notwendigen Bibliotheken installiert sind.
+
+\section{Bibliotheken}
+Im folgenden sind alle notwendigen Bibliotheken aufgelistet, die für \texttt{ctplot} notwendig sind.
+\begin{itemize}
+  \item Python 2.7+, \url{http://python.org/}
+  \item pytz, \url{http://pytz.sourceforge.net/}
+  \item dateutil 1.5+, \url{http://labix.org/python-dateutil}
+  \item Numpy 0.9+/Scipy 1.6+, \url{https://www.scipy.org}
+  \item pytables 2.2+ (mit zlib), \url{http://pytables.github.com}
+  \item numexpr 1.4+ (für pytables), \url{http://code.google.com/p/numexpr/}
+  \item matplotlib 1.1+, \url{http://matplotlib.sourceforge.net/}
+  \item basemap 1.0+, \url{http://www.scipy.org/Cookbook/Matplotlib/Maps}
+  \item Pillow 3.1.0+ (für basemap), \url{https://python-pillow.github.io/}
+\end{itemize}
+
+Sind diese Bibliotheken installiert, so können die \texttt{ctplot}-Tools verwendet werden.
+
+
+\chapter{Rohdatenkonvertierung}
+Die Aufbereitung der Rohdaten von verschiedenen Experimenten erfolgt in zwei Schritten. Es wird davon ausgegangen, dass die Rohdaten in Form von ASCII-Dateien vorliegen. Zu jedem Experiment (Detektor) gehören Detektor-Events und Zusatzdaten. Dies sind \zb die Event-Dateien des CosmicTrigger ($\mu$-Hodoskop) und die dazugehörigen Wetterdaten der Wetterstation im DESY Zeuthen. Beide Daten liegen als ASCII-Dateien vor und haben die Struktur einer Tabelle.
+
+\begin{lstlisting}[label=lst:ctascii,caption={Beispiel von CosmicTrigger-Rohdaten}]
+2011-Jan-01 00:00:07.544454 CET+1   0 1 0 0    0 1 0 0    1 0 0 0
+2011-Jan-01 00:00:12.396551 CET+1   0 1 0 1    1 1 0 0    1 0 1 1
+2011-Jan-01 00:00:17.764563 CET+1   1 0 0 0    1 0 0 0    0 0 1 0
+2011-Jan-01 00:00:31.580567 CET+1   0 0 1 0    0 0 1 0    0 0 0 1
+\end{lstlisting}
+
+\begin{lstlisting}[label=lst:zweather,caption={Beispiel von Zeuthen-Wetter-Rohdaten},	
+                   xleftmargin=-1.5em,xrightmargin=-1.5em]
+2011-01-01 00:30:00+01:00 16.9 1.2 -0.1 33 91 0.4 22.5  NNE -1.0 1.2 0.0 1012.9
+2011-01-01 01:00:00+01:00 16.8 1.1 -0.2 33 91 0.3 0.0   N   -1.0 1.1 0.0 1012.4
+2011-01-01 01:30:00+01:00 16.8 1.1 -0.4 33 90 1.0 22.5  NNE -1.0 1.1 0.0 1012.0
+2011-01-01 02:00:00+01:00 16.8 1.1 -0.4 33 90 0.7 337.5 NNW -1.0 1.1 0.0 1011.5
+\end{lstlisting}
+
+Im \emph{ersten Schritt} werden diese ASCII-Tabellen in  HDF5-Tabellen umgewandelt. HDF5 ist ein binäres Datenformat, das für schnellen Zugriff und effizient Speicherung von \zb tabellarischen Daten optimiert wurde (siehe \url{http://www.hdfgroup.org/HDF5/}). Die Umwandlung von ASCII $\rightarrow$ HDF5 erfolgt mit dem Kommandozeilentool \texttt{rawdata.py}. Bei dieser Umwandlung werden die Daten gleichzeitig auf Gültigkeit überprüft und eventuell fehlerhafte Daten entfernt. Für Eventdaten und Zusatzdaten wird jeweils eine eigene HDF5-Tabelle erzeugt.
+
+Im \emph{zweiten Schritt} werden den Eventdaten die Zusatzdaten durch Interpolation zugeordnet. So wird \zb jedem CosmicTrigger-Event eine Wetterinformation zugeordnet. Zum exakten Zeitpunkt des Events sind aber i.d.R. keine Wetterdaten erfasst worden. Deswegen werden die Wetterdaten zum Zeitpunkt des Events aus den vorhandenen Wetterdaten vor und nach dem Eventzeitpunkt durch Interpolation berechnet. Das Zusammenführen der Event- mit den Zusatzdaten erfolgt mit dem Kommandozeilentool \texttt{merge.py}. Es wird eine neue HDF5-Tabelle erzeugt, die die Events mit interpolierten Zusatzdaten enthält.
+
+Die Rohdaten in HDF5-Format sowie die zusammengeführten ("gemergedten") Daten werden im weiteren zur Erzeugung von grafischen Darstellungen verwendet.
+
+\section{Zeitdarstellung}
+\subsection{in ASCII}
+Die Variable "Zeit" wird in der Darstellung gegenüber anderen Variablen gesondert behandelt. Größen wie Temperatur oder Spannung können einfach durch eine Zahl dargestellt werden. Für Zeitpunkte hingegen gibt es vielfältige Möglichkeiten der Darstellung. Der 11. September 2001 kann \zb geschrieben werden als \texttt{11.09.2001} oder \texttt{2011/09/11}. Eine Angabe von Datum und Zeit \zb 11. September 2001, 9:30 Uhr kann geschrieben werden als \texttt{09:30 11.09.2001} oder \texttt{2011/09/11 09:30}. Beide Formate sind unterschiedlich und es gibt noch viel mehr mögliche Formate, um einen Zeitpunkt darzustellen. Zudem fehlt beiden Formaten die \emph{Angabe der Zeitzone}. Es ist nicht klar, ob 09:30 in Berlin, Honkong oder New York gemeint ist.
+
+Ohne Angabe der Zeitzone sind Zeitangaben nicht vergleichbar. Besondere Vorsicht ist bei Sommer- und Winterzeit geboten. Es genügt also nicht anzugeben, dass es sich \zb um Berliner Lokalzeit handelt, es ist auch anzugeben ob und wie zwischen Sommer- und Winterzeit umgestellt wird. Es ist ratsam Zeitangaben grundsätzlich in UTC zu machen, was viele Probleme vermeidet und auch Schaltsekunden korrekt berücksichtigt. (Rechen mit Zeiten ist keine triviales Problem, auch wenn es auf den ersten Blick so scheint, und ist in vielen Bibliotheken fehlerhaft implementiert.)
+
+Um Zeitangaben automatisiert verarbeiten zu können, müssen Zeitangaben (in ACSII-Dateien) den folgenden Konventionen genügen:
+\begin{itemize}
+  \item Die Darstellung erfolgt im \emph{ISO-8601-Format} (siehe \url{http://de.wikipedia.org/wiki/ISO_8601}), leichte Abweichungen sind zulässig\footnote{wenn sie von \texttt{dateutil.parser} (\url{http://labix.org/python-dateutil}) verstanden werden}.
+  \item Alle Zeitangaben müssen eine \emph{Zeitzoneninformation} enthalten bzw. muss bekannt sein in welcher Zeitzone die Zeitangaben zu interpretieren sind.
+\end{itemize}
+
+\subsection{in HDF5}
+Die in den Rohdaten als ISO-String kodierten Zeitangaben werden bei der Konvertierung nach HDF5 in Zahlen (double) umgewandelt. Es wird \zb $t=$\texttt{2001-11-09T09:30:00+0100} zu $-67621004.658$. Die Zahl $-67621004.658$ ist Anzahl der Sekunden seit dem Bezugszeitpunkt $t_0=$\texttt{2004-01-01T00:00:00+0000}, also $t-t_0=-67621004.658\si{s}$.
+
+Der Bezugszeitpunkt kann während der Konvertierung frei gewählt werden.
+
+Die Spalte \texttt{time} in der HDF5-Tabelle enthält also  die Anzahl der Sekunden seit dem Bezugszeitpunkt $t_0$. Der Bezugszeitpunkt wird als Tabellenattribut \texttt{t0} in Form eines ISO-Strings mit der Tabelle gespeichert. Dadurch kann einerseits leicht mit den (relativen) Zeiten gerechnet werden, es ist aber auch immer möglich, die "relativen Sekunden" wieder in Zeitpunkte in ISO-Format umzurechnen.
+
+\section{rawdata.py}
+\subsection{Anwendung}
+Das Konvertieren von Rohdaten nach HDF5 mit \texttt{rawdata.py} erfolgt so: Man ruft \texttt{rawdata.py} auf der Konsole\footnote{für Windows empfiehlt sich \url{http://sourceforge.net/projects/console/}} auf und übergibt die zu konvertierenden Dateien als Parameter.
+\begin{lstlisting}
+rawdata.py events1.txt events2.txt wetter.txt
+\end{lstlisting}
+Dies erzeugt die Datei \texttt{out.h5}, welche zwei HDF5-Tabellen (Events und Wetter) enthält.
+
+Weitere Optionen von \texttt{rawdata.py} erhält man über der Parameter \verb"--help":
+\begin{lstlisting}[caption={Kommandozeilen-Hilfe von rawdata.py}]
+usage: rawdata.py [-h] [--version] [-o file] [-f] [-t datetime] [-s] [-q]
+                  infiles [infiles ...]
+
+convert raw ASCII data tables into tables in one HDF5 file
+
+positional arguments:
+  infiles               input files, if a directory is given, all files in
+                        it and in its subdirectories are used
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -o file, --out file   HDF5 output file (default: out.h5)
+  -f, --force           overwrite existing file
+  -t datetime, --reftime datetime
+                        reference time t0 (default: 2004-01-01T00:00:00+0000)
+  -s, --noskip          do not skip invalid lines, stop on error
+  -q, --quiet           do not show progressbar, just print error messages
+\end{lstlisting}
+
+Die einzelnen Optionen bedeuten:
+\begin{description}
+  \item[\verb"-o"] dient der Angabe der Ausgabedatei. Ist die Option nicht angegeben wird nach \texttt{out.h5} geschrieben.
+  \item[\verb"-s"] schaltet das Überspringen von ungültigen Zeilen aus. Schlägt die Überprüfung einer Zeile fehl, so wird die entsprechende Zeile nicht übersprungen, sondern die Konvertierung wird abgebrochen.
+  \item[\verb"-f"] erzwingt das Überschreiben einer eventuell vorhandenen Ausgabedatei.
+  \item[\verb"-q"] unterdrückt die Anzeige des Fortschrittbalkens.
+  \item[\verb"-t"] legt den Zeit-Bezugspunkt fest, Standardwert \texttt{2004-01-01T00:00:00+0000}
+\end{description}
+
+Als \texttt{infiles} können beliebige Dateien oder Verzeichnisse angegeben werden. Wird ein Verzeichnis angegeben, so ließt \texttt{rawdata.py} alle Dateien in diesem Verzeichnis und allen Unterverzeichnissen ein. Den Typ der in den Dateien enthaltenen Daten detektiert \texttt{rawdata.py} automatisch. Die Reihenfolge der Angabe der Dateien/Verzeichnisse ist irrelevant, \texttt{rawdata.py} sortiert die Dateien intern nach dem jeweils ersten Zeiteintrag in der Datei.
+
+\subsection{Funktionsweise}
+Die Konvertierung der ASCII-Rohdaten zu HDF5-Tabellen mit \texttt{rawdata.py} erfolgt nach folgendem Schema:
+\begin{enumerate}
+  \item \emph{automatische Detektion des Typs jeder Eingabedatei}\\
+        Jede Eingabedatei wird geöffnet und versucht mit allen vorhandenen "Einlesemethoden" zu lesen. Gelingt das Einlesen der ersten 10 Datenzeilen mit nur einer der möglichen Einlesemethoden, so ist der Typ der Datei bestimmt. Alle Dateien gleichen Typs werden in einer jeweils eigenen Liste zusammengefasst.
+  \item \emph{Sortieren aller Eingabedateien jeweils gleichen Typs nach Zeit}\\
+        Jeder Liste von Dateien gleichen Typs wird nach Zeit sortiert. Dabei wird die jeweils erste Datenzeile jeder Datei gelesen und der Eintrag der Spalte \texttt{time} extrahiert. Auf Basis dieser Zeiteinträge werden die Dateien sortiert.
+  \item \emph{zeilenweise Verarbeitung aller Eingabedateien jeweils gleichen Typs}\\
+        Für jede Liste von Dateien gleichen Typs wird eine HDF5-Tabelle erstellt. Die sortierten Dateien werden der Reihe nach Zeile für Zeile durchgegangen, konvertiert, bereinigt und verifiziert. Für jeden Datenzeile in den Eingabedateien wird eine Zeile an die HDF5-Tabelle angefügt. Das Interpretieren, Umwandeln der ASCII-Eingaben in die entsprechenden programminternen Datentypen (double, int, etc.) erfolgt durch sog. \emph{LineHandler}. Für jeden Dateityp gibt es einen eigenen LineHandler, der die Daten auch bereinigt und verifiziert.
+
+\end{enumerate}
+
+\subsubsection{LineHandler}
+Der LineHandler verarbeitet die Zeilen der Eingabedateien. Die Klassen \texttt{LineHandler} ist in \texttt{rawdata.py} definiert. Implementierungen müssen folgende Methoden/Felder enthalten:
+\begin{description}
+  \item[\texttt{\_\_call\_\_(self, line)}] Ein LineHandler ist callable, übergeben wird eine Zeile der Eingabedatei (str). Der Rückgabewert ist \texttt{None}, wenn die Zeile ignoriert/übersprungen wird oder ein Tupel der extrahierten Daten, so wie es in die HDF5-Tablle eingetragen wird. Diese Methode wird für jede Zeile der Eingabedateien aufgerufen. Die Eingabedaten sollen hier gelesen, konvertiert und geprüft werden. Bei fehlgeschlagener Prüfung, wird eine Exception ausgelöst.
+  \item[\texttt{description}] (str) Beschreibungen des Handlers
+  \item[\texttt{table\_name}] (str) Name der zugehörigen HDF5-Tabelle
+  \item[\texttt{cols\_and\_units}] (OrderedDict) geordnetes Dictionary der Tabllenspalten und der zugehörigen Einheiten (Bsp. \texttt{cols\_and\_units = OrderedDict([('time', 's'), ...])})
+\end{description}
+
+Die Variable \texttt{available\_handlers} in \texttt{rawdata.py} enthält eine Auflistung vorhandender Implementierungen von LineHandlern. Fügt man eigene Implementierungen dieser Liste hinzu, so werden diese von bei der Konvertierung mitverwendet. \texttt{rawdata.py} kann also leicht um zusätzliche Rohdatenformate erweitert werden.
+
+\subsection{vorhandene LineHandler}
+Die folgenden LineHandler sind in \texttt{rawdata.py} bereits vorhanden:
+\begin{description}
+  \item[\texttt{WeatherHandler}] Ließt Wetterdaten der Wetterstation Zeuthen. Das Datenformat hat eine Struktur wie in \autoref{lst:zweather}. Die Felder einer Zeile sind durch Leerzeichen getrennt und enthalten die Werte:
+      \textsf{time [s], T\_i [C°], T\_a [C°], T\_dew [C°], H\_i [\%], H\_a [\%], v\_wind [m/s], d\_wind [°], gust, chill, rain [mm], p [hPa], clouds}
+  \item[\texttt{CTEventHandler}] Ließt CosmicTrigger-Events im Format wie in \autoref{lst:ctascii}. Die Felder einer Zeile sind durch Leerzeichen getrennt und enthalten die Werte: \textsf{time [s], a1, a2, a3, a4, b1, b2, b3, b4, c1, c2, c3, c4}. Dabei bedeutet \textsf{a1} = Ebene a, Element 1, usw.
+  \item[\texttt{ITTEventHandler}] Ließt Eventdaten des Zeuthener IctTop-Tanks. Es werden immer zwei aufeinander folgende Zeilen gelesen. Die Daten haben die folgende Struktur:
+      \begin{lstlisting}
+ 0 LaCoMe(SD) 2.1 2011/10/24 10:56:33
+ 0       Run       181    100000         0
+ 0   Comment
+ 0 2011/10/24 10:56:33.929  V265[0]  666600  12 0 1
+ 0 2011/10/24 10:56:33.929  V265[2]  776600  12 0 1 2 3 4 5 6 7
+ 1 2011/10/24 10:56:33.929  V265[0]  27   9
+ 1 2011/10/24 10:56:33.929  V265[2]  27  28  25  32  25  32  29  31
+ 2 2011/10/24 10:56:33.929  V265[0]  40  16
+ 2 2011/10/24 10:56:33.929  V265[2]  27  28  27  33  28  33  32  33
+   ...
+-2 2011/10/24 11:34:06.596  V265[0]  40  16
+-2 2011/10/24 11:34:06.596  V265[2]  29  29  30  34  30  34  34  35
+-1       end    100000 2011/10/24 11:34:06
+
+      \end{lstlisting}
+      Von Interesse sind die Zeilen, die mit Zahlen $>0$ beginnen. Darauf folgt ein Zeitstempel (\textsf{time}). Die 2 bzw. 8 Zahlen am Ende der Zeilen sind die gemessenen Ladungen in dem DOMs (\textsf{dom1, dom2}) bzw. den Segmenten der Triggerebenen (\textsf{a1-b4}).
+
+      Die Felder der zurückgegebenen Daten sind: \textsf{time [s], dom1, dom2, run, time2 [s], a1, a2, a3, a4, b1, b2, b3, b4}.
+      Dabei bedeutet \textsf{a1} = Ebene a, Element 1, usw., \textsf{time2} ist der Zeitstempel der zweiten Zeile.
+  \item[\texttt{PolarsternHandler}] Ließt Daten aus vorprozessierten Datenfiles des Myondetektors auf der Polarstern.
+\end{description}
+
+
+\section{merge.py}
+Mit diesem Tool werden Event- und Zusatzdaten in HDF5-Format durch Interpolation zusammengeführt. Jedem Event wird ein Satz Zusatzdaten hinzugefügt, welcher durch Interpolation auf den Eventzeitpunkt berechnet wird.
+
+\subsection{Anwendung}
+Man ruft \texttt{merge.py} auf Kommandozeile auf:
+\begin{lstlisting}
+merge.py /raw/events /raw/weather in.h5
+\end{lstlisting}
+Dies erzeugt eine neue Tabelle in \texttt{in.h5}, welche die Zeilen aus \texttt{table1} mit interpolierten Werten aus \texttt{table2} enthält.
+
+Weitere Optionen von \texttt{merge.py} erhält man über den Parameter \texttt{--help}:
+\begin{lstlisting}[caption={Kommandozeilen-Hilfe von rawdata.py}]
+usage: merge.py [-h] [--version] [-m column] [-x seconds] [-o file] [-f] [-q]
+                primary secondary infile
+
+merge two tables in a HDF5 file
+
+positional arguments:
+  primary               name of primary table (event table)
+  secondary             name of secondary table (weather table)
+  infile                HDF5 file with tables to merge
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -m column, --merge column
+                        column to merge on (default: time)
+  -x seconds, --maxint seconds
+                        max. interval length in secondary table (default: 4h)
+  -o file, --out file   HDF5 output file (default: write to infile)
+  -f, --force           overwrite existing file
+  -q, --quiet           do not show progressbar, just print error messages
+\end{lstlisting}
+
+Die einzelnen Optionen bedeuten:
+\begin{description}
+  \item[\verb"-o"] Ausgabedatei (Standard: schreibe in Eingabedatei)
+  \item[\verb"-m"] auf Grund welcher Spalte soll gemerget werden (Standard: \texttt{time})
+  \item[\verb"-x"] maximal Zeit (Sekunden) zwischen zwei Zeilen der Sekundärtabelle (Standard: 4h)
+  \item[\verb"-f"] erzwingt das Überschreiben einer eventuell vorhandenen Ausgabedatei.
+  \item[\verb"-q"] unterdrückt die Anzeige des Fortschrittbalkens.
+\end{description}
+
+
+
+\subsection{Funktionsweise}
+Es werden beide Tabelle geöffnet und alle Events (primäre Tabelle) durchgegangen. In der Zusatzdatentabelle (sekundäre Tabelle) werden die Zeilen gesucht, die zeitlich vor bzw. nach dem aktuellen Event liegen. Durch lineare Interpolation werden die Zusatzdaten zum Eventzeitpunkt berechnet und dem Event zugeordnet.
+
+Werden keine Zusatzdaten vor und nach dem aktuellen Event gefunden, oder ist der Abstand zwischen den beiden Zusatzdatenzeilen zu groß (Option \texttt{-x}), so wird das Event verworfen.
+
+
+
+
+
+
+
+
+
+
+\chapter{Ploterzeugung}
+\section{plot.py}
+
+%\chapter{Anleitung zum Webinterface}
+%			<p>Diese Webseite stellt ein interaktives Werkzeug bereit, mit dem sich die Daten verschiedener Experimente analysieren lassen.
+%			Die Experimente und dieses Analysewerkzeug sind Projekte von <a href="https://physik-begreifen-zeuthen.desy.de/">Physik begreifen</a> und
+%			<a href="http://www.teilchenwelt.de/">Teilchenwelt</a>.</p>
+%			<p style="color: red;">Zur Zeit befindet sich dieses Auswertungstool im Testbetrieb.</p>
+%			<p>Für weitere Info siehe: <a href="https://znwiki3.ifh.de/KosmischeTeilchen/Software%3A%20Webinterface">https://znwiki3.ifh.de/KosmischeTeilchen/Software: Webinterface</a></p>
+%			<p>Hält man die Maus über ein Eingabefeld, so wird ein kurzer, beschreibender Hilfetext eingeblended.</p>
+%			
+%			
+%			
+%			<h2>Experimente</h2>
+%				<p>Die Daten, die auf dieser Seite ausgewertet werden können, stammen von den folgenden Experimenten.</p>
+%				
+%				<h3>Cosmic-Trigger, Zeuthen</h3>
+%					<p>Der Cosmic-Trigger besteht aus Teilen von Szintillationszählern, die bis zum Jahr 2000 im L3-Cosmic Experiment am CERN eingesetzt wurden.</p>
+%		            <p>Das Hodoskop besteht aus 3 übereinander angeordneten Szitillator-Ebenen. Jede Ebene ist aus vier 0.5×0.5 m² großen Segmenten zusammengesetzt.
+%		            Wenn ein geladenes kosmisches Teilchen ein Segment durchfliegt, wird Szintillationslicht erzeugt, das ein Photomultiplier registriert und in ein
+%		            elektrisches Signal umwandelt.</p>
+%		            <p>Die Segmente sind elektronisch miteinander verknüpft. Die Triggerbedingung ist, dass in einem Zeitfenster von 1/10000 Sekunden Länge ein Signal
+%		            in mindestens einem Segment in jeder Ebene registriert wird. Nur dann wird die Information auf einen PC übertragen und abgespeichert.</p>
+%		            <p>Mit dem Trigger-Hodoskop werden seit Mai 2004 Daten genommen und in Datenfiles abgespeichert. Diese Daten erlauben eine Vielzahl von Untersuchungen, wie z.B.
+%		            Bestimmung der Rate kosmischer Teilchen  (Anzahl der Trigger pro Zeiteinheit)    Variation der Triggerbedingung    (1 Trigger/Ebene – Myon-Kandidat, Trigger in mehreren Segmenten/Ebene – Luftschauer)
+%		            Rate in Abhängigkeit von den Wetterbedingungen    (Luftdruck, Temperatur, Luftfeuchte)    Vergleich der Ergebnisse verschiedener Jahre.</p>
+%		            <p><a href="https://znwiki3.ifh.de/KosmischeTeilchen/Cosmic%20Trigger%20Zeuthen" target="_blank">weiter lesen...</a></p>
+%		
+%		        <h3>Szintillationsdetektor, FS Polarstern</h3>
+%		            <p>Im Jahr ???? wurde ein kleiner Myon-Detektor auf dem Forschungschiff "Polarstern" installiert. Die Polarstern unternimmt jährlich Fahrten von...</p>
+%		            <p>Der Detektor besteht aus...</p>
+%		            <p><a href="#">weiter lesen...</a></p>
+%
+%                <h3>Wetterballons, FS Polarstern</h3>
+%                    <p>Auf der Polarstern werden routinemäßig Wetterballonaufstiege durchgeführt. Die bei diesen Aufstiegen gewonnen Daten liefern Informationen über...</p>
+%                    <p><a href="#">weiter lesen...</a></p>
+%
+%                <h3>IceTop-Tank, Zeuthen</h3>
+%                    <p>Seit ???? befindet sich im DESY Zeuthen ein Tank aus dem IceCube-Experiment. Dieser Tank...</p>
+%                    <p><a href="#">weiter lesen...</a></p>
+%
+%                <h3>Myon-Mühle, Zeuthen</h3>
+%                    <p>Speziell für Schülerexperimente zur Untersuchung der kosmischen Strahlung wurde die sog. "Myon-Mühle" von ... selbst konstruiert. Dieser Detektor erlaubt es...</p>
+%                    <p><a href="#">weiter lesen...</a></p>
+%
+%                <h3>Wetterstation, Zeuthen</h3>
+%                    <p>Hierbei handelt es sich eigentlich nicht um ein eigenständiges Experiment, sondern einfach um die Erfassung von Wetterdaten. Diese Wetterdaten werden
+%                    beim Bereitstellen der Daten der Experiemente in Zeuthen im den Daten der Experimente kombiniert. Dies ermöglicht die Auswertung der Experimentdaten
+%                    zusammen mit den Wetterinformationen.</p>
+%                    <p></p>
+%
+%            <h2>Datenanalyse</h2>
+%                <h3>Struktur der Datensätze</h3>
+%                    <p>Alle Datensätze, die mit Hilfe dieser Webanwendung ausgewertet werden können, haben die Struktur einer Tabelle. Jede Spalte der Tabelle steht für eine
+%                    Größe, die in dem jeweiligen Experiement erfasst wird. Jede Tabellenzeile steht für einen Datenpunkt und enthält die Werte der einzelnen Größen.
+%                    Ein Zeile entspricht also z.B. einem Detektorevent oder Wetterdaten zu einem bestimmten Zeitpunkt.</p>
+%                    <p>Welche Spalten eine solche Tabelle enthält, hängt vom Experiment ab und welche Größen in diesem erfasst werden. Die erste Spalte ist in der Regel immer die Zeit,
+%                    denn in allen Experimenten werden alle zu erfassenden Größen immer gleichzeitig erfasst. Es treffen z.B. ein oder mehrere Teilchen auf einen Detektor, was
+%                    die Datenspeicherung auslöst. Die vom Detektor erfassten Messwerte werden darauf hin, versehen mit einem Zeitstempel,
+%                    in eine neue Zeile der Datentabelle geschrieben. Bei den Wetterdaten wird in festen Zeitabständen eine Tabellenzeile hinzugefügt, die sämtliche, von der
+%                    Wetterstation erfassten Messgrößen, enthält.</p>
+%
+%
+%                <h3>Berechnung von Raten</h3>
+%
+%                <h3>Schnitte (Filter)</h3>
+%
+%                <h3>xy-Plots</h3>
+%
+%                <h3>Histogramme</h3>
+%
+%                    <h4>1D-Histogramme</h4>
+%
+%                    <h4>2D-Histogramme</h4>
+%
+%                <h3>Profile</h3>
+%
+%                <h3>Plots auf Karten</h3>
+%
+%                <h3>Fitten von Funktionen</h3>
+%
+%
+%            <h2>Bedienungshinweise</h2>
+%                <h3>Anpassung der Darstellung</h3>
+%
+%                <h3>Expertenmodus</h3>
+%
+%                <h3>Überlagern von Plots</h3>
+%
+%                <h3>zweite Achse</h3>
+%
+%                <h3>Speichern und Laden von Plots</h3>
+%
+%
+%            <h2>zusätzliche Software</h2>
+%
+%
+%            <h2>Beispiele</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

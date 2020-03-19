@@ -1,0 +1,308 @@
+<html>
+	<default>
+		<textposition>
+			<x>75</x>
+			<y>40</y>
+		</textposition>
+		<headline></headline>
+		<explanation></explanation>
+		<task></task>
+		<objectOfInterest button="false" textbox="false" locked="false"></objectOfInterest>
+		<taskDoneValue></taskDoneValue>
+	</default>
+
+	<frame number="0">
+	<textposition>
+		<x>50</x>
+		<y>50</y>
+	</textposition>
+	<headline>
+		Erläuterung zum Ablauf des Tutorials
+	</headline>
+	<explanation>
+		Dieses Tutorial soll die Bedienung und Benutzung von Cosmic@Web erleichtern. Durch das schrittweise Erstellen eines Beispieldiagramms, werden die wichtigsten Funktionen beschrieben. Folge einfach den blauen Pfeilen.
+	</explanation>
+	<task>
+		Klicke auf NEXT (rechts oben) um fortzufahren.
+	</task>
+	<objectOfInterest button="false" textbox="false"></objectOfInterest>
+	<taskDoneValue></taskDoneValue>
+	</frame>
+
+<frame number="1">
+<headline>
+	Einstellungsmodi
+</headline>
+<explanation>
+	Hier kannst du zwischen dem Standard- und dem Erweitertenmodus wählen. Der Standardmodus ist einfach gehalten, wohingegen der Erweitertenmodus deutlich ausführlicher ist.
+</explanation>
+<task>
+	Wähle den Standardmodus aus.
+</task>
+<objectOfInterest button="false" textbox="false">select[name=detaillevel]</objectOfInterest>
+<taskDoneValue>minimal</taskDoneValue>
+</frame>
+
+<frame number="2">
+<headline>
+	Diagramm erstellen: Experiment
+</headline>
+<explanation>
+	Mit dieser Funktion kannst du das Experiment auswählen, auf dessen Datensätze du zugreifen möchtest. Erklärungen zu den einzelnen Experimente findest du <label for="checkbox_experiments" style="pointer-events: auto; padding: 0; margin: 0;">hier</label>.
+	<input type="checkbox" style="display: none;" name="checkbox_experiments" id="checkbox_experiments" />
+	<ul>
+		<li><a href="http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/trigger_hodoskop/index_ger.html" target="_blank">Informationen zum Trigger-Hodoskop</a></li>
+		<li><a href="http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/cosmo_muehle/index_ger.html" target="_blank">Informationen zur CosMO-Mühle</a></li>
+		<li><a href="http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/cosmo_muv/index_ger.html" target="_blank">Informationen zu CosMO-MuV</a></li>
+		<li><a href="http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/lido/index_ger.html" target="_blank">Informationen zu LiDO</a></li>
+		<li><a href="http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/polarstern_projekt/index_ger.html">Informationen zum Polarstern-Projekt</a></li>
+		<li><a href="http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/neumayer_station_iii/index_ger.html" target="_blank">Informationen zum Projekt auf der Neumayer III Station</a></li>
+		<li><a href="http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/sevan/index_ger.html" target="_blank">Informationen zum Projekt SEVAN</a></li>
+		<li><a href="http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/wetterdaten_zeuthen/index_ger.html" target="_blank">Informationen zu den Wetterdaten aus Zeuthen</a></li>
+
+	</ul>
+</explanation>
+<task>
+	Wähle bitte Polarstern aus.
+</task>
+<objectOfInterest button="false" textbox="false">select[name=experiment0]</objectOfInterest>
+<taskDoneValue>Polarstern</taskDoneValue>
+</frame>
+
+<frame number="3">
+<headline>
+	Diagramm erstellen: Datensatz
+</headline>
+<explanation>
+	Alle Datensätze, die dir für das jeweilige Experiment zur Verfügung stehen, sind hier aufgelistet. Datensätze werden folgendermaßen gekennzeichnet: ZEITRAUM_EXPERIMENT_ANMERKUNGEN
+</explanation>
+<task>
+	Wähle nun den Datensatz von 2014.
+</task>
+<objectOfInterest button="false" textbox="false">select[name=s0]</objectOfInterest>
+<taskDoneValue>Polarstern/2014_PS-nm-my.h5:/raw/PS_mu_nm_data</taskDoneValue>
+</frame>
+
+<frame number="4">
+<headline>
+	Diagramm erstellen: Darstellungsform
+</headline>
+<explanation>
+	Nun kann ein geeignetes Diagramm für die Darstellung der Daten ausgesucht werden. Man unterscheidet vier verschiedene Diagrammtypen:
+	<ol>
+		<li>
+			<b>1D-Histogramm:</b> Ermöglicht die grafische Darstellung einer einzelnen Variablen. Auf der x-Achse wird die Variable, auf der y-Achse deren Häufigkeit dargestellt.
+		</li>
+		<li>
+			<b>xy-Diagramm:</b> Damit kann die Abhängigkeit einer Variablen von einer anderen dargestellt werden, so wie man es aus der Schule kennt.
+		</li>
+		<li>
+			<b>2D-Histogram:</b> Damit kann die Abhängigkeit einer Variablen von einer anderen dargestellt werden (genau wie beim xy-Diagramm), wobei zusätzlich die Häufigkeit durch eine Farbskala gekennzeichnet ist.
+		</li>
+		<li>
+			<b>Karte:</b> Darstellung der geographischen Koordinaten der Polarstern. Optional kann eine weitere Variable in Abhängigkeit der Koordinaten farblich skaliert dargestellt werden. <br />Hinweis: Bei dieser Darstellungsform sind nur die Variablen Longitude und Latitude als x- bzw. y-Variable sinnvoll.
+		</li>
+		<li>
+			<b>Profil:</b> Dieser Diagramtyp wird hauptsächlich im Expertenmodus verwendet, wird zur Vollständigkeit aber aufgelistet. Informationen dazu findest du <a href = 'http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/cosmicweb/dokumentation/#submenu020' target = 'blank_'>hier</a>.
+		</li>
+	</ol>
+</explanation>
+<task>
+	Wir werden für unser Beispiel ein xy-Diagramm verwenden.
+</task>
+<objectOfInterest button="false" textbox="false">select[name=m0]</objectOfInterest>
+<taskDoneValue>xy</taskDoneValue>
+</frame>
+
+<frame number="5">
+<headline>
+	Diagramm erstellen: X-Variable
+</headline>
+<explanation>
+	Hier kann ausgewählt werden, welche gemessene Größe auf der x-Achse abgetragen werden soll.
+	<p>Beschreibungen und Erklärungen zu den jeweiligen Variablenarten findest du <a href='http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/cosmicweb/dokumentation/#Datenauswahl' target="_blank">hier</a>.</p><!-- TODO -->
+	<p>Eine Beschreibung und Erklärung der vorhandenen Daten zu jedem Experiment findest du auf der jeweiligen Unterseite unter dem Punkt Datenstruktur. <br />
+		<a href='http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/polarstern_projekt/e288815/index_ger.html' target='_blank'>Beispiel Polarstern </a></p><!--TODO-->
+</explanation>
+<task>
+	In unserem Beispiel soll die Rate gemessener Myonen im zeitlichen Verlauf untersucht werden. Daher wähle als x-Variable time [s] aus.
+</task>
+<objectOfInterest button="false" textbox="false">select[name=x0]</objectOfInterest>
+<taskDoneValue>time</taskDoneValue>
+</frame>
+
+<frame number="6">
+<headline>
+	Diagramm erstellen: Y-Variable
+</headline>
+<explanation>
+	Hier kann die Y-Variable ausgesucht werden. Anmerkung: Es ist darüber hinaus möglich eine dritte Variable, die Z-Variable, zu definieren.
+</explanation>
+<task>
+	Wähle mu_rate [1/h] aus. Dies zeigt die Anzahl der gemessenen Myonen pro Stunde an.
+</task>
+<objectOfInterest button="false" textbox="false">select[name=y0]</objectOfInterest>
+<taskDoneValue>mu_rate</taskDoneValue>
+</frame>
+
+<frame number="7">
+<headline>
+	Diagrammoption: Titel
+</headline>
+<explanation>
+	Nun kannst du das Diagramm nach eigenem Ermessen benennen.
+</explanation>
+<task>
+	Gebe deinem Diagramm einen Namen.
+</task>
+<objectOfInterest button="false" textbox="true">input[name=t]</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="8">
+<headline>
+	Position der Legende
+</headline>
+<explanation>
+	Mit dieser Funktion kannst du die Position der Legende verändern.
+</explanation>
+<task></task>
+<objectOfInterest button="false" textbox="false">select[name=l]</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="9">
+<headline>
+	Diagramm erstellen
+</headline>
+<explanation></explanation>
+<task>
+	Klicke auf Diagramm erstellen
+</task>
+<objectOfInterest button="true" textbox="false">button[type=submit]</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="10">
+<headline>
+	Diagramm
+</headline>
+<explanation>
+	Wenn dir nicht klar ist, was auf den Achsen abgetragen ist, prüfe zunächst, was im Datensatz enthalten ist. So wird in diesem Fall die Zeit in Sekunden (time[s]) ab dem 01.01.2011 angegeben. Weitere Informationen zur Umrechnung findest du unter der <a href='http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/glossar/index_ger.html?selected=Z#_zeitumrechnung' target='blank_'>Datenstruktur</a>.
+</explanation>
+<task></task>
+<objectOfInterest button="false" textbox="false">#plotImage</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="11">
+<headline>
+	Plot speichern
+</headline>
+<explanation>
+	Es gibt mehrere Möglichkeiten, Diagramme speichern und wieder aufrufen zu können:
+	<ol>
+		<li>Eine Möglichkeit ist es, sich die Diagramme in den Formaten "pdf,svg oder png" herunterzuladen.
+		</li>
+	</ol>
+</explanation>
+<task></task>
+<objectOfInterest button="false" textbox="false">#downloadButtons</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="12">
+<headline>
+	Plot speichern
+</headline>
+<explanation>
+	Es gibt mehrere Möglichkeiten, Diagramme speichern und wieder aufrufen zu können:
+	<ol>
+		<li>Eine Möglichkeit ist es, sich die Diagramme in den Formaten "pdf,svg oder png" herunterzuladen.
+		</li>
+		<li>Indem man die hier dargestellten Einstellungen beispielsweise als externe Textdatei speichert, kann man durch Kopieren in das untere Feld das Diagramm erneut laden.
+		</li>
+	</ol>
+</explanation>
+<task></task>
+<objectOfInterest button="false" textbox="false">#plotsettings,#loadsettings</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="13">
+<headline>
+	Plot speichern
+</headline>
+<explanation>
+	Es gibt mehrere Möglichkeiten, Diagramme speichern und wieder aufrufen zu können:
+	<ol>
+		<li>Eine Möglichkeit ist es, sich die Diagramme in den Formaten "pdf,svg oder png" herunterzuladen.
+		</li>
+		<li>Indem man die hier dargestellten Einstellungen beispielsweise als externe Textdatei speichert, kann man durch kopieren in das untere Feld das Diagramm erneut laden.
+		</li>
+		<li>Mithilfe der Session-ID, welche das Tutorial in den nächsten Schritten erklären wird.</li>
+	</ol>
+</explanation>
+<task></task>
+<objectOfInterest button="false" textbox="false">#session</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="14">
+<textposition>
+	<x>25</x>
+	<y>40</y>
+</textposition>
+<headline>
+	Plot
+</headline>
+<explanation>
+	Um ein Diagramm zu deiner Session-ID zu speichern, musst du auf diesen Button klicken.
+</explanation>
+<task>
+	Speichere das angezeigte Diagramm.
+</task>
+<objectOfInterest button="true" textbox="false">#savePlotButton</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="15">
+<headline>
+	Gespeicherte Diagramme
+</headline>
+<explanation>
+	Hier siehst du, welche Diagramme du unter deiner Session-ID gespeichert hast.
+</explanation>
+<task></task>
+<objectOfInterest button="false" textbox="false" locked="true">.savedPlotImage</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="16">
+<headline>
+	Gespeicherte Diagramme
+</headline>
+<explanation>
+	Mit diesen beiden Buttons kannst du das Diagramm laden oder löschen.
+</explanation>
+<task></task>
+<objectOfInterest button="false" textbox="false" locked="true">.btns</objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+
+<frame number="17">
+<textposition>
+	<x>50</x>
+	<y>50</y>
+</textposition>
+<headline>
+	Ende
+</headline>
+<explanation>
+	Wir hoffen dir mit diesem Tutorial geholfen zu haben. Eine detaillierte Anleitung  findest du <a href='http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/cosmicweb/dokumentation/index_ger.html' target="_blank">hier</a>. Bei Fragen, Unklarheiten oder Programmfehlern, schreibe bitte eine E-Mail an <a href='mailto:cosmicatweb@desy.de' target="_blank">cosmicatweb@desy.de</a>.
+</explanation>
+<task></task>
+<objectOfInterest button="false" textbox="false"></objectOfInterest>
+<taskDoneValue></taskDoneValue>
+</frame>
+</html>
