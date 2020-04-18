@@ -1,0 +1,242 @@
+Englisch,Deutsch,"Key (optional, english is fallback"
+en,de,language code
+Do you want to start the tutorial?<br/>It takes only 5-10 minutes of your time.,Möchtest du das Tutorial starten?<br/>Es hilft dir beim Einstieg und nimmt maximal 5-10 Minuten deiner Zeit in Anspruch.,start tutorial question
+Yes,Ja,
+No,Nein,
+Settings,Einstellungen,
+Diagram,Diagramm,
+Saved Diagrams,Gespeicherte Diagramme,
+This browser does not support JavaScript or JavaScript is not activated,Dieser Browser unterstützt kein JavaScript oder es ist deaktiviert bzw. geblockt.,javascript error 1
+You must activate JavaScript or use an up to date browser,Diese Seite erfordert jedoch JavaScript. Aktivieren Sie JavaScript oder verwenden Sie einen aktuellen Browser,javascript error 2
+e.g.,z.B.,example given
+This webinterface is optimized for Mozilla Firefox and Chrome. For other browsers a full functionality is not guaranteed!,Das Webinterface wurde für die Browser Mozilla Firefox und Chromium/Google Chrome optimiert. Eine fehlerfreie Funktion kann unter anderen Browsern nicht garantiert werden!,browser warning
+More information about Cosmic@Web,Mehr Informationen zu Cosmic@Web,more information
+Cosmic@Web manual (still in German),Anleitung zum Arbeiten mit Cosmic@Web,cosmic at web manual
+Start Tutorial,Tutorial starten,
+Diagram Creation,Einstellungen für das Diagramm,
+Setting of detail level,Einstellungsmodi,detail level
+Detailed,Erweitert,
+Avaliable Variables,verfügbare Variablen,
+Click here to remove the diagram settings,"um diese Diagrammeinstellungen zu entfernen, hier klicken",delete plot
+Data Set,Datenreihe,
+"Title of the diagram, will be shown in diagram's legend","Name des Diagramms, wird in der Legende angezeigt",diagram title help
+Diagram Title,Bezeichnung,
+Defines the display format of data. More information about diagram types in the manual,"legt fest, in welcher Form die Daten dargestellt werden. Nähere Informationen zu den Diagrammtypen gibt es in der Anleitung",diagram type help
+xy-Diagram,xy-Diagramm,
+Profile,Profil,
+Map,Karte,
+Select Data Set,Datenauswahl,
+Diagram Type,Darstellungsform,
+Choose Variables,Auswahl der Variablen,
+Value shown at the %s-axis. On can choose a given variable name (e.g. time) or a formula which transforms given variables (e.g. T_a-T_i oder log(p)),"Wert, der auf der %s dargestellt werden soll. Hier kann ein Variablenname eingegeben werden (z.B. time) oder eine Formel, die Variablen umrechnet oder miteinander verknüpft (z.B. T_a-T_i oder log(p))",variable help
+"Binning of the %s-axis. One number n means, that the data are shown in n bins (e.g. 10 produces 10 bins). Three numbers, separated by a commata (a,b,n) produces n bins starting on the left with a and ends on the right with bin b. With more than three numbers one can show several goups of binning.","Unterteilung der %s-Achse in Bins. Angabe einer Zahl n bedeutet, dass automatisch n Bins gewählt werden, die die Daten enthalten (z.B. 10 erzeugt 10 Bins). Angabe von drei durch Komma getrennten Zahlen a,b,n erzeugt n Bins mit linker Kante a und rechter Kante b. Angabe von mehr als drei durch Komma getrennten Zahlen erzeugt Bins mit den Binkanten auf den angegebenen Werten",bin number help
+Number of %s-bins,Anzahl der %s-Bins,bin number
+Activates the display of %s-error bars,aktiviert die Anzeige von %s-Fehlerbalken,error bars help
+%s-Error Bars,%s-Fehlerbalken,error bars
+"Correction function for the %s-variable, e.g. to display the variable time in days instead of sec",Korrekturfunktion für %s-Variable,correction function help
+Correction Function for %s-Variable,Korrekturfunktion für %s-Variable,correction function
+defines how many diagram details can be defined,"legt fest, wie viele Details eingestellt werden können und soll dem Anwender die Bedienung erleichtern",detail level help
+"Defines a second x- or y-axis for this diagram. The x-/y-values will be displayed independently on a separate axis, with its own scale","legt fest, ob eine zweite x- oder y-Achse für dieses Diagramm verwendet werden soll. die x-/y-Werte werden dann unabhängig auf einer eigenen Achse, mit eigener Skalierung oben/rechts dargestellt",second axis help
+Second Axis,zweite Achse,
+x-Axis,y-Achse,
+y-Axis,y-Achse,
+Data Analysis,Datenanalyse,
+Data Reduction,Datenreduktion,
+"Data selection/reduction with help of a boolean condition. Only data for which the condition is true will be displayed, (e.g. T_a&gt;20 means that all data are cut for which this condition is not fulfilled.","Hier wird ein boolscher Ausdruck eingegeben. Nur Datentupel, bei denen dieser Ausdruck wahr ist, werden in das Diagramm aufgenommen. z.B. T_a&gt;20 bedeutet, dass nur Daten, bei denen T_a&gt;20 ist, in das Diagramm aufgenommen werden. Alle anderen werden weggeschnitten (gefiltert).",condition help
+Condition,Bedingung,
+"Fit function, independent variable is x, parameters are p[0], p[1], ... Example: p[0]+p[1]*x","Fitfunktion, unabhängige Variable ist x, Parameter sind p[0], p[1], ... Beispiel: p[0]+p[1]*x",fit function help
+Fit Function,Fitfunktion,
+"Start values of the fit-parameter, separated by commatas","Startwerte für die Fit-Parameter, durch Komma getrennt",fit start help
+Start Parameters,Startparameter,
+Display Options,Darstellungsoptionen,
+You can select the map projection,wählt die Kartenprojektion aus,map projection help
+Projection,Projektion,
+cylindrical,zylindrisch,
+orthographical,orthographisch,
+stereographical,stereographisch,
+equidistant,äquidistant,
+north-polar,nord-polar,
+south-polar,süd-polar,
+Country Borders,Landesgrenzen,
+%sD-Histogram display format,Art der Darstellung des %sD-Histograms,dim display format help
+%s-dim Display Format,Darstellung %s-dim,dim display format
+filled,gefüllt,
+Line,Linie,
+Color,Farbe,
+Contour,Kontur,
+"Includes a box with statistical information of the diagram: n=number of entries,m=mean value, s=standard variation, for 1D-histogr: [p=mode (most frequent value), e=median, w=skew, k=curtosis, x=excess], for 2D-histogr: [c=covariance, a=all","gibt an, welche Werte in der Infobox für das Histogram angegeben werden, es bedeuten: n=Anzahl der Einträge,",statistics box help
+Statistics Box,Statistikbox,
+Number of contour lines,Anzahl der Konturlinien,contour lines help
+Contour Lines,Konturlinien,
+Presents the probability density instead of the number of entries per bin,"wenn aktiv wird die Wahrscheinlichkeitsdichte dargestellt, nicht die pro Bin gezählten Einträge",density help
+Density,Dichte,
+"Cumulative presentation of the histogram, summing up the bins as indicated","kumulative Darstellung des Histograms, die Aufsummation der Bins erfolgt wie angegeben",cumulative help
+Cumulative,kumulativ,
+"Defines the placement of the diagram, low number in background, high number in foreground","legt die Zeichenreihenfolge fest, niederige Ebenen verschieben das Diagramm nach hinten, größere nach vorn",placement help
+Placement,Anordnung,
+Plane,Ebene,
+Color of line/points,Farbe der Linie/Datenpunkte,line color help
+Transparency of line/points,Durchsichtigkeit der Linie/Datenpunke,transparency help
+opaque,opak,
+Transparency,Transparenz,
+Data point symbols,Darstellung der Datenunkte,data point symbols help
+Data Point Symbols,Symbol für Datenpunkte,
+No Symbol,kein Symbol,
+Point,Punkt,
+Circle,Kreis,
+Star,Stern,
+Square,Quadrat,
+Cross,Kreuz,
+Triangle,Dreieck,
+Symbol size,Größe der Datenpunkte,symbol size help
+Symbol Size,Symbolgröße,
+Line style,Darstellung der Linie,line style help
+Line Style,Linientyp,
+No Line,keine Linie,
+Full Line,durchgezogen,
+dashed,gestrichelt,
+dotted,gepunktet,
+dashed-dotted,Strich-Punkt,
+Line thickness,Dicke der Linie,line width help
+Line width,Linienstärke,
+"Line option for fit (color and style), e.g. 'r-' = red, full line","Linienfarbe- und Stil für Fitresultat, Beispiel: 'r-' = rot, durchgezogen",fit line option help
+Line Option for Fit,Linienoption für den Fit,fit line option
+Click to open an additional diagram,"hier klicken, um einen weiteres, unabhängiges Diagramm hinzuzufügen",add data array help
+Add Data Array,Datenreihe hinzufügen,
+Diagram Option,Diagrammoption,
+Head line of the diagram,"Titel des Diagramms, wird über dem Diagramm als Überschrift angezeigt",title help
+Width of the diagram in cm (default=25),"Breite des Diagramms in cm (ungefähr, default=25)",diagram width help
+Height of the diagram,Höhe des Diagramms,height help
+Width,Breite,
+Height,Höhe,
+Axes,Achsen,
+x-Axis,x-Achse,
+Caption of %s,Beschriftung der %s,caption help
+Lower edge of %s,"Anzeigebereich der %s, Minimum",start value help
+Upper edge of %s,"Anzeigebereich der %s, Maximum",end value help
+Scaling of %s,Skalierung der %s,scaling help
+Start Value,Startwert,
+End Value,Endwert,
+Scaling,Skalierung,
+logarithmic,logarithmisch,
+symmetrical,symmetrisch,
+Caption,Beschriftung,
+z-Axis,z-Achse,
+symmetrical-logarithmic,symmetrisch-logarithmisch,
+Legend,Legende,
+"Defines the position of the legend. In case of 1 diagram only, there is no legend displayd","legt fest, ob und wo die Legende angezeigt wird. Bei nur einem Diagramm wird keine Legende angezeigt.",legend position help
+automatically,automatisch,
+no legend,keine Legende,
+top,oben,
+left,links,
+right,rechts,
+bottom,unten,
+center,mitte,
+"Click here, to remove all diagram settings","hier klicken, um alle Diagrammeinstellungen zurückzusetzen",reset help
+Create Diagram,Diagramm erstellen,
+Please configurate a diagram at %s%s%s and click on %s'%s'%s.,Bitte unter %s%s%s ein Diagramm konfigurieren und auf %s'%s'%s klicken.,no result text
+Stored Diagrams,Gespeicherte Diagramme,
+You can load stored diagrams and their settings by clicking on %s. By clicking on %s you can remove the diagram. Clicking on the diagram will diplay it in full size.,Gespeicherte Diagramme und ihre Einstellungen können mit einem Klick auf %s geladen und auf %s gelöscht werden. Ein Klick auf das Bild vergrößert es.,stored diagrams explanation
+No stored diagrams available for you.,Momentan existieren keine gespeicherten Diagramme.,no saved diagrams
+To load stored settings you must copy it into this field and click then Load Settings,"Zum Laden von gespeicherten Einstellungen, die Einstellungen in dieses Feld kopieren und laden.",load settings explanation
+Load Settings,Einstellungen laden,
+The diagrams and their settings can be stored at the server for 4 weeks. The identification is realized by aID. With this ID they can be called back.,Die in diesergewählten Einstellungen und das dazugehörige Diagramm können auf dem Server mittels der Session-ID gespeichert und wieder aufgerufen werden.,session explanation
+new ID,neue ID,
+Load Session,Session laden,
+"You can define your ownID. The ID should consist of 8 or more characters, click then on 'Load Session'.",Es kann auch eine Session-ID selbst gewählt werden. Trage dazu im Feld mindestens 8 Zeichen ein und klicke auf 'Session Laden'.,custom session id explanation
+"If you want to store a diagram into the session, click on: 'Add to stored diagrams'.","Möchtest du ein Diagramm zu einer speichern, klicke auf den Button „Zu gespeicherte Diagramme hinzufügen“.",add to session explanation
+Remember the Session-ID for future work.,Merke oder speichere dir nun die Session-ID für die spätere Arbeit damit.,save session id
+"If you want to load a Session, click on 'Load Session'. Then you can choose a diagram to modify the settings by clicking on the green arrow.","Wenn du eine Session laden willst, klicke aufladen. Wähle dann ein Diagramm aus. Um die Einstellungen zum Diagramm einzusehen oder zu bearbeiten, klicke auf den grünen Pfeil.",load session explanation
+"To load the example diagrams given in the manual for each experiment, choose one of the following Session-ID's:","Wenn man die in der Anleitung zu jedem Experiment aufgeführten Beispiel-Diagramme laden möchte, dann muss eine der folgenden Session-ID's eingegeben werden:",example diagrams explanation top
+Example Diagrams,Beispiel-Diagramme,
+"Then click on 'Load Session'. These example diagrams can be modified. However, they must be stored choosing another, (own) Session-ID, otherwise an error message will appear.","Anschliessend ein Klick auf 'Session laden'. Diese Beispiel-Diagramme können beliebig modifiziert werden, müssen aber unter einer neuen (eigenen) Session-ID abgespeichert werden, sonst gibt es eine Fehlermeldung.",example diagrams explanation bottom
+"(please, choose Experiment)",(bitte Experiment auswählen),choose experiment placeholder
+"(please, choose Data Set)",(bitte Datensatz auswählen),choose data set placeholder
+"Here, you have to choose the Experiment for the data analysis.",Hier wird das zu verwendende Experiment ausgewählt.,choose experiment help
+"Here, the Data Set for the corresponding Experiment must be chosen",Hier wird der zu verwendende Datensatz ausgewählt.,choose data set help
+Data Array,Datenreihe,
+Data Set,Datensatz,
+Error loading the settings,Fehler beim Laden der Einstellungen,
+The Session-ID must have at least 8 characters.,Die Session-ID muss mindestens 8 Zeichen lang sein.,session id too short error
+saved Diagram,gespeichertes Diagramm,
+delete Plot,Diagramm löschen,
+"Diagram will be generated, wait please","Diagramm wird erstellt, bitte warten",diagram beeing generated
+An error occurred,Es sind Fehler aufgetreten,
+Error in Data Set number,Fehler in der Datenreihe,
+Save Diagram as,Diagramm herunterladen als,
+Add to saved Diagrams,Zu gespeicherten Diagrammen hinzufügen,
+Settings of this Diagram,Einstellungen dieses Diagramms,
+"To import this Diagram into another Session, store the following Settings and load it into %sthe other session%s.","Um dieses Diagramm in eine andere Session zu importieren, speichere die folgenden Einstellungen und lade sie in %sdie andere Session%s.",export to another session explanation
+Include this Diagram into a Website,Dieses Diagramm auf einer Webseite einbinden,embed into website
+The following code can be used to include the Diagram into a Website.,Der folgende Code kann benutzt werden um das Diagramm auf einer Webseite einzubinden.,embed into website explanation
+An undefined Error appeared. Check the input Settings and try it again.,Es ist ein unbekannter Fehler aufgetreten. Bitte überprüfe deine Eingaben und versuche es erneut.,undefined error
+Explanation for the tutorial,Erläuterung zum Ablauf des Tutorials,tut head 0
+"This tutorial aims to simplify the usage of Cosmic@Web. By creating an example diagram step-by-step, it explains the most important functions. Follow the blue arrows","Dieses Tutorial soll die Bedienung und Benutzung von Cosmic@Web erleichtern. Durch das schrittweise Erstellen eines Beispieldiagramms, werden die wichtigsten Funktionen beschrieben. Folge eifach den blauen Pfeilen.",tut expl 0
+Click on NEXT (in the upper right) to continue,Klicke auf NEXT (rechts oben) um fortzufahren,tut task 0
+settingsmode,Einstellungsmodi,tut head 1
+"Here you can choose between the Standard- and the Advancedmode. Die Standardmode is simple, whereas the Advancedmode is way more detailed","Hier kannst du zwischen dem Standard- und dem Erweitertenmodus wählen. Der Standardmodus ist einfacher gehalten, wohingegen der Erweittertenmodus deutlich ausführlicher ist.",tut expl 1
+Choose the Standardmode,Wähle den Standardmodus aus,tut task 1
+Create a diagram,Diagramm erstellen: Experient,tut head 2
+"With this function you can choose an experiment, which dataset you want to access. Explanations for the experiments can be found here.","Mit dieser Funktion kannst du das Experiment auswählen, auf dessen Datensätze du zugreifen möchtest. Erkläungen zu den einzelnen Experimenten findest du hier.",tut expl 2
+Please choose Polarstern,Wähle bitte Polarstern aus.,tut task 2
+Create a diagram: Dataset,Diagramm erstellen: Datensatz,tut head 3
+"All available datasets, for a specific experiment, can be found here. Datasets are marked like the following: TIMEFRAME_EXPERIMENT_ANNOTATION","Alle Datensätze, die dir für das jeweilige Experiment zur Verfügung stehen, sind ier aufgelistet. Datensätze werden folgendermaßen gekennzeichnet: ZEITRAUM_EXPERIMENT_ANMERKUNG",tut expl 3
+Choose the dataset from 2017,Wähle nun den Datensatz von 2017,tut task 3
+Create a diagram: representationformat,Diagramm erstellen: Darstellungsform,tut head 4
+Here you can choose a suitable representationformat. There are four types of diagrams:,Nun kann ein geeignetes Diagramm für die Darstellung der Daten ausgesucht werden. Man unterscheidet vier verschiedene Diagrammtypen:,tut expl 4
+For our example choose the xy-diagram.,Wir werden für unser Beispiel ein xy-Diagramm verwenden.,tut task 4
+1D-Histogram: A graphic representation of one varable. The variable is shown on the x-axis and the frequency is shown by the y-axis,"1D-Histogramm: Ermöglicht die grafische Darstellung einer einzelnen Variablen. Auf der x-Achse wird die Variable, auf der y-Achse deren Häufigkeit dargestellt.",1d histogram expl
+xy-diagram: To show the dependency between two variables,"xy-Diagramm: Damit kann die Abhängigkeit einer Variablen von einer anderen dargestellt werden, so wie man es aus der Schule kennt.",xy diagram expl
+2D-histogram: similar to the xy-diagram but the frequency is shown with a colorscala.,"2D-Histogram: Damit kann die Abhängigkeit einer Variablen von einer anderen dargestellt werden (genau wie beim xy-Diagramm), wobei zusätzlich die Häufigkeit durch eine Farbskala gekennzeichnet ist.",2d histogram expl
+Profil: This diagram is mainly used in the advancedmode. Informations can be found here.,"Profil: Dieser Diagramtyp wird hauptsächlich im Expertenmodus verwendet, wird zur Vollständigkeit aber aufgelistet. Informationen dazu findest du hier.",profile expl
+"format of geographic coordinates of the Polarstern. In the best case, another variable can be colored dependent on the coordinates. Careful: With this representation, only variables of the type Longitude and Latitude are practical.","Karte: Darstellung der geographischen Koordinaten der Polarstern. Optional kann eine weitere Variable in Abhängigkeit der Koordinaten farblich skaliert dargestellt werden.
+Hinweis: Bei dieser Darstellungsform sind nur die Variablen Longitude und Latitude als x- bzw. y-Variable sinnvoll.",map expl
+Create a diagram: X-variable,Dagramm erstellen: X-Variable,tut head 5
+Here you can choose the X-axis variable. Explanations and Descriptions to every variable can be found here. ,"Hier kann ausgewählt werden, welche gemessene Größe auf der x-Achse abgetragen werden soll.
+Beschreibungen und Erklärungen zu den jeweiligen Variablenarten findest du hier.
+
+Eine Beschreibung und Erklärung der vorhandenen Daten zu jedem Experiment findest du auf der jeweiligen Unterseite unter dem Punkt Datenstruktur.
+Beispiel Polarstern",tut expl 5
+For our example we want to measure the rate of muons per time. Choose time [s].,In unserem Beispiel soll die Rate gemessener Myonen im zeitlichen Verlauf untersucht werden. Daher wähle als x-Variable time [s] aus.,tut task 5
+Create a diagram: Y-variable,Diagramm erstellen: Y-Variable,tut head 6
+the Z-variable,"Hier kann die Y-Variable ausgesucht werden. Anmerkung: Es ist darüber hinaus möglich eine dritte Variable, die Z-Variable, zu definieren.",tut expl 6
+Choose mu_rate [1/h]. It shows the amount of muons per hour.,Wähle mu_rate [1/h] aus. Dies zeigt die Anzahl der gemessenen Myonen pro Stunde an.,tut task 6
+Diagramoption: Title,Diagrammoption: Titel,tut head 7
+Here you can type in a name for your diagram,Nun kannst du das Diagramm nach eigenem Ermessen benennen,tut expl 7
+Name the diagram,Gebe deinem Diagramm einen Namen,tut task 7
+Position of the legend,Position der Legende,tut head 8
+Here you can change the position of the legend,Mit dieser Funktion kannst du die Position der Legende verändern.,tut expl 8
+,,tut task 8
+Create the diagram,Diagramm erstellen,tut head 9
+Click on create diagram,Klicke auf Diagramm erstellen,tut expl 9
+,,tut task 9
+Diagram,Diagramm,tut head 10
+"When you don\'t know what the axis show, check what is contained in the dataset. In this example the time in seconds (time[s]) since the 01/01/2011. More informations to conversions can be found unter the datastructure","Wenn dir nicht klar ist, was auf den Achsen abgetragen ist, prüfe zunächst, was im Datensatz enthalten ist. So wird in diesem Fall die Zeit in Sekunden (time[s]) ab dem 01.01.011 angegeben. Weitere Informationen zur Umrechnung findest du unter der Datenstruktur.",tut expl 10
+,,tut task 10
+Save plot,Plot speichern,tut head 11
+"There are multiple ways to save diagrams for later use: 1. One possibility is to download it as pdf, svg or png.","Es gibt mehrere Möglichkeiten, Diagramme speichern und wieder aufrufen zu können:
+1. Eine Möglichkeit ist es, sich die Diagramme in den Formaten ""pdf,svg oder png"" herunterzuladen.",tut expl 11
+,,tut task 11
+Save plot,Plot speichern,tut head 12
+"There are multiple ways to save diagrams for later use: 1. One possibility is to download it as pdf, svg or png. 2. By saving the settings as txt file and loading it through ""load settings""","Es gibt mehrere Möglichkeiten, Diagramme speichern und wieder aufrufen zu können:
+1. Eine Möglichkeit ist es, sich die Diagramme in den Formaten ""pdf,svg oder png"" herunterzuladen.
+2. Indem man die hier dargestellten Einstellungen beispielsweise als externe Textdatei speichert, kann man durch Kopieren in das untere Feld das Diagramm erneut laden.",tut expl 12
+,,tut task 12
+Save plot,Plot speichern,tut head 13
+"There are multiple ways to save diagrams for later use: 1. One possibility is to download it as pdf, svg or png. 2. By saving the settings as txt file and loading it through ""load settings"". 3. With the help of the Session-ID, which will be explained in the next step","Es gibt mehrere Möglichkeiten, Diagramme speichern und wieder aufrufen zu können:
+1. Eine Möglichkeit ist es, sich die Diagramme in den Formaten ""pdf,svg oder png"" herunterzuladen.
+2. Indem man die hier dargestellten Einstellungen beispielsweise als externe Textdatei speichert, kann man durch kopieren in das untere Feld das Diagramm erneut laden.
+3. Mithilfe der Session-ID, welche das Tutorial in den nächsten Schritten erklären wird.",tut expl 13
+,,tut task 13
+plot,Plot,tut head 14
+"To save a diagram to your Session-ID, you have to click the button","Um ein Diagramm zu deiner Session-ID zu speichern, musst du auf diesen Button klicken.",tut expl 14
+Save the shown diagram,Speichere das angezeigte Diagramm.,tut task 14
+Saved diagrams,Gespeicherte Diagramme,tut head 15
+Here you can see the saved diagrams to your Session-ID,"Hier siehst du, welche Diagramme du unter deiner Session-ID gespeichert hast.",tut expl 15
+,,tut task 15
+Saved diagrams,Gespeicherte Diagramme,tut head 16
+With these two buttons you can load or delete a diagram,Mit diesen beiden Buttons kannst du das Diagramm laden oder löschen.,tut expl 16
+,,tut task 16
+The end,Ende,tut head 17
+"We hope that this tutorial helped you. A more detailed instruction can be found here. If you sill have questions, please wirte an Email to cosmicatweb@desy.de.","Wir hoffen dir mit diesem Tutorial geholfen zu haben. Eine detaillierte Anleitung findest du hier. Bei Fragen, Unklarheiten oder Programmfehlern, schreibe bitte eine E-Mail an cosmicatweb@desy.de.",tut expl 17
+,,tut task 17

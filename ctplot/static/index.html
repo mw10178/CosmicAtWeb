@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="{{language code}}">
+<!--
+pyplot - python based data plotting tools
+created for DESY Zeuthen
+Copyright (C) 2012  Adam Lucke
+Copyright (C) 2015  Martin Ohmann
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<head>
+    <title>Cosmic@Web</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <style>
+        /*{{INSERT css/colorpicker.css}}*/
+        /*{{INSERT css/colorbox.css}}*/
+        /*{{INSERT css/style.css}}*/
+        /*{{INSERT css/tutorial.css}}*/
+    </style>
+    <script>/*{{INSERT js/browser-update.js}}*/</script>
+    <script>/*{{INSERT js/jquery.js}}*/</script>
+    <script>/*{{INSERT js/jquery.smooth-scroll.js}}*/</script>
+    <script>/*{{INSERT js/jquery.cookie.js}}*/</script>
+    <script>/*{{INSERT js/jquery.colorbox.js}}*/</script>
+    <script>/*{{INSERT js/simplestorage.js}}*/</script>
+    <script>/*{{INSERT js/colorpicker.js}}*/</script>
+    <script>/*{{INSERT js/web.js}}*/</script>
+    <script>/*{{INSERT js/tutorial-data.js}}*/</script>
+    <script>/*{{INSERT js/tutorial.js}}*/</script>
+</head>
+<body class="{{language code}}">
+
+<div class="popup-background" style="display: none;">
+    <div class="popup">
+        {{start tutorial question}}
+        <div class="buttonwrapper">
+            <button class="startTutorial" autofocus onclick="$('.popup-background').hide();">
+                {{yes}}
+            </button>
+            <button onclick="stopTutorial();">
+                {{no}}
+            </button>
+        </div>
+    </div>
+</div>
+<div id="spacer" class="tutorial"></div>
+<div id="tutorial" class="tutorial">
+    <div id="navigation">
+        <table>
+            <tr>
+                <td><img src="img/back.svg" class="arrows" id="back"></td>
+                <td><p id="progress"></p></td>
+                <td><img src="img/next.svg" class="arrows" id="next"></td>
+            </tr>
+        </table>
+    </div>
+    <canvas id="overlay"></canvas>
+    <div id="stopTutorial">+</div>
+    <div id="textwrapper">
+        <p id="explanation"></p>
+        <hr>
+        <p id="task"></p>
+    </div>
+</div>
+
+<header>
+    <img src="img/cosmiclab.png" alt="COSMICLAB"/>
+</header>
+<div id="content">
+    <nav>
+        <ul>
+            <li>
+                <a href="#settings">{{settings}}</a>
+            </li>
+            <li>
+                <a href="#output">{{diagram}}</a>
+            </li>
+            <li>
+                <a href="#saved">{{saved diagrams}}</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container">
+        <noscript>
+            <div class="errorbox">
+                <p>
+                    {{javascript error 1}}
+                </p>
+                <p>
+                    {{javascript error 2}} ({{example given}} <a href='http://www.google.com/chrome' target='_blank'>Chrome</a>).
+                </p>
+            </div>
+        </noscript>
+        <div id="browser-warning" class="errorbox">
+            {{browser warning}}
+        </div>
+
+        <div align="right">
+            Language: <a href="en" class="english">English</a> / <a href="de" class="german">German</a>
+        </div>
+
+        <p>
+            <a class="internal-link"
+               href="https://physik-begreifen-zeuthen.desy.de/angebote/kosmische_teilchen/cosmicweb" target="_blank">
+                {{more information}}
+            </a>
+        </p>
+        <p>
+            <a class="internal-link"
+               href="https://physik-begreifen-zeuthen.desy.de/angebote/kosmische_teilchen/cosmicweb/how_to/index_ger.html"
+               target="_blank">
+                {{cosmic at web manual}}
+            </a>
+        </p>
+        <p>
+            <a class="internal-link startTutorial" href="#">
+                {{start tutorial}}
+            </a>
+        </p>
+        <div id="settings">
+            <h1>{{diagram creation}}</h1>
+            <form>
+                <input type="hidden" name="plots" id="plotcount" value>
+                <fieldset class="global">
+                    <legend>
+                        {{detail level}}
+                    </legend>
+                    <label data-help="{{detail level help}}">
+                        <select name="detaillevel">
+                            <option value="minimal">Standard</option>
+                            <option value="expert">{{detailed}}</option>
+                        </select>
+                    </label>
+                </fieldset>
+                <div id="plots">
+                    <div id="varsbox">
+                        {{avaliable variables}}:
+                        <span id="vars">a, b, c, &hellip;</span>
+                    </div>
+                    <fieldset class="plot">
+                        <legend>
+                            *. {{data set}}
+                        </legend>
+                        <span class="del-btn delplot" title="{{delete plot}}"></span>
+                        <h2>{{select data set}}</h2>
+                        <label class="advanced" data-help="{{diagram title help}}">
+                            {{diagram title}}
+                            <input type="text" name="n*">
+                        </label>
+                        <label class="required" data-help="{{diagram type help}}">
+                            {{diagram type}}
+                            <select name="m*">
+                                <option value="h1">1D-Histogram</option>
+                                <option value="xy">{{xy-diagram}}</option>
+                                <option value="h2">2D-Histogram</option>
+                                <option value="p">{{profile}}</option>
+                                <option value="map">{{map}}</option>
+                            </select>
+                        </label>
+                        <h3>{{choose variables}}</h3>
+                        <label class="required"
+                               data-help="{{variable help % x}}">
+                            x-Variable
+                            <select name="x*"></select>
+                        </label>
+                        <label data-help="{{correction function help % x}}" class="expert">
+                            {{correction function % x}}
+                            <input type="text" name="x*a">
+                        </label>
+                        <label data-help="{{bin number help % x}}" class="t-h1 t-h2 t-p advanced">
+                            {{bin number % x}}
+                            <input type="text" name="x*b">
+                        </label>
+                        <label data-help="{{error bars help % x}}" class="t-h1 t-p advanced">
+                            {{error bars % x}}
+                            <input type="checkbox" name="o*xerr">
+                        </label>
+                        <label data-help="{{variable help % y}}" class="required t-xy t-h2 t-p t-map">
+                            y-Variable
+                            <select name="y*"></select>
+                        </label>
+                        <label data-help="{{correction function help % y}}" class="t-xy t-h2 t-map t-p expert">
+                            {{correction function % y}}
+                            <input type="text" name="y*a">
+                        </label>
+                        <label data-help="{{bin number help % y}}" class="t-h2 advanced">
+                            {{bin number % y}}
+                            <input type="text" name="y*b">
+                        </label>
+                        <label data-help="{{error bars help % y}}" class="t-h1 t-p advanced">
+                            {{error bars % y}}
+                            <input type="checkbox" name="o*yerr">
+                        </label>
+                        <label data-help="{{second axis help}}" class="t-xy t-h1 t-p expert">
+                            {{second axis}}
+                            <select name="tw*">
+                                <option value=""></option>
+                                <option value="x">{{x-axis}}</option>
+                                <option value="y">{{y-axis}}</option>
+                            </select>
+                        </label>
+                        <label data-help="{{variable help % z}}"
+                               class="t-xy t-map">z-Variable
+                            <select name="z*"></select>
+                        </label>
+                        <label data-help="{{correction function help % z}}" class="t-xy t-map expert">
+                            {{correction function % z}}
+                            <input type="text" name="z*a">
+                        </label>
+                        <h2 class="advanced">{{data analysis}}</h2>
+                        <h3 class="advanced">{{data reduction}}</h3>
+                        <!--
+                        Ein Schnitt ist ein boolscher Ausdruck (siehe Hilfetext). Mehrere Bedingungen können durch and und or miteinander kombiniert werden. Es muss auch nicht auch direkt auf die Inputvariablen geschnitten werden, es kann ein bliebiger Ausdruck eingegeben werden.
+                        -->
+                        <label class="advanced" data-help="{{condition help}}">
+                            {{condition}}
+                            <input type="text" name="c*">
+                        </label>
+
+                        <!-- fit options -->
+                        <h2 class="t-xy t-h1 t-p advanced">Fit</h2>
+                        <label data-help="{{fit function help}}"
+                               class="t-xy t-h1 t-p advanced">{{fit function}}
+                            <input type="text" name="ff*">
+                        </label>
+                        <label data-help="{{fit start help}}"
+                               class="t-xy t-h1 t-p advanced">{{start parameters}}
+                            <input type="text" name="fp*">
+                        </label>
+                        <h2 class="expert">{{display options}}</h2>
+                        <label data-help="{{map projection help}}" class="t-map expert">{{projection}}
+                            <select name="o*projection">
+                                <option value=""></option>
+                                <option value="cyl">{{cylindrical}}</option>
+                                <option value="ortho">{{orthographical}}</option>
+                                <option value="merc">Mercator</option>
+                                <option value="robin">Robinson</option>
+                                <option value="aeqd" class="expert">{{equidistant}}</option>
+                                <option value="laea" class="expert">Lambert-Azimutal</option>
+                                <option value="stere" class="expert">{{stereographical}}</option>
+                                <option value="npaeqd" class="expert">{{north-polar}}, {{equidistant}}</option>
+                                <option value="nplaea" class="expert">{{north-polar}}, Lambert-Azimutal</option>
+                                <option value="npstere" class="expert">{{north-polar}}, {{stereographical}}</option>
+                                <option value="spaeqd" class="expert">{{south-polar}}, {{equidistant}}</option>
+                                <option value="splaea" class="expert">{{south-polar}}, Lambert-Azimutal</option>
+                                <option value="spstere" class="expert">{{south-polar}}, {{stereographical}}</option>
+                            </select>
+                        </label>
+                        <label data-help="" class="t-map expert">
+                            {{country borders}}
+                            <input type="checkbox" name="o*drawcountries">
+                        </label>
+                        <label data-help="{{dim display format help % 1}}" class="t-h1 expert">
+                            {{dim display format % 1}}
+                            <select name="o*style">
+                                <option value=""></option>
+                                <option value="hist">Histogram</option>
+                                <option value="fill">Histogram, {{filled}}</option>
+                                <option value="histline">{{line}}</option>
+                                <option value="linefill">{{line}}, {{filled}}</option>
+                                <option value="scat">Scatter</option>
+                            </select>
+                        </label>
+                        <label data-help="{{dim display format help % 2}}" class="t-h2 expert">
+                            {{dim display format % 2}}
+                            <select name="o*style">
+                                <option value=""></option>
+                                <option value="color">{{color}}</option>
+                                <option value="contour">{{contour}}</option>
+                                <option value="contourfilled">{{contour}}, {{filled}}</option>
+                                <option value="box">Box</option>
+                            </select>
+                        </label>
+                        <label data-help="{{statistics box help}}" class="t-h1 t-h2 expert">
+                            {{statistics box}}
+                            <input type="text" name="sb*">
+                        </label>
+                        <label data-help="{{contour lines help}}" class="t-h2 expert">
+                            {{contour lines}}
+                            <input type="text" name="o*levels">
+                        </label>
+                        <label data-help="{{density help}}" class="t-h1 t-h2 expert">
+                            {{density}}
+                            <input type="checkbox" name="o*density">
+                        </label>
+                        <label data-help="{{cumulative help}}" class="t-h1 expert">
+                            {{cumulative}}
+                            <select name="o*cumulative">
+                                <option value=""></option>
+                                <option value="1">{{left}} -&gt; {{right}}</option>
+                                <option value="-1">{{right}} -&gt; {{left}}</option>
+                            </select>
+                        </label>
+                        <label data-help="{{placement help}}" class="t-xy t-h1 t-p t-map expert">
+                            {{placement}}
+                            <select name="o*zorder">
+                                <option value=""></option>
+                                <option value="1">1. {{plane}}</option>
+                                <option value="2">2. {{plane}}</option>
+                                <option value="3">3. {{plane}}</option>
+                                <option value="4">4. {{plane}}</option>
+                            </select>
+                        </label>
+                        <label data-help="{{line color help}}" class="t-xy t-h1 t-p t-map expert">
+                            {{color}}
+                            <input type="hidden" name="o*color">
+                        </label>
+                        <label data-help="{{transparency help}}" class="t-xy t-h1 t-h2 t-p t-map expert">
+                            {{transparency}}
+                            <select name="o*alpha">
+                                <option value="1">0%</option>
+                                <option value="0.9">10%</option>
+                                <option value="0.8">20%</option>
+                                <option value="0.7">30%</option>
+                                <option value="0.6">40%</option>
+                                <option value="0.5">50%</option>
+                                <option value="0.4">60%</option>
+                                <option value="0.3">70%</option>
+                                <option value="0.2">80%</option>
+                                <option value="0.1">90%</option>
+                                <option value="0">100%</option>
+                            </select>
+                        </label>
+                        <label data-help="data point symbols help" class="t-xy t-h1 t-p t-map expert">
+                            {{data point symbols}}
+                            <select name="o*marker">
+                                <option value="">{{no symbol}}</option>
+                                <option value=",">Pixel</option>
+                                <option value="." selected="selected">{{point}}</option>
+                                <option value="o">{{circle}}</option>
+                                <option value="*">{{star}}</option>
+                                <option value="s">{{square}}</option>
+                                <option value="+">Plus</option>
+                                <option value="x">{{cross}}</option>
+                                <option value="^">{{triangle}}</option>
+                            </select>
+                        </label>
+                        <label data-help="{{symbol size help}}" class="t-xy t-h1 t-p t-map expert">
+                            {{symbol size}}
+                            <input type="text" name="o*markersize">
+                        </label>
+                        <label data-help="{{line style help}}" class="t-xy t-h1 t-p t-map expert">
+                            {{line style}}
+                            <select name="o*linestyle">
+                                <option value="none">{{no line}}</option>
+                                <option value="-">{{full line}}</option>
+                                <option value="--">{{dashed}}</option>
+                                <option value=":">{{dotted}}</option>
+                                <option value="-.">{{dashed-dotted}}</option>
+                            </select>
+                        </label>
+                        <label data-help="{{line width help}}" class="t-xy t-h1 t-p t-map expert">
+                            {{line width}}
+                            <input type="text" name="o*linewidth">
+                        </label>
+                        <label data-help="{{fit line option help}}" class="t-xy t-h1 t-p expert">
+                            {{fit line option}}
+                            <input type="text" name="fl*">
+                        </label>
+                    </fieldset>
+                    <button type="button" id="addplot" class="btn" title="{{add data array help}}">
+                        <i class="fa fa-plus-square"></i>
+                        {{add data array}}
+                    </button>
+                </div>
+
+                <fieldset class="global global2">
+                    <legend>
+                        {{diagram option}}
+                    </legend>
+                    <label data-help="{{title help}}">
+                        Titel
+                        <input type="text" name="t">
+                    </label>
+                    <label class="advanced" data-help="{{diagram width help}}">
+                        {{width}}
+                        <input type="text" name="w">
+                    </label>
+                    <label class="advanced" data-help="{{height help}}">
+                        {{height}}
+                        <input type="text" name="h">
+                    </label>
+                    <h2 class="advanced">{{axes}}</h2>
+                    <!-- x -->
+                    <h3 class="advanced">{{x-axis}}</h3>
+                    <label class="advanced" data-help="{{caption help % x-axis}}">
+                        {{caption}}
+                        <input type="text" name="xl">
+                    </label>
+                    <label class="advanced" data-help="{{start value help % x-axis}}">
+                        {{start value}}
+                        <input type="text" name="xr-min">
+                    </label>
+                    <label class="advanced" data-help="{{end value help % x-axis}}">
+                        {{end value}}
+                        <input type="text" name="xr-max">
+                    </label>
+                    <input type="hidden" name="xr">
+                    <label class="advanced" data-help="{{scaling help % x-axis}}">
+                        {{scaling}}
+                        <select name="xs">
+                            <option value="linear">linear</option>
+                            <option value="log">{{logarithmic}}</option>
+                            <option value="symlog">{{symmetrical}}-{{logarithmic}}</option>
+                        </select>
+                    </label>
+
+                    <!-- x2 -->
+                    <label data-help="{{caption help % x2-axis}}" class="twinx expert">
+                        {{caption help % x2-axis}}
+                        <input type="text" name="xltw">
+                    </label>
+                    <label data-help="{{start value help % x2-axis}}" class="twinx expert">
+                        {{start value help % x2-axis}}
+                        <input type="text" name="xrtw-min">
+                    </label>
+                    <label data-help="{{end value help % x2-axis}}" class="twinx expert">
+                        {{end value help % x2-axis}}
+                        <input type="text" name="xrtw-max">
+                    </label>
+                    <input type="hidden" name="xrtw">
+                    <label data-help="{{scaling help % x2-axis}}" class="twinx expert">
+                        {{scaling help % x2-axis}}
+                        <select name="xstw">
+                            <option value="linear">linear</option>
+                            <option value="log">logarithmisch</option>
+                            <option value="symlog">symmetrisch-logarithmisch</option>
+                        </select>
+                    </label>
+
+                    <!-- y -->
+                    <h3 class="advanced">{{y-axis}}</h3>
+                    <label class="advanced" data-help="{{caption help % y-axis}}">
+                        {{caption}}
+                        <input type="text" name="yl">
+                    </label>
+                    <label class="advanced" data-help="{{start value help % y-axis}}">
+                        {{start value}}
+                        <input type="text" name="yr-min">
+                    </label>
+                    <label class="advanced" data-help="{{end value help % y-axis}}">
+                        {{end value}}
+                        <input type="text" name="yr-max">
+                    </label>
+                    <input type="hidden" name="yr">
+                    <label class="advanced" data-help="{{scaling help % y-axis}}">
+                        {{scaling}}
+                        <select name="ys">
+                            <option value="linear">linear</option>
+                            <option value="log">{{logarithmic}}</option>
+                            <option value="symlog">{{symmetrical}}-{{logarithmic}}</option>
+                        </select>
+                    </label>
+
+                    <!-- y2 -->
+                    <label data-help="{{caption help % y2-axis}}" class="twiny expert">
+                        {{caption help % y2-axis}}
+                        <input type="text" name="yltw">
+                    </label>
+                    <label data-help="{{start value help % y2-axis}}" class="twiny expert">
+                        {{start value help % y2-axis}}
+                        <input type="text" name="yrtw-min">
+                    </label>
+                    <label data-help="{{end value help % y2-axis}}" class="twiny expert">
+                        {{end value help % y2-axis}}
+                        <input type="text" name="yrtw-max">
+                    </label>
+                    <input type="hidden" name="yrtw">
+                    <label data-help="{{scaling help % y2-axis}}" class="twiny expert">
+                        {{scaling help % y2-axis}}
+                        <select name="ystw">
+                            <option value="linear">linear</option>
+                            <option value="log">{{logarithmic}}</option>
+                            <option value="symlog">{{symmetrical}}-{{logarithmic}}</option>
+                        </select>
+                    </label>
+
+                    <!-- Z -->
+                    <h3 class="advanced">{{z-axis}} ({{color}})</h3>
+                    <label class="advanced" data-help="{{caption help % z-axis}}">
+                        {{caption}}
+                        <input type="text" name="zl">
+                    </label>
+                    <label class="advanced" data-help="{{start value help % z-axis}}">
+                        {{start value}}
+                        <input type="text" name="zr-min">
+                    </label>
+                    <label class="advanced" data-help="{{end value help % z-axis}}">
+                        {{end value}}
+                        <input type="text" name="zr-max">
+                    </label>
+                    <input type="hidden" name="zr">
+                    <label class="advanced" data-help="{{scaling help % z-axis}}">
+                        {{scaling}}
+                        <select name="zs">
+                            <option value="linear">linear</option>
+                            <option value="log">{{logarithmic}}</option>
+                            <option value="symlog">{{symmetrical}}-{{logarithmic}}</option>
+                        </select>
+                    </label>
+                    <h2>{{legend}}</h2>
+                    <label data-help="{{legend position help}}">
+                        Position
+                        <select name="l">
+                            <option value="">{{automatically}}</option>
+                            <option value="none">{{no legend}}</option>
+                            <option value="upper left">{{top}} {{left}}</option>
+                            <option value="upper center">{{top}} {{center}}</option>
+                            <option value="upper right">{{top}} {{right}}</option>
+                            <option value="center left">{{center}} {{left}}</option>
+                            <option value="center">{{center}}</option>
+                            <option value="center right">{{center}} {{right}}</option>
+                            <option value="lower left">{{bottom}} {{left}}</option>
+                            <option value="lower center">{{bottom}} {{center}}</option>
+                            <option value="lower right">{{bottom}} {{right}}</option>
+                        </select>
+                    </label>
+                </fieldset>
+                <div class="buttons">
+                    <input type="hidden" name="a" value="plot">
+                    <button class="btn btn-secondary" type="reset" title="{{reset help}}">
+                        <i class="fa fa-undo"></i>
+                        Reset
+                    </button>
+                    <button class="btn" type="submit">
+                        <i class="fa fa-bar-chart"></i>
+                        {{create diagram}}
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div id="output">
+            <h1>{{diagram}}</h1>
+            <div id="result">
+                <p>
+                    {{no result text % <a href='#settings'>,settings,</a>,<em>,create diagram,</em>}}
+                </p>
+            </div>
+            <div id="error"></div>
+        </div>
+        <div id="saved">
+            <h1>{{stored diagrams}}</h1>
+            <p>
+                {{stored diagrams explanation % <i class="fa fa-repeat fa-lg icon-green"></i>,<i class="del-btn inverse text"></i>}}
+            </p>
+            <p id="nosavedplots">
+                {{no saved diagrams}}
+            </p>
+            <div id="savedplots"></div>
+        </div>
+        <div id="loadsettings">
+            <h1>{{load settings}}</h1>
+            <p>{{load settings explanation}}</p>
+            <p>
+                <textarea name="settingstoload"></textarea>
+            </p>
+            <p>
+                <button class="btn" type="button" name="load">
+                    <i class="fa fa-upload"></i>
+                    {{load settings}}
+                </button>
+            </p>
+        </div>
+        <div id="session">
+            <h1>Session ID</h1>
+            <p>{{session explanation}}</p>
+            <label>Session-ID
+                <input type="text" id="sessionid">
+            </label>
+            <button class="btn" type="button" id="newid">
+                <i class="fa fa-refresh"></i>
+                {{new id}}
+            </button>
+            <button class="btn" type="button" id="loadid">
+                <i class="fa fa-upload"></i>
+                {{load session}}
+            </button>
+            <p>{{custom session id explanation}}</p>
+            <p>{{add to session explanation}}</p>
+            <p>{{save session id}}</p>
+            <p>{{load session explanation}}</p>
+            <h1>{{example diagrams}}</h1>
+            <p>{{example diagrams explanation top}}</p>
+            <ul>
+                <li>Trigger-Hodoskop</li>
+                <li>CosMo-Muehle</li>
+                <li>LIDO</li>
+                <li>Polarstern</li>
+                <li>Neumayer</li>
+                <li>Wetterdaten-Zeuthen</li>
+            </ul>
+            <p>{{example diagrams explanation bottom}}</p>
+        </div>
+    </div>
+    <footer>
+        &copy; 2010 &ndash; 2017, Deutsches Elektronen-Synchrotron
+    </footer>
+</div>
+</body>
+</html>
