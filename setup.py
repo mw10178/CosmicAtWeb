@@ -6,12 +6,14 @@
 # http://stackoverflow.com/questions/1231688/how-do-i-remove-packages-installed-with-pythons-easy-install
 # http://stackoverflow.com/questions/6344076/differences-between-distribute-distutils-setuptools-and-distutils2?answertab=active#tab-top
 from ez_setup import use_setuptools
+from generate_static_files import generate_static_files
 use_setuptools()
 
 import os
 from datetime import datetime
 from subprocess import check_output
 from setuptools import setup, find_packages
+from setuptools.command.build_py import build_py
 
 #   https://pythonhosted.org/setuptools/setuptools.html#non-package-data-files
 #   http://peak.telecommunity.com/DevCenter/PythonEggs#accessing-package-resources
@@ -48,6 +50,17 @@ update_version()
 
 import ctplot
 
+
+class custom_build_py(build_py):
+    def run(self):
+        if not self.dry_run:
+            target_dir = os.path.join(self.build_lib, 'ctplot/static')
+            self.mkpath(os.path.join(target_dir, 'de'))
+            self.mkpath(os.path.join(target_dir, 'en'))
+            generate_static_files(target_dir)
+
+        build_py.run(self)
+
 setup(
     name = ctplot.__name__,
     version = ctplot.__version__,
@@ -69,9 +82,10 @@ setup(
                         'ctserver=ctplot.webserver:main'
                    ]},
     package_data = {
-                    'ctplot':['web/*.*', 'web/*/*.*', 'web/*/*/*.*']
+                    'ctplot': ['static/*.*', 'static/*/*.*', 'static/*/*/*.*']
                    },
-    zip_safe = True
+    zip_safe = False,
+    cmdclass = {'build_py': custom_build_py}
 )
 
 

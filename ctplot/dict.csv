@@ -171,35 +171,30 @@ Include this Diagram into a Website,Dieses Diagramm auf einer Webseite einbinden
 The following code can be used to include the Diagram into a Website.,Der folgende Code kann benutzt werden um das Diagramm auf einer Webseite einzubinden.,embed into website explanation
 An undefined Error appeared. Check the input Settings and try it again.,Es ist ein unbekannter Fehler aufgetreten. Bitte überprüfe deine Eingaben und versuche es erneut.,undefined error
 Explanation for the tutorial,Erläuterung zum Ablauf des Tutorials,tut head 0
-"This tutorial aims to simplify the usage of Cosmic@Web. By creating an example diagram step-by-step, it explains the most important functions. Follow the blue arrows","Dieses Tutorial soll die Bedienung und Benutzung von Cosmic@Web erleichtern. Durch das schrittweise Erstellen eines Beispieldiagramms, werden die wichtigsten Funktionen beschrieben. Folge eifach den blauen Pfeilen.",tut expl 0
+"This tutorial aims to simplify the usage of Cosmic@Web. By creating an example diagram step-by-step, it explains the most important functions. Follow the blue arrows","Dieses Tutorial soll die Bedienung und Benutzung von Cosmic@Web erleichtern. Durch das schrittweise Erstellen eines Beispieldiagramms, werden die wichtigsten Funktionen beschrieben. Folge einfach den blauen Pfeilen.",tut expl 0
 Click on NEXT (in the upper right) to continue,Klicke auf NEXT (rechts oben) um fortzufahren,tut task 0
 settingsmode,Einstellungsmodi,tut head 1
 "Here you can choose between the Standard- and the Advancedmode. Die Standardmode is simple, whereas the Advancedmode is way more detailed","Hier kannst du zwischen dem Standard- und dem Erweitertenmodus wählen. Der Standardmodus ist einfacher gehalten, wohingegen der Erweittertenmodus deutlich ausführlicher ist.",tut expl 1
 Choose the Standardmode,Wähle den Standardmodus aus,tut task 1
 Create a diagram,Diagramm erstellen: Experient,tut head 2
-"With this function you can choose an experiment, which dataset you want to access. Explanations for the experiments can be found here.","Mit dieser Funktion kannst du das Experiment auswählen, auf dessen Datensätze du zugreifen möchtest. Erkläungen zu den einzelnen Experimenten findest du hier.",tut expl 2
+"With this function you can choose an experiment, whose dataset you want to access. Explanations for the experiments can be found here.","Mit dieser Funktion kannst du das Experiment auswählen, auf dessen Datensätze du zugreifen möchtest. Erklärungen zu den einzelnen Experimenten findest du hier.",tut expl 2
 Please choose Polarstern,Wähle bitte Polarstern aus.,tut task 2
 Create a diagram: Dataset,Diagramm erstellen: Datensatz,tut head 3
-"All available datasets, for a specific experiment, can be found here. Datasets are marked like the following: TIMEFRAME_EXPERIMENT_ANNOTATION","Alle Datensätze, die dir für das jeweilige Experiment zur Verfügung stehen, sind ier aufgelistet. Datensätze werden folgendermaßen gekennzeichnet: ZEITRAUM_EXPERIMENT_ANMERKUNG",tut expl 3
+"All available datasets, for a specific experiment, can be found here. Datasets are marked like the following: TIMEFRAME_EXPERIMENT_ANNOTATION","Alle Datensätze, die dir für das jeweilige Experiment zur Verfügung stehen, sind hier aufgelistet. Datensätze werden folgendermaßen gekennzeichnet: ZEITRAUM_EXPERIMENT_ANMERKUNG",tut expl 3
 Choose the dataset from 2017,Wähle nun den Datensatz von 2017,tut task 3
 Create a diagram: representationformat,Diagramm erstellen: Darstellungsform,tut head 4
 Here you can choose a suitable representationformat. There are four types of diagrams:,Nun kann ein geeignetes Diagramm für die Darstellung der Daten ausgesucht werden. Man unterscheidet vier verschiedene Diagrammtypen:,tut expl 4
 For our example choose the xy-diagram.,Wir werden für unser Beispiel ein xy-Diagramm verwenden.,tut task 4
-1D-Histogram: A graphic representation of one varable. The variable is shown on the x-axis and the frequency is shown by the y-axis,"1D-Histogramm: Ermöglicht die grafische Darstellung einer einzelnen Variablen. Auf der x-Achse wird die Variable, auf der y-Achse deren Häufigkeit dargestellt.",1d histogram expl
-xy-diagram: To show the dependency between two variables,"xy-Diagramm: Damit kann die Abhängigkeit einer Variablen von einer anderen dargestellt werden, so wie man es aus der Schule kennt.",xy diagram expl
-2D-histogram: similar to the xy-diagram but the frequency is shown with a colorscala.,"2D-Histogram: Damit kann die Abhängigkeit einer Variablen von einer anderen dargestellt werden (genau wie beim xy-Diagramm), wobei zusätzlich die Häufigkeit durch eine Farbskala gekennzeichnet ist.",2d histogram expl
+1D-Histogram: A graphic representation of one varable. The variable is shown on the x-axis and the frequency is shown by the y-axis,"1D-Histogramm: Ermöglicht die grafische Darstellung einer einzelnen Variable. Auf der x-Achse wird die Variable, auf der y-Achse deren Häufigkeit dargestellt.",1d histogram expl
+xy-diagram: To show the dependency between two variables,"xy-Diagramm: Damit kann die Abhängigkeit einer Variable von einer anderen dargestellt werden, so wie man es aus der Schule kennt.",xy diagram expl
+2D-histogram: similar to the xy-diagram but the frequency is shown with a colorscala.,"2D-Histogram: Damit kann die Abhängigkeit einer Variable von einer anderen dargestellt werden (genau wie beim xy-Diagramm), wobei zusätzlich die Häufigkeit durch eine Farbskala gekennzeichnet ist.",2d histogram expl
 Profil: This diagram is mainly used in the advancedmode. Informations can be found here.,"Profil: Dieser Diagramtyp wird hauptsächlich im Expertenmodus verwendet, wird zur Vollständigkeit aber aufgelistet. Informationen dazu findest du hier.",profile expl
-"format of geographic coordinates of the Polarstern. In the best case, another variable can be colored dependent on the coordinates. Careful: With this representation, only variables of the type Longitude and Latitude are practical.","Karte: Darstellung der geographischen Koordinaten der Polarstern. Optional kann eine weitere Variable in Abhängigkeit der Koordinaten farblich skaliert dargestellt werden.
-Hinweis: Bei dieser Darstellungsform sind nur die Variablen Longitude und Latitude als x- bzw. y-Variable sinnvoll.",map expl
+"format of geographic coordinates of the Polarstern. In the best case, another variable can be colored dependent on the coordinates. Careful: With this representation, only variables of the type Longitude and Latitude are practical.","Karte: Darstellung der geographischen Koordinaten der Polarstern. Optional kann eine weitere Variable in Abhängigkeit der Koordinaten farblich skaliert dargestellt werden. Hinweis: Bei dieser Darstellungsform sind nur die Variablen Longitude und Latitude als x- bzw. y-Variable sinnvoll.",map expl
 Create a diagram: X-variable,Dagramm erstellen: X-Variable,tut head 5
-Here you can choose the X-axis variable. Explanations and Descriptions to every variable can be found here. ,"Hier kann ausgewählt werden, welche gemessene Größe auf der x-Achse abgetragen werden soll.
-Beschreibungen und Erklärungen zu den jeweiligen Variablenarten findest du hier.
-
-Eine Beschreibung und Erklärung der vorhandenen Daten zu jedem Experiment findest du auf der jeweiligen Unterseite unter dem Punkt Datenstruktur.
-Beispiel Polarstern",tut expl 5
+Here you can choose the X-axis variable. Explanations and Descriptions to every variable can be found here.,"Hier kann ausgewählt werden, welche gemessene Größe auf der x-Achse abgetragen werden soll. Beschreibungen und Erklärungen zu den jeweiligen Variablenarten findest du hier. Eine Beschreibung und Erklärung der vorhandenen Daten zu jedem Experiment findest du auf der jeweiligen Unterseite unter dem Punkt Datenstruktur. Beispiel Polarstern",tut expl 5
 For our example we want to measure the rate of muons per time. Choose time [s].,In unserem Beispiel soll die Rate gemessener Myonen im zeitlichen Verlauf untersucht werden. Daher wähle als x-Variable time [s] aus.,tut task 5
 Create a diagram: Y-variable,Diagramm erstellen: Y-Variable,tut head 6
-the Z-variable,"Hier kann die Y-Variable ausgesucht werden. Anmerkung: Es ist darüber hinaus möglich eine dritte Variable, die Z-Variable, zu definieren.",tut expl 6
+"Here, the Y-axis variable can be set. Notice: It is also possible to set a third variable. The Z-variable","Hier kann die Y-Variable ausgesucht werden. Anmerkung: Es ist darüber hinaus möglich eine dritte Variable, die Z-Variable, zu definieren.",tut expl 6
 Choose mu_rate [1/h]. It shows the amount of muons per hour.,Wähle mu_rate [1/h] aus. Dies zeigt die Anzahl der gemessenen Myonen pro Stunde an.,tut task 6
 Diagramoption: Title,Diagrammoption: Titel,tut head 7
 Here you can type in a name for your diagram,Nun kannst du das Diagramm nach eigenem Ermessen benennen,tut expl 7
@@ -211,22 +206,16 @@ Create the diagram,Diagramm erstellen,tut head 9
 Click on create diagram,Klicke auf Diagramm erstellen,tut expl 9
 ,,tut task 9
 Diagram,Diagramm,tut head 10
-"When you don\'t know what the axis show, check what is contained in the dataset. In this example the time in seconds (time[s]) since the 01/01/2011. More informations to conversions can be found unter the datastructure","Wenn dir nicht klar ist, was auf den Achsen abgetragen ist, prüfe zunächst, was im Datensatz enthalten ist. So wird in diesem Fall die Zeit in Sekunden (time[s]) ab dem 01.01.011 angegeben. Weitere Informationen zur Umrechnung findest du unter der Datenstruktur.",tut expl 10
+"When you don\'t know what the axis show, check what is contained in the dataset. In this example the time in seconds (time[s]) since the 01/01/2011 are shown on the X-axis. More informations to conversions can be found under the datastructure","Wenn dir nicht klar ist, was auf den Achsen abgetragen ist, prüfe zunächst, was im Datensatz enthalten ist. So wird in diesem Fall die Zeit in Sekunden (time[s]) ab dem 01.01.011 angegeben. Weitere Informationen zur Umrechnung findest du unter der Datenstruktur.",tut expl 10
 ,,tut task 10
 Save plot,Plot speichern,tut head 11
-"There are multiple ways to save diagrams for later use: 1. One possibility is to download it as pdf, svg or png.","Es gibt mehrere Möglichkeiten, Diagramme speichern und wieder aufrufen zu können:
-1. Eine Möglichkeit ist es, sich die Diagramme in den Formaten ""pdf,svg oder png"" herunterzuladen.",tut expl 11
+"There are multiple ways to save diagrams for later use: 1. One possibility is to download it as pdf, svg or png.","Es gibt mehrere Möglichkeiten, Diagramme speichern und wieder aufrufen zu können: 1. Eine Möglichkeit ist es, sich die Diagramme in den Formaten ""pdf,svg oder png"" herunterzuladen.",tut expl 11
 ,,tut task 11
 Save plot,Plot speichern,tut head 12
-"There are multiple ways to save diagrams for later use: 1. One possibility is to download it as pdf, svg or png. 2. By saving the settings as txt file and loading it through ""load settings""","Es gibt mehrere Möglichkeiten, Diagramme speichern und wieder aufrufen zu können:
-1. Eine Möglichkeit ist es, sich die Diagramme in den Formaten ""pdf,svg oder png"" herunterzuladen.
-2. Indem man die hier dargestellten Einstellungen beispielsweise als externe Textdatei speichert, kann man durch Kopieren in das untere Feld das Diagramm erneut laden.",tut expl 12
+"There are multiple ways to save diagrams for later use: 1. One possibility is to download it as pdf, svg or png. 2. By saving the settings as txt file and loading it through ""load settings""","Es gibt mehrere Möglichkeiten, Diagramme speichern und wieder aufrufen zu können: 1. Eine Möglichkeit ist es, sich die Diagramme in den Formaten ""pdf,svg oder png"" herunterzuladen. 2. Indem man die hier dargestellten Einstellungen beispielsweise als externe Textdatei speichert, kann man durch Kopieren in das untere Feld das Diagramm erneut laden.",tut expl 12
 ,,tut task 12
 Save plot,Plot speichern,tut head 13
-"There are multiple ways to save diagrams for later use: 1. One possibility is to download it as pdf, svg or png. 2. By saving the settings as txt file and loading it through ""load settings"". 3. With the help of the Session-ID, which will be explained in the next step","Es gibt mehrere Möglichkeiten, Diagramme speichern und wieder aufrufen zu können:
-1. Eine Möglichkeit ist es, sich die Diagramme in den Formaten ""pdf,svg oder png"" herunterzuladen.
-2. Indem man die hier dargestellten Einstellungen beispielsweise als externe Textdatei speichert, kann man durch kopieren in das untere Feld das Diagramm erneut laden.
-3. Mithilfe der Session-ID, welche das Tutorial in den nächsten Schritten erklären wird.",tut expl 13
+"There are multiple ways to save diagrams for later use: 1. One possibility is to download it as pdf, svg or png. 2. By saving the settings as txt file and loading it through ""load settings"". 3. With the help of the Session-ID, which will be explained in the next step","Es gibt mehrere Möglichkeiten, Diagramme speichern und wieder aufrufen zu können: 1. Eine Möglichkeit ist es, sich die Diagramme in den Formaten ""pdf,svg oder png"" herunterzuladen. 2. Indem man die hier dargestellten Einstellungen beispielsweise als externe Textdatei speichert, kann man durch kopieren in das untere Feld das Diagramm erneut laden. 3. Mithilfe der Session-ID, welche das Tutorial in den nächsten Schritten erklären wird.",tut expl 13
 ,,tut task 13
 plot,Plot,tut head 14
 "To save a diagram to your Session-ID, you have to click the button","Um ein Diagramm zu deiner Session-ID zu speichern, musst du auf diesen Button klicken.",tut expl 14
@@ -238,5 +227,15 @@ Saved diagrams,Gespeicherte Diagramme,tut head 16
 With these two buttons you can load or delete a diagram,Mit diesen beiden Buttons kannst du das Diagramm laden oder löschen.,tut expl 16
 ,,tut task 16
 The end,Ende,tut head 17
-"We hope that this tutorial helped you. A more detailed instruction can be found here. If you sill have questions, please wirte an Email to cosmicatweb@desy.de.","Wir hoffen dir mit diesem Tutorial geholfen zu haben. Eine detaillierte Anleitung findest du hier. Bei Fragen, Unklarheiten oder Programmfehlern, schreibe bitte eine E-Mail an cosmicatweb@desy.de.",tut expl 17
+"We hope that this tutorial helped you. A more detailed instruction can be found here. If you still have questions, please write an Email to cosmicatweb@desy.de.","Wir hoffen dir mit diesem Tutorial geholfen zu haben. Eine detaillierte Anleitung findest du hier. Bei Fragen, Unklarheiten oder Programmfehlern, schreibe bitte eine E-Mail an cosmicatweb@desy.de.",tut expl 17
 ,,tut task 17
+Information for the trigger hodoscope,Informationen zum Trigger-Hodoskop,trigger hodoscope information
+Information for the CosMO-Mill,Informationen zur CosMO-Mühle,cosmo information
+Information for the Polarstern-project,Informationen zum Polarstern-Projekt,polarstern information
+Information for the project on the neumayer ||| station,Informationen zum Projekt auf der Neumayer ||| Station,neumayer information
+Information for the weather-data from Zeuthen,Informationen zu den Wetterdaten aus Zeuthen,zeuthen weather information
+http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/trigger_hodoskop/index_ger.html,http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/trigger_hodoskop/index_ger.html,trigger hodoscope url
+http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/cosmo_muehle/index_ger.html,http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/cosmo_muehle/index_ger.html,cosmo url
+http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/polarstern_projekt/index_ger.html,http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/polarstern_projekt/index_ger.html,polarstern url
+http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/neumayer_station_iii/index_ger.html,http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/neumayer_station_iii/index_ger.html,neumayer url
+http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/wetterdaten_zeuthen/index_ger.html,http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/wetterdaten_zeuthen/index_ger.html,zeuthen weather url

@@ -20,7 +20,7 @@ const tutorialData = {
     },
     2: {
         headline: '{{tut head 2}}',
-        explanation: `{{tut expl 2}}<label for="checkbox_experiments" style="pointer-events: auto; padding: 0; margin: 0;">,</label>
+        explanation: `{{tut expl 2 % <label for="checkbox_experiments" style="pointer-events: auto; padding: 0; margin: 0;">,</label>}}
 <ul>
 ${[
             ['{{trigger hodoscope information}}', '{{trigger hodoscope url}}'],
@@ -29,8 +29,8 @@ ${[
             ['{{neumayer information}}', '{{neumayer url}}'],
             ['{{zeuthen weather information}}', '{{zeuthen weather url}}']
         ].map(
-          ([information, url]) => `<a target="_blank" href="${url}">${information}</a>`
-        ).join('')}</ul>`,
+          ([information, url]) => `<li><a target="_blank" href="${url}">${information}</a></li>`
+        ).join('\n')}</ul>`,
         task: '{{tut task 2}}',
         highlightSelector: 'select[name=experiment0]',
         validator: valueEquals('Polarstern')
@@ -93,7 +93,7 @@ ${[
     },
     10: {
         headline: '{{tut head 10}}',
-        explanation: '{{tut expl 10}} <a href=\'https://physik-begreifen-zeuthen.desy.de/e2198/e203474/e203596/e204023/index_ger.html#e222540\' target=\'blank_\'>,</a>',
+        explanation: '{{tut expl 10 % <a href=\'https://physik-begreifen-zeuthen.desy.de/e2198/e203474/e203596/e204023/index_ger.html#e222540\' target=\'blank_\'>,</a>}}',
         task: '{{tut task 10}}',
         highlightSelector: '#plotImage'
     },

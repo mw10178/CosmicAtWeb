@@ -32,7 +32,7 @@ def _generate_static_files(out_path, in_path, index_html='index.html'):
     # 5. translate
     out_de = out_en = in_str
 
-    for match in re.finditer(r"(/\*)?\{\{(?P<key>[a-zA-Z0-9 \-_]+)( % (?P<insert>.*))?\}\}(\*/)?", in_str):
+    for match in re.finditer(r"(\/\*)?\{\{(?P<key>[a-zA-Z0-9 \-_]+)( % (?P<insert>.*))?\}\}(\*\/)?", in_str):
         insert = match.group("insert")
         strings_en = ()
         strings_de = ()
@@ -44,8 +44,12 @@ def _generate_static_files(out_path, in_path, index_html='index.html'):
 
         try:
             key = str.lower(match.group('key'))
-            out_en = out_en.replace(match.group(), dictionary[key][0] % strings_en)
-            out_de = out_de.replace(match.group(), dictionary[key][1] % strings_de)
+            if (strings_en.count == 2):
+                out_en = out_en.replace(match.group(), strings_en[0]+dictionary[key][0]+strings_en[1])
+                out_de = out_de.replace(match.group(), strings_en[0]+dictionary[key][1]+strings_en[1])
+            else:
+                out_en = out_en.replace(match.group(), dictionary[key][0])
+                out_de = out_de.replace(match.group(), dictionary[key][1])
         except KeyError:
             print "The key '%s' could not be found in the dictionary" % match.group('key')
         except TypeError:

@@ -93,28 +93,20 @@ def static_content(environ, start_response):
         start_response('301 Redirect', [content_type(), ('Location', environ['REQUEST_URI'] + '/')])
         return []
 
-    if path == '/':
-        path = 'web/index.html'  # map / to index.html
+    path = path[1:]  # get rid of beginning slash
+
+    if path == '':
+        path = 'de'  # map / to /de
+
+    if path in ['en', 'de']:
+        start_response('200 OK', [('Content-Type', 'text/html')])
+        return resource_string('ctplot', 'static/%s/index.html' % path)
+    elif path.startswith('img/') and not resource_isdir('ctplot', 'static/' + path):
+        start_response('200 OK', [content_type(path)])
+        return resource_string('ctplot', 'static/' + path)
     else:
-        path = ('web/' + path).replace('//', '/')
-
-    if path == 'web/js':  # combined java scripts
-        scripts = {}
-        for s in resource_listdir('ctplot', 'web/js'):
-            scripts[s] = '\n// {}\n\n'.format(s) + resource_string('ctplot', 'web/js/' + s)
-        start_response('200 OK', [content_type('combined.js'), cc_cache])
-        return [scripts[k] for k in sorted(scripts.keys())]
-
-    if not resource_exists('ctplot', path):  # 404
         start_response('404 Not Found', [content_type()])
-        return ['404\n', '{} not found!'.format(path)]
-
-    elif resource_isdir('ctplot', path):  # 403
-        start_response('403 Forbidden', [content_type()])
-        return ['403 Forbidden']
-    else:
-        start_response('200 OK', [content_type(path), cc_cache])
-        return resource_string('ctplot', path)
+        return ['404\n', '%s not found!' % path]
 
 
 
