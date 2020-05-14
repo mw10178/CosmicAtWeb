@@ -140,7 +140,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
         ch.each(function(i) {
             var plot = $(this);
-            plot.find('legend').text((i + 1) + '. Data Array');
+            plot.find('legend').text((i + 1) + '. {{Data Array}}');
             plot.find('[name]').each(function() {
                 var e = $(this);
 

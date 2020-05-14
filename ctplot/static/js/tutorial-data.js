@@ -20,7 +20,7 @@ const tutorialData = {
     },
     2: {
         headline: '{{tut head 2}}',
-        explanation: `{{tut expl 2 % <label for="checkbox_experiments" style="pointer-events: auto; padding: 0; margin: 0;">,</label>}}
+        explanation: `{{tut expl 2}} <label for="checkbox_experiments" style="pointer-events: auto; padding: 0; margin: 0;">{{here}}</label><input type="checkbox" style="display: none;" name="checkbox_experiments" id="checkbox_experiments">
 <ul>
 ${[
             ['{{trigger hodoscope information}}', '{{trigger hodoscope url}}'],
@@ -49,7 +49,7 @@ ${[
                 '{{1d histogram expl % <b>,</b>}}', 
                 '{{xy diagram expl % <b>,</b>}}',
                 '{{2d histogram expl % <b>,</b>}}',
-                '{{profile expl % <b>,</b>}}',
+                '{{profile expl}} <a href=http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/cosmicweb/dokumentation/#submenu020>{{here}}</a>',
                 '{{map expl % <b>,</b>}}'
             ].map(v => `<li>${v}</li>`).join('')
             }</ol>`,
