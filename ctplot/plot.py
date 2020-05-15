@@ -790,6 +790,10 @@ class Plot(object):
             args = (y,)
 
         if z is None:
+            if 'linestyle' in kwargs:
+                kwargs['linestyle'] = 'none'
+            else:
+                kwargs.update({'linestyle':'none'})
             l, = plt.plot(*args, **kwargs)
         else:
             # linestyle must not be 'none' when plotting 3D
