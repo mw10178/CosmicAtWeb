@@ -274,7 +274,7 @@ button img {
     -webkit-appearance: none;
        -moz-appearance: none;
             appearance: none;
-    background-image: url(../img/select-arrow.png);
+    background-image: url(img/select-arrow.png);
     background-repeat: no-repeat;
     background-position: right;
     background-size: 20px;
