@@ -28,13 +28,27 @@ Map,Karte,
 Select Data Set,Datenauswahl,
 Diagram Type,Darstellungsform,
 Choose Variables,Auswahl der Variablen,
-Value shown at the %s-axis. On can choose a given variable name (e.g. time) or a formula which transforms given variables (e.g. T_a-T_i oder log(p)),"Wert, der auf der %s dargestellt werden soll. Hier kann ein Variablenname eingegeben werden (z.B. time) oder eine Formel, die Variablen umrechnet oder miteinander verknüpft (z.B. T_a-T_i oder log(p))",variable help
-"Binning of the %s-axis. One number n means, that the data are shown in n bins (e.g. 10 produces 10 bins). Three numbers, separated by a commata (a,b,n) produces n bins starting on the left with a and ends on the right with bin b. With more than three numbers one can show several goups of binning.","Unterteilung der %s-Achse in Bins. Angabe einer Zahl n bedeutet, dass automatisch n Bins gewählt werden, die die Daten enthalten (z.B. 10 erzeugt 10 Bins). Angabe von drei durch Komma getrennten Zahlen a,b,n erzeugt n Bins mit linker Kante a und rechter Kante b. Angabe von mehr als drei durch Komma getrennten Zahlen erzeugt Bins mit den Binkanten auf den angegebenen Werten",bin number help
-Number of %s-bins,Anzahl der %s-Bins,bin number
-Activates the display of %s-error bars,aktiviert die Anzeige von %s-Fehlerbalken,error bars help
-%s-Error Bars,%s-Fehlerbalken,error bars
-"Correction function for the %s-variable, e.g. to display the variable time in days instead of sec",Korrekturfunktion für %s-Variable,correction function help
-Correction Function for %s-Variable,Korrekturfunktion für %s-Variable,correction function
+Value shown at the x-axis. On can choose a given variable name (e.g. time) or a formula which transforms given variables (e.g. T_a-T_i oder log(p)),"Wert, der auf der x-achse dargestellt werden soll. Hier kann ein Variablenname eingegeben werden (z.B. time) oder eine Formel, die Variablen umrechnet oder miteinander verknüpft (z.B. T_a-T_i oder log(p))",variable helpx
+Value shown at the y-axis. On can choose a given variable name (e.g. time) or a formula which transforms given variables (e.g. T_a-T_i oder log(p)),"Wert, der auf der y-achse dargestellt werden soll. Hier kann ein Variablenname eingegeben werden (z.B. time) oder eine Formel, die Variablen umrechnet oder miteinander verknüpft (z.B. T_a-T_i oder log(p))",variable helpy
+Value shown at the z-axis. On can choose a given variable name (e.g. time) or a formula which transforms given variables (e.g. T_a-T_i oder log(p)),"Wert, der auf der z-achse dargestellt werden soll. Hier kann ein Variablenname eingegeben werden (z.B. time) oder eine Formel, die Variablen umrechnet oder miteinander verknüpft (z.B. T_a-T_i oder log(p))",variable helpz
+"Binning of the x-axis. One number n means, that the data are shown in n bins (e.g. 10 produces 10 bins). Three numbers, separated by a commata (a,b,n) produces n bins starting on the left with a and ends on the right with bin b. With more than three numbers one can show several goups of binning.","Unterteilung der x-Achse in Bins. Angabe einer Zahl n bedeutet, dass automatisch n Bins gewählt werden, die die Daten enthalten (z.B. 10 erzeugt 10 Bins). Angabe von drei durch Komma getrennten Zahlen a,b,n erzeugt n Bins mit linker Kante a und rechter Kante b. Angabe von mehr als drei durch Komma getrennten Zahlen erzeugt Bins mit den Binkanten auf den angegebenen Werten",bin number helpx
+"Binning of the y-axis. One number n means, that the data are shown in n bins (e.g. 10 produces 10 bins). Three numbers, separated by a commata (a,b,n) produces n bins starting on the left with a and ends on the right with bin b. With more than three numbers one can show several goups of binning.","Unterteilung der y-Achse in Bins. Angabe einer Zahl n bedeutet, dass automatisch n Bins gewählt werden, die die Daten enthalten (z.B. 10 erzeugt 10 Bins). Angabe von drei durch Komma getrennten Zahlen a,b,n erzeugt n Bins mit linker Kante a und rechter Kante b. Angabe von mehr als drei durch Komma getrennten Zahlen erzeugt Bins mit den Binkanten auf den angegebenen Werten",bin number helpy
+"Binning of the z-axis. One number n means, that the data are shown in n bins (e.g. 10 produces 10 bins). Three numbers, separated by a commata (a,b,n) produces n bins starting on the left with a and ends on the right with bin b. With more than three numbers one can show several goups of binning.","Unterteilung der z-Achse in Bins. Angabe einer Zahl n bedeutet, dass automatisch n Bins gewählt werden, die die Daten enthalten (z.B. 10 erzeugt 10 Bins). Angabe von drei durch Komma getrennten Zahlen a,b,n erzeugt n Bins mit linker Kante a und rechter Kante b. Angabe von mehr als drei durch Komma getrennten Zahlen erzeugt Bins mit den Binkanten auf den angegebenen Werten",bin number helpz
+Number of x-bins,Anzahl der x-Bins,bin numberx
+Number of y-bins,Anzahl der y-Bins,bin numbery
+Number of z-bins,Anzahl der z-Bins,bin numberz
+Activates the display of x-error bars on this axis,aktiviert die Anzeige von x-Fehlerbalken auf der Achse,error bars helpx
+Activates the display of y-error bars on this axis,aktiviert die Anzeige von y-Fehlerbalken auf der Achse,error bars helpy
+Activates the display of z-error bars on this axis,aktiviert die Anzeige von z-Fehlerbalken auf der Achse,error bars helpz
+x-Error Bars,x-Fehlerbalken,error barsx
+y-Error Bars,y-Fehlerbalken,error barsy
+z-Error Bars,z-Fehlerbalken,error barsz
+"Correction function for the x-variable, e.g. to display the variable time in days instead of sec",Korrekturfunktion für x-Variable,correction function helpx
+Correction Function for x-Variable,Korrekturfunktion für x-Variable,correction functionx
+Correction Function for y-Variable,Korrekturfunktion für y-Variable,correction functiony
+Correction Function for y-Variable,Korrekturfunktion für y-Variable,correction function helpy
+Correction Function for z-Variable,Korrekturfunktion für z-Variable,correction functionz
+Correction Function for z-Variable,Korrekturfunktion für z-Variable,correction function helpz
 defines how many diagram details can be defined,"legt fest, wie viele Details eingestellt werden können und soll dem Anwender die Bedienung erleichtern",detail level help
 "Defines a second x- or y-axis for this diagram. The x-/y-values will be displayed independently on a separate axis, with its own scale","legt fest, ob eine zweite x- oder y-Achse für dieses Diagramm verwendet werden soll. die x-/y-Werte werden dann unabhängig auf einer eigenen Achse, mit eigener Skalierung oben/rechts dargestellt",second axis help
 Second Axis,zweite Achse,
@@ -58,8 +72,10 @@ equidistant,äquidistant,
 north-polar,nord-polar,
 south-polar,süd-polar,
 Country Borders,Landesgrenzen,
-%sD-Histogram display format,Art der Darstellung des %sD-Histograms,dim display format help
-%s-dim Display Format,Darstellung %s-dim,dim display format
+1D-Histogram display format,Art der Darstellung des 1D-Histograms,dim display format help1
+2D-Histogram display format,Art der Darstellung des 2D-Histograms,dim display format help2
+1-dim Display Format,Darstellung 1-dim,dim display format1
+2-dim Display Format,Darstellung 2-dim,dim display format2
 filled,gefüllt,
 Line,Linie,
 Color,Farbe,
@@ -140,11 +156,11 @@ Stored Diagrams,Gespeicherte Diagramme,
 No stored diagrams available for you.,Momentan existieren keine gespeicherten Diagramme.,no saved diagrams
 To load stored settings you must copy it into this field and click then Load Settings,"Zum Laden von gespeicherten Einstellungen, die Einstellungen in dieses Feld kopieren und laden.",load settings explanation
 Load Settings,Einstellungen laden,
-The diagrams and their settings can be stored at the server for 4 weeks. The identification is realized by an ID. With this ID they can be called back.,Die in diesergewählten Einstellungen und das dazugehörige Diagramm können auf dem Server mittels der Session-ID gespeichert und wieder aufgerufen werden.,session explanation
+The diagrams and their settings can be stored at the server for 4 weeks. The identification is realized by an ID. With this ID they can be called back.,Die in dieser Session gewählten Einstellungen und das dazugehörige Diagramm können auf dem Server mittels der Session-ID gespeichert und wieder aufgerufen werden.,session explanation
 new ID,neue ID,
 Load Session,Session laden,
 "You can define your ownID. The ID should consist of 8 or more characters, click then on 'Load Session'.",Es kann auch eine Session-ID selbst gewählt werden. Trage dazu im Feld mindestens 8 Zeichen ein und klicke auf 'Session Laden'.,custom session id explanation
-"If you want to store a diagram into the session, click on: 'Add to stored diagrams'.","Möchtest du ein Diagramm zu einer speichern, klicke auf den Button „Zu gespeicherte Diagramme hinzufügen“.",add to session explanation
+"If you want to store a diagram into the session, click on: 'Add to stored diagrams'.","Möchtest du ein Diagramm zu einer Session speichern, klicke auf den Button „Zu gespeicherte Diagramme hinzufügen“.",add to session explanation
 Remember the Session-ID for future work.,Merke oder speichere dir nun die Session-ID für die spätere Arbeit damit.,save session id
 "If you want to load a Session, click on 'Load Session'. Then you can choose a diagram to modify the settings by clicking on the green arrow.","Wenn du eine Session laden willst, klicke aufladen. Wähle dann ein Diagramm aus. Um die Einstellungen zum Diagramm einzusehen oder zu bearbeiten, klicke auf den grünen Pfeil.",load session explanation
 "To load the example diagrams given in the manual for each experiment, choose one of the following Session-ID's:","Wenn man die in der Anleitung zu jedem Experiment aufgeführten Beispiel-Diagramme laden möchte, dann muss eine der folgenden Session-ID's eingegeben werden:",example diagrams explanation top

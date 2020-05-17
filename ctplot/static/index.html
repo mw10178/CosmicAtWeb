@@ -157,36 +157,36 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                         </label>
                         <h3>{{choose variables}}</h3>
                         <label class="required"
-                               data-help="{{variable help % x}}">
+                               data-help="{{variable helpx}}">
                             x-Variable
                             <select name="x*"></select>
                         </label>
-                        <label data-help="{{correction function help % x}}" class="expert">
-                            {{correction function % x}}
+                        <label data-help="{{correction function helpx}}" class="expert">
+                            {{correction functionx}}
                             <input type="text" name="x*a">
                         </label>
-                        <label data-help="{{bin number help % x}}" class="t-h1 t-h2 t-p advanced">
-                            {{bin number % x}}
+                        <label data-help="{{bin number helpx}}" class="t-h1 t-h2 t-p advanced">
+                            {{bin numberx}}
                             <input type="text" name="x*b">
                         </label>
-                        <label data-help="{{error bars help % x}}" class="t-h1 t-p advanced">
-                            {{error bars % x}}
+                        <label data-help="{{error bars helpx}}" class="t-h1 t-p advanced">
+                            {{error barsx}}
                             <input type="checkbox" name="o*xerr">
                         </label>
-                        <label data-help="{{variable help % y}}" class="required t-xy t-h2 t-p t-map">
+                        <label data-help="{{variable helpy}}" class="required t-xy t-h2 t-p t-map">
                             y-Variable
                             <select name="y*"></select>
                         </label>
-                        <label data-help="{{correction function help % y}}" class="t-xy t-h2 t-map t-p expert">
-                            {{correction function % y}}
+                        <label data-help="{{correction function helpy}}" class="t-xy t-h2 t-map t-p expert">
+                            {{correction functiony}}
                             <input type="text" name="y*a">
                         </label>
-                        <label data-help="{{bin number help % y}}" class="t-h2 advanced">
-                            {{bin number % y}}
+                        <label data-help="{{bin number helpy}}" class="t-h2 advanced">
+                            {{bin numbery}}
                             <input type="text" name="y*b">
                         </label>
-                        <label data-help="{{error bars help % y}}" class="t-h1 t-p advanced">
-                            {{error bars % y}}
+                        <label data-help="{{error bars helpy}}" class="t-h1 t-p advanced">
+                            {{error barsy}}
                             <input type="checkbox" name="o*yerr">
                         </label>
                         <label data-help="{{second axis help}}" class="t-xy t-h1 t-p expert">
@@ -197,12 +197,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                                 <option value="y">{{y-axis}}</option>
                             </select>
                         </label>
-                        <label data-help="{{variable help % z}}"
+                        <label data-help="{{variable helpz}}"
                                class="t-xy t-map">z-Variable
                             <select name="z*"></select>
                         </label>
-                        <label data-help="{{correction function help % z}}" class="t-xy t-map expert">
-                            {{correction function % z}}
+                        <label data-help="{{correction function helpz}}" class="t-xy t-map expert">
+                            {{correction functionz}}
                             <input type="text" name="z*a">
                         </label>
                         <h2 class="advanced">{{data analysis}}</h2>
@@ -248,8 +248,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                             {{country borders}}
                             <input type="checkbox" name="o*drawcountries">
                         </label>
-                        <label data-help="{{dim display format help % 1}}" class="t-h1 expert">
-                            {{dim display format % 1}}
+                        <label data-help="{{dim display format help1}}" class="t-h1 expert">
+                            {{dim display format1}}
                             <select name="o*style">
                                 <option value=""></option>
                                 <option value="hist">Histogram</option>
@@ -259,8 +259,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                                 <option value="scat">Scatter</option>
                             </select>
                         </label>
-                        <label data-help="{{dim display format help % 2}}" class="t-h2 expert">
-                            {{dim display format % 2}}
+                        <label data-help="{{dim display format help2}}" class="t-h2 expert">
+                            {{dim display format2}}
                             <select name="o*style">
                                 <option value=""></option>
                                 <option value="color">{{color}}</option>
@@ -585,6 +585,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 <li>LiDO</li>
                 <li>Polarstern</li>
                 <li>Neumayer</li>
+                <li>SEVAN-Aragats</li>
                 <li>Wetterdaten-Zeuthen</li>
                 <li>Fit-Beispiele</li>
                 <li>Luftdruckkorrektur</li>
