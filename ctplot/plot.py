@@ -794,6 +794,12 @@ class Plot(object):
                 kwargs['linestyle'] = 'none'
             else:
                 kwargs.update({'linestyle':'none'})
+
+            if 'marker' in kwargs:
+                kwargs['marker'] = '.'
+            else:
+                kwargs.update({'marker':'.'})
+
             l, = plt.plot(*args, **kwargs)
         else:
             # linestyle must not be 'none' when plotting 3D
