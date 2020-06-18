@@ -847,13 +847,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                         .prepend('<i class="fa fa-file-pdf-o"></i>')
                         .appendTo(el);
                     el = $('<li>').appendTo(list);
-                    $('<a>').attr('href', data.svg)
-                        .addClass('btn')
-                        .attr('target', '_blank')
-                        .text(' SVG')
-                        .prepend('<i class="fa fa-file-text-o"></i>')
-                        .appendTo(el);
-                    el = $('<li>').appendTo(list);
+		    // Commented ou because the svg save function seems to produce errors on the production server
+                    //$('<a>').attr('href', data.svg)
+                    //    .addClass('btn')
+                    //    .attr('target', '_blank')
+                    //    .text(' SVG')
+                    //    .prepend('<i class="fa fa-file-text-o"></i>')
+                    //    .appendTo(el);
+                    //el = $('<li>').appendTo(list);
                     $('<a>').attr('href', data.png)
                         .addClass('btn')
                         .attr('target', '_blank')
