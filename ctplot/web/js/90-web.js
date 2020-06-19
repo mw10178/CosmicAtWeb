@@ -659,6 +659,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       loadPlots();
     });
 
+    $(".example_session").click(function () {
+      var id = $(this).text();
+
+      simpleStorage.set("session", id);
+      loadPlots();
+    });
+
     $("#sessionid").keyup(function (e) {
       if (e.keyCode == 13) {
         $("#loadid").click();
