@@ -39,7 +39,17 @@ def get_config():
     _config = {'cachedir':join(basedir, 'cache'),
                'datadir':join(basedir, 'data'),
                'plotdir':join(basedir, 'plots'),
-               'sessiondir':join(basedir, 'sessions')}
+               'sessiondir':join(basedir, 'sessions'),
+               'sessionexdir':join(basedir, 'sessions_ex'),
+               'ex_sessions':['Trigger-Hodoskop',
+                'CosMo-Muehle',
+                'LiDO',
+                'Polarstern',
+                'Neumayer',
+                'SEVAN-Aragats',
+                'Wetterdaten-Zeuthen',
+                'Fit-Beispiele',
+                'Luftdruckkorrektur']}
 
     for k in _config.keys():
         ek = prefix + k.upper()
@@ -401,6 +411,7 @@ def handle_action(environ, start_response, config):
     action = fields.getfirst('a')
     datadir = config['datadir']
     sessiondir = config['sessiondir']
+    sessionexdir = config['sessionexdir']
 
     if action in ['plot', 'png', 'svg', 'pdf']:
 
@@ -444,7 +455,9 @@ def handle_action(environ, start_response, config):
 
     elif action == 'load':
         id = fields.getfirst('id').strip()
-        if len(id) < 8: raise RuntimeError('session id must have at least 8 digits')
+        if id in config['ex_sessions']:
+           sessiondir=sessionexdir 
+        elif len(id) < 8: raise RuntimeError('session id must have at least 8 digits')
         try:
             with open(os.path.join(sessiondir, '{}.session'.format(id))) as f:
                 return serve_plain(f.read(), start_response)

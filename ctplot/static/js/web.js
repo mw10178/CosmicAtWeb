@@ -606,10 +606,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         $('#loadid').click(function() {
             var id = $('#sessionid').val();
             
-            if (id.length < 8) {
-                alert('{{session id too short error}}');
-                return;
-            }
+			if (!id in ['Trigger-Hodoskop',
+						'CosMo-Muehle',
+						'LiDO',
+						'Polarstern',
+						'Neumayer',
+						'SEVAN-Aragats',
+						'Wetterdaten-Zeuthern',
+						'Fit-Beispiele',
+						'Luftdruckkorrektur']){
+            	if (id.length < 8) {
+            	    alert('{{session id too short error}}');
+            	    return;
+            	}
+			}
 
             simpleStorage.set('session', id);
             loadPlots();
@@ -620,6 +630,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 $('#loadid').click();
             }
         });
+
+		$('.serveExample').click(function() {
+			var id = this.innerText;
+			$('#sessionid').val(id);
+			$('#loadid').click();
+		})
 
         loadPlots();
     }
