@@ -42,14 +42,15 @@ def get_config():
                'sessiondir':join(basedir, 'sessions'),
                'sessionexdir':join(basedir, 'sessions_ex'),
                'ex_sessions':['Trigger-Hodoskop',
-                'CosMo-Muehle',
-                'LiDO',
+                'CosMO-Muehle',
+                'LiDO-Experiment',
                 'Polarstern',
                 'Neumayer',
                 'SEVAN-Aragats',
                 'Wetterdaten-Zeuthen',
                 'Fit-Beispiele',
-                'Luftdruckkorrektur']}
+                'Luftdruckkorrektur',
+                'CosMO-MuV',]}
 
     for k in _config.keys():
         ek = prefix + k.upper()

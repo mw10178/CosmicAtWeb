@@ -32,7 +32,7 @@ def readme(name):
 
 def update_version():
     cwd = os.path.dirname(__file__)
-    version = '1.3.0b9' # see PEP 440
+    version = '2.3.0b10' # see PEP 440
     revision = 'unknown'
     try:
         revision = check_output('git describe --dirty=+', shell = True, cwd = cwd).strip()
