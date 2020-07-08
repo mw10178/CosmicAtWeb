@@ -449,6 +449,7 @@ def handle_action(environ, start_response, config):
     elif action == 'save':
         id = fields.getfirst('id').strip()
         if len(id) < 8: raise RuntimeError('session id must have at least 8 digits')
+        if id in config['ex_sessions']: raise RuntimeError('cannot save to example session')
         data = fields.getfirst('data').strip()
         with open(os.path.join(sessiondir, '{}.session'.format(id)), 'w') as f:
             f.write(data.replace('},{', '},\n{'))

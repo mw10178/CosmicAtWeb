@@ -17,6 +17,17 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+let example_sessions = 
+    ['Trigger-Hodoskop',
+    'CosMO-Muehle',
+    'CosMO-MuV',
+    'LiDO-Experiment',
+    'Polarstern',
+    'Neumayer',
+    'SEVAN-Aragats',
+    'Wetterdaten-Zeuthen',
+    'Fit-Beispiele',
+    'Luftdruckkorrektur']
 ;(function ($) {
   "use strict";
 
@@ -606,16 +617,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         $('#loadid').click(function() {
             var id = $('#sessionid').val();
 
-            if (!id in ['Trigger-Hodoskop',
-                'CosMO-Muehle',
-                'CosMO-MuV',
-                'LiDO-Experiment',
-                'Polarstern',
-                'Neumayer',
-                'SEVAN-Aragats',
-                'Wetterdaten-Zeuthen',
-                'Fit-Beispiele',
-                'Luftdruckkorrektur']){
+            if (!id in example_sessions){
                 if (id.length < 8) {
                     alert('{{session id too short error}}');
                     return;
@@ -889,11 +891,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                         .prepend('<i class="fa fa-save"></i>');
                     
                     saveButton.click(function () {
-                        addPlotToSaved(settings);
-                        $(this).hide(speed);
-                        savePlots();
-                        checkSavedPlotsAvail();
-                        $('nav a[href="#saved"]').click();
+                        var id = $('#sessionid').val();
+                        if (!id in example_sessions){
+                            addPlotToSaved(settings);
+                            $(this).hide(speed);
+                            savePlots();
+                            checkSavedPlotsAvail();
+                            $('nav a[href="#saved"]').click();
+                        }
+                        else {
+                            alert("{{cannot save to ex sessions}}")
+                        }
                     }).appendTo(right);
 
                     // $('<img>').attr('src', 'img/disk.png').prependTo(saveButton);

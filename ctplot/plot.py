@@ -693,7 +693,7 @@ class Plot(object):
         plt.show()
 
 
-    def save(self, name = 'fig', extensions = ('png', 'pdf', 'svg')):
+    def save(self, name = 'fig', extensions = ('png', 'pdf')):
         plt.ioff()
         if not any(self.legend):
             self.plot()
