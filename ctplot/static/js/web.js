@@ -617,7 +617,7 @@ let example_sessions =
         $('#loadid').click(function() {
             var id = $('#sessionid').val();
 
-            if (!id in example_sessions){
+            if (!example_sessions.includes(id)){
                 if (id.length < 8) {
                     alert('{{session id too short error}}');
                     return;
@@ -892,7 +892,7 @@ let example_sessions =
                     
                     saveButton.click(function () {
                         var id = $('#sessionid').val();
-                        if (!id in example_sessions){
+                        if (!example_sessions.includes(id)){
                             addPlotToSaved(settings);
                             $(this).hide(speed);
                             savePlots();
