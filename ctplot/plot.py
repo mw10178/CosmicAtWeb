@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 from utils import get_args_from, isseq, set_defaults, number_mathformat, number_format, hashargs, noop
 from itertools import product
 from locket import lock_file
+from datetime import datetime
 
 from i18n import _
 from safeeval import safeeval
@@ -27,6 +28,11 @@ eval = safeeval()
 
 
 TableSpecs = namedtuple('TableSpecs', ('title', 'colnames', 'units', 'rows'))
+
+# Helper function to format the timestamps in tables.
+def format_time(starttime, timestamp):
+    #return (datetime.fromtimestamp(starttime+timestamp).isoformat())
+    return datetime.fromtimestamp(starttime+timestamp)
 
 def available_tables(d = os.path.dirname(__file__) + '/data'):
     files = []
@@ -240,6 +246,7 @@ class Plot(object):
         # create dict: source --> all expr for this source
         # prefilled with empty lists
         expr_data = {}
+        expr_data_new = {}
         joined_cuts = {}  # OR of all cuts
         for n, s in enumerate(self.sr):
             if s:
@@ -250,6 +257,7 @@ class Plot(object):
                     log.debug('{}{}, expr: {}'.format(v, n, expr))
                     if expr:
                         expr_data[s][expr] = []
+                        expr_data_new[expr] = []
                     if v == 'c':
                         if s in joined_cuts:
                             joined_cuts[s] = '{} or ({})'.format(joined_cuts[s], expr)
@@ -270,7 +278,48 @@ class Plot(object):
 
         # assing data arrays to x/y/z/c-data fields
         for v in ['x', 'y', 'z', 'c', 'xa', 'ya', 'za']:
-            setattr(self, v + 'data', [(expr_data[self.sr[i]][x] if x and self.sr[i] else None) for i, x in enumerate(getattr(self, v))])
+            log.debug(getattr(self,v))
+            for i, x in enumerate(getattr(self, v)):
+                if (x):
+                    log.debug(x)
+                    if (x == "tsec"):
+                        log.debug("expression is time!!")
+                        log.debug("what's that1?: {}".format(expr_data[self.sr[i]]))
+                        log.debug("what's that?: {}".format(expr_data[self.sr[i]][x]))
+                        #for kk, k in enumerate(expr_data[self.sr[i]][x]):
+                            #log.debug("data at {}: {}".format(kk, k))
+                        starttime = 0
+                        for j, timestamp in enumerate(expr_data[self.sr[i]][x]):
+                            if j == 0:
+                                log.debug("{}: {}".format(j, timestamp))
+                                starttime = timestamp
+                                log.debug("starttime is {}".format(timestamp))
+                                log.debug("new starttime is {}".format(starttime))
+                            if not (np.isnan(timestamp)):
+                                expr_data_new[x].append(format_time(starttime, timestamp))
+                            else:
+                                expr_data_new[x].append(nan)
+
+            for i, x in enumerate(getattr(self, v)):
+                if (x and self.sr[i]):
+                    if (x == "tsec"):
+                        log.debug('testtestestestse')
+                        log.debug(expr_data_new[x])
+                        setattr(self, v + 'data', [(expr_data_new[x])])
+                    else:
+                        setattr(self, v + 'data', [(expr_data[self.sr[i]][x])])
+                if (all(v is None for v in getattr(self, v))):
+                    setattr(self, v + 'data', [None])
+
+
+                #if (x == "tsec"):
+                #    setattr(self, v + 'data', [(expr_data_new[x] if x and self.sr[i] else None) for i, x in enumerate(getattr(self, v))])
+                #else:
+                #    setattr(self, v + 'data', [(expr_data[self.sr[i]][x] if x and self.sr[i] else None) for i, x in enumerate(getattr(self, v))])
+
+            #setattr(self, v + 'data', [(expr_data_new[x] if x and self.sr[i] else None) for i, x in enumerate(getattr(self, v))])
+            #setattr(self, v + 'data', np.array([(expr_data_new[x] if x and self.sr[i] else None) for i, x in enumerate(getattr(self, v))]))
+            #setattr(self, v + 'data', [(expr_data[self.sr[i]][x] if x and self.sr[i] else None) for i, x in enumerate(getattr(self, v))])
             setattr(self, v + 'unit', [(units[self.sr[i]][x] if x and self.sr[i] else None) for i, x in enumerate(getattr(self, v))])
 
         log.debug('source={}'.format(self.s))
@@ -490,6 +539,9 @@ class Plot(object):
 #        plt.gca().set_position([f, f, 1 - 2 * f, 1 - 2 * f])
 #        plt.subplots_adjust(left = f, bottom = f, right = 1 - f, top = 1 - f, wspace = 0, hspace = 0)
         ticks.set_extended_locator(self.__tick_density)
+        if (getattr(self, "xunit")[0] == 's'):
+            myFmt = mpl.dates.DateFormatter('%H:%M %d.%m.%Y')
+            plt.gca().xaxis.set_major_formatter(myFmt)
         self.axes[''] = plt.gca()
 
 
@@ -504,6 +556,8 @@ class Plot(object):
 
         # settings for main and twin axes
         for v, ax in self.axes.iteritems():
+            # rotating the x labels for better readability
+            plt.setp(ax.get_xticklabels(), rotation=30, horizontalalignment="right")
             plt.axes(ax)
 
             # grid
