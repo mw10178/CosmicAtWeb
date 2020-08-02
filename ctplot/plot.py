@@ -15,6 +15,7 @@ from utils import get_args_from, isseq, set_defaults, number_mathformat, number_
 from itertools import product
 from locket import lock_file
 from datetime import datetime
+import dateutil.parser
 
 from i18n import _
 from safeeval import safeeval
@@ -30,8 +31,10 @@ eval = safeeval()
 TableSpecs = namedtuple('TableSpecs', ('title', 'colnames', 'units', 'rows'))
 
 # Helper function to format the timestamps in tables.
-def format_time(starttime, timestamp):
+def format_time(timestamp):
     #return (datetime.fromtimestamp(starttime+timestamp).isoformat())
+    starttime = dateutil.parser.parse("2004-01-01T00:00:00+0000")
+    starttime = time.mktime(starttime.timetuple())
     return datetime.fromtimestamp(starttime+timestamp)
 
 def available_tables(d = os.path.dirname(__file__) + '/data'):
@@ -290,13 +293,8 @@ class Plot(object):
                             #log.debug("data at {}: {}".format(kk, k))
                         starttime = 0
                         for j, timestamp in enumerate(expr_data[self.sr[i]][x]):
-                            if j == 0:
-                                log.debug("{}: {}".format(j, timestamp))
-                                starttime = timestamp
-                                log.debug("starttime is {}".format(timestamp))
-                                log.debug("new starttime is {}".format(starttime))
                             if not (np.isnan(timestamp)):
-                                expr_data_new[x].append(format_time(starttime, timestamp))
+                                expr_data_new[x].append(format_time(timestamp))
                             else:
                                 expr_data_new[x].append(nan)
 
