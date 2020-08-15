@@ -280,44 +280,54 @@ class Plot(object):
 
 
         # assing data arrays to x/y/z/c-data fields
+        timebool = False
         for v in ['x', 'y', 'z', 'c', 'xa', 'ya', 'za']:
             log.debug(getattr(self,v))
+            blablub = []
             for i, x in enumerate(getattr(self, v)):
                 if (x):
-                    log.debug(x)
-                    if (x == "tsec"):
+                    if (x == "tsec" or x == "time"):
                         log.debug("expression is time!!")
                         log.debug("what's that1?: {}".format(expr_data[self.sr[i]]))
                         log.debug("what's that?: {}".format(expr_data[self.sr[i]][x]))
-                        #for kk, k in enumerate(expr_data[self.sr[i]][x]):
-                            #log.debug("data at {}: {}".format(kk, k))
                         starttime = 0
+                        last_timestapm = 0
+                        indd = []
                         for j, timestamp in enumerate(expr_data[self.sr[i]][x]):
+                            log.debug(timestamp)
                             if not (np.isnan(timestamp)):
-                                expr_data_new[x].append(format_time(timestamp))
+                                log.debug(timestamp)
+                                last_timestapm = format_time(timestamp)
+                                expr_data_new[x].append(last_timestapm)
                             else:
-                                expr_data_new[x].append(nan)
+                                indd.append(j)
+                        blablub = np.delete(expr_data[self.sr[i]][expr_data[self.sr[i]].keys()[0]],indd)
+                        log.debug(blablub)
 
             for i, x in enumerate(getattr(self, v)):
+                if (all(v is None for v in getattr(self, v))):
+                    setattr(self, v + 'data', [None])
                 if (x and self.sr[i]):
-                    if (x == "tsec"):
+                    if (x == "tsec" or x == "time"):
+                        timebool = True
                         log.debug('testtestestestse')
                         log.debug(expr_data_new[x])
                         setattr(self, v + 'data', [(expr_data_new[x])])
-                    else:
-                        setattr(self, v + 'data', [(expr_data[self.sr[i]][x])])
-                if (all(v is None for v in getattr(self, v))):
-                    setattr(self, v + 'data', [None])
+                        setattr(self, "ydata", [blablub])
+                        log.debug(len(blablub))
+                        log.debug("break")
+                        break
 
-
-                #if (x == "tsec"):
-                #    setattr(self, v + 'data', [(expr_data_new[x] if x and self.sr[i] else None) for i, x in enumerate(getattr(self, v))])
-                #else:
-                #    setattr(self, v + 'data', [(expr_data[self.sr[i]][x] if x and self.sr[i] else None) for i, x in enumerate(getattr(self, v))])
-
-            #setattr(self, v + 'data', [(expr_data_new[x] if x and self.sr[i] else None) for i, x in enumerate(getattr(self, v))])
-            #setattr(self, v + 'data', np.array([(expr_data_new[x] if x and self.sr[i] else None) for i, x in enumerate(getattr(self, v))]))
-            #setattr(self, v + 'data', [(expr_data[self.sr[i]][x] if x and self.sr[i] else None) for i, x in enumerate(getattr(self, v))])
+            else: 
+                if not (timebool):
+                    for i, x in enumerate(getattr(self, v)):
+                        if (all(v is None for v in getattr(self, v))):
+                            setattr(self, v + 'data', [None])
+                        if (x and self.sr[i] != None):
+                            log.debug(self.sr[i])
+                            log.debug(x)
+                            log.debug(expr_data[self.sr[i]][x])
+                            setattr(self, v + 'data', [(expr_data[self.sr[i]][x])])
             setattr(self, v + 'unit', [(units[self.sr[i]][x] if x and self.sr[i] else None) for i, x in enumerate(getattr(self, v))])
 
         log.debug('source={}'.format(self.s))
