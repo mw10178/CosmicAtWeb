@@ -19,12 +19,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 let example_sessions = 
     ['Trigger-Hodoskop',
-    'CosMO-Muehle',
+    'CosMO-Mill',
     'CosMO-MuV',
-    'LiDO-Experiment',
+    'LiDO',
     'Polarstern',
     'Neumayer',
-    'SEVAN-Aragats',
+    'Sevan',
     'Wetterdaten-Zeuthen',
     'Fit-Beispiele',
     'Luftdruckkorrektur']
