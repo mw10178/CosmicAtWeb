@@ -99,7 +99,7 @@ let example_sessions =
                 experimentbox = $('<select>').attr('name', 'experiment*');
                 $('<option>').val('').text('{{choose experiment placeholder}}').appendTo(experimentbox);
                 datasetbox = $('<select>').attr('name', 's*');
-                $('<option>').val('').text('{{choose data set placeholder}}').appendTo(datasetbox);
+                $('<option>').val('').text('{{choose dataset placeholder}}').appendTo(datasetbox);
 
                 $.each(data, function(id, info) {
                     // console.debug(id+' -- '+info);
@@ -140,7 +140,7 @@ let example_sessions =
           .append('Experiment').append(experimentbox);
         var datasetlabel = $('<label>').addClass('required')
           .attr('data-help', '{{choose data set help}}')
-          .append('{{data set}}').append(datasetbox);
+          .append('{{dataset}}').append(datasetbox);
         return $('<div class="datasetselector">').append(experimentlabel).append(datasetlabel);
     }
 

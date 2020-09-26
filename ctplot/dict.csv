@@ -6,26 +6,26 @@ No,Nein,
 Settings,Einstellungen,
 Diagram,Diagramm,
 Saved Diagrams,Gespeicherte Diagramme,
-This browser does not support JavaScript or JavaScript is not activated,Dieser Browser unterstützt kein JavaScript oder es ist deaktiviert bzw. geblockt.,javascript error 1
-You must activate JavaScript or use an up to date browser,Diese Seite erfordert jedoch JavaScript. Aktivieren Sie JavaScript oder verwenden Sie einen aktuellen Browser,javascript error 2
+This browser does not support JavaScript or JavaScript is not activated,Dieser Browser unterstützt kein JavaScript oder es ist deaktiviert.,javascript error 1
+You must activate JavaScript or use an up to date browser,Diese Seite erfordert JavaScript. Aktivieren Sie JavaScript oder verwenden Sie einen aktuellen Browser,javascript error 2
 e.g.,z.B.,example given
-This webinterface is optimized for Mozilla Firefox and Chrome. For other browsers a full functionality is not guaranteed!,Das Webinterface wurde für die Browser Mozilla Firefox und Chromium/Google Chrome optimiert. Eine fehlerfreie Funktion kann unter anderen Browsern nicht garantiert werden!,browser warning
+Cosmic@Web is optimized for Mozilla Firefox, Google Chrome and Microsoft Edge. For other browsers a full functionality is not guaranteed!,Cosmic@Web wurde für die Browser Mozilla Firefox, Google Chrome und Microsoft Edge optimiert. Eine fehlerfreie Funktion kann unter anderen Browsern nicht garantiert werden!,browser warning
 "With Cosmic@Web's online analysis tools, you can easily analyse real experimental data from a global network of cosmic particle detectors. Read more about the tools of Cosmic@Web in the <a href=https://www.desy.de/school/school_lab/zeuthen_site/cosmic_particles/cosmicweb/documentation/index_eng.html>documentation</a>. <a class=""startTutorial"" href=""#"">The tutorial</a> explains how to start with an analysis. Introductory materials to the topic of <a href=https://www.desy.de/school/school_lab/zeuthen_site/cosmic_particles/index_eng.html>cosmic particles</a> and description of the <a href=https://www.desy.de/school/school_lab/zeuthen_site/cosmic_particles/experiments/index_eng.html>experiments</a> can be found on the websites. <a href=https://www.desy.de/school/school_lab/zeuthen_site/cosmic_particles/scientific_work/index_eng.html>Work like a real scientist</a> and do your own astroparticle research!","Cosmic@Web ist ein Tool zur Online-Analyse von Daten aus einem globalen Netzwerk von Detektoren zur Messung kosmischer Teilchen. Eine Beschreibung der einzelnen Tools findet sich in der <a href=https://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/cosmicweb/dokumentation/index_ger.html>Dokumentation</a>. Wie man mit einer Analyse beginnen kann zeigt ein <a class=""startTutorial"" href=""#"">Tutorial</a>. Einführendes Material zum Thema <a href=https://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/index_ger.html>kosmische Teilchen</a> und Beschreibung der <a href=http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/index_ger.html>Experimente</a> findest du auf den Webseiten. <a href=https://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/wissenschaftlich_arbeiten/index_ger.html>Arbeite wie ein echter Wissenschaftler</a> und mache deine eigene Forschung in der Astroteilchenphysik!",more information
-Cosmic@Web manual (still in German),Anleitung zum Arbeiten mit Cosmic@Web,cosmic at web manual
+Cosmic@Web documentation,Dokumentation zum Arbeiten mit Cosmic@Web,cosmic at web manual
 Start Tutorial,Tutorial starten,
 Diagram Creation,Einstellungen für das Diagramm,
 Setting of detail level,Einstellungsmodi,detail level
 Detailed,Erweitert,
 Avaliable Variables,verfügbare Variablen,
-Click here to remove the diagram settings,"um diese Diagrammeinstellungen zu entfernen, hier klicken",delete plot
-Data Set,Datenreihe,
+Click here to remove the diagram settings,"Hier klicken, um die Diagrammeinstellungen zu entfernen.",delete plot
+Dataset,Datenreihe,
 "Title of the diagram, will be shown in diagram's legend","Name des Diagramms, wird in der Legende angezeigt",diagram title help
 Diagram Title,Bezeichnung,
 Defines the display format of data. More information about diagram types in the manual,"legt fest, in welcher Form die Daten dargestellt werden. Nähere Informationen zu den Diagrammtypen gibt es in der Anleitung",diagram type help
 xy-Diagram,xy-Diagramm,
 Profile,Profil,
 Map,Karte,
-Select Data Set,Datenauswahl,
+Dataselection,Datenauswahl,
 Diagram Type,Darstellungsform,
 Choose Variables,Auswahl der Variablen,
 Value shown at the x-axis. On can choose a given variable name (e.g. time) or a formula which transforms given variables (e.g. T_a-T_i oder log(p)),"Wert, der auf der x-achse dargestellt werden soll. Hier kann ein Variablenname eingegeben werden (z.B. time) oder eine Formel, die Variablen umrechnet oder miteinander verknüpft (z.B. T_a-T_i oder log(p))",variable helpx
@@ -37,28 +37,28 @@ Value shown at the z-axis. On can choose a given variable name (e.g. time) or a 
 Number of x-bins,Anzahl der x-Bins,bin numberx
 Number of y-bins,Anzahl der y-Bins,bin numbery
 Number of z-bins,Anzahl der z-Bins,bin numberz
-Activates the display of x-error bars on this axis,aktiviert die Anzeige von x-Fehlerbalken auf der Achse,error bars helpx
-Activates the display of y-error bars on this axis,aktiviert die Anzeige von y-Fehlerbalken auf der Achse,error bars helpy
-Activates the display of z-error bars on this axis,aktiviert die Anzeige von z-Fehlerbalken auf der Achse,error bars helpz
+Activates the display of x-error bars on this axis,aktiviert die Anzeige von x-Fehlerbalken zu den Werten der x-Achse,error bars helpx
+Activates the display of y-error bars on this axis,aktiviert die Anzeige von y-Fehlerbalken zu den Werten der y-Achse,error bars helpy
+Activates the display of z-error bars on this axis,aktiviert die Anzeige von z-Fehlerbalken zu den Werten der z-Achse,error bars helpz
 x-Error Bars,x-Fehlerbalken,error barsx
 y-Error Bars,y-Fehlerbalken,error barsy
 z-Error Bars,z-Fehlerbalken,error barsz
-"Correction function for the x-variable, e.g. to display the variable time in days instead of sec",Korrekturfunktion für x-Variable,correction function helpx
+"Correction function for the x-Variable. See examples in documentation",Korrekturfunktion für x-Variable. Siehe Beispiele in der Dokumentation,correction function helpx
 Correction Function for x-Variable,Korrekturfunktion für x-Variable,correction functionx
 Correction Function for y-Variable,Korrekturfunktion für y-Variable,correction functiony
-Correction Function for y-Variable,Korrekturfunktion für y-Variable,correction function helpy
+Correction Function for y-Variable. See examples in documentation,Korrekturfunktion für y-Variable. Siehe Beispiele in der Dokumentation,correction function helpy
 Correction Function for z-Variable,Korrekturfunktion für z-Variable,correction functionz
-Correction Function for z-Variable,Korrekturfunktion für z-Variable,correction function helpz
+Correction Function for z-Variable. See examples in documentation,Korrekturfunktion für z-Variable. Siehe Beispiele in der Dokumentation,correction function helpz
 defines how many diagram details can be defined,"legt fest, wie viele Details eingestellt werden können und soll dem Anwender die Bedienung erleichtern",detail level help
-"Defines a second x- or y-axis for this diagram. The x-/y-values will be displayed independently on a separate axis, with its own scale","legt fest, ob eine zweite x- oder y-Achse für dieses Diagramm verwendet werden soll. die x-/y-Werte werden dann unabhängig auf einer eigenen Achse, mit eigener Skalierung oben/rechts dargestellt",second axis help
+"Defines a second x- or y-axis for this diagram. The x-/y-values will be displayed independently on a separate axis, with its own scale","legt fest, ob eine zweite x- oder y-Achse für dieses Diagramm verwendet werden soll. die x-/y-Werte werden dann unabhängig auf einer eigenen Achse, mit eigener Skalierung dargestellt",second axis help
 Second Axis,zweite Achse,
 x-Axis,y-Achse,
 y-Axis,y-Achse,
 Data Analysis,Datenanalyse,
 Data Reduction,Datenreduktion,
-"Data selection/reduction with help of a boolean condition. Only data for which the condition is true will be displayed, (e.g. T_a&gt;20 means that all data are cut for which this condition is not fulfilled.","Hier wird ein boolscher Ausdruck eingegeben. Nur Datentupel, bei denen dieser Ausdruck wahr ist, werden in das Diagramm aufgenommen. z.B. T_a&gt;20 bedeutet, dass nur Daten, bei denen T_a&gt;20 ist, in das Diagramm aufgenommen werden. Alle anderen werden weggeschnitten (gefiltert).",condition help
+"Conditions can be defined according to which the data is filtered, example: T_a >= 20 and p < 1000","Hier können Bedingungen definiert werden, nach denen die Daten gefiltert werden, Beispiel: T_a >= 20 and p < 1000.",condition help
 Condition,Bedingung,
-"Fit function, independent variable is x, parameters are p[0], p[1], ... Example: p[0]+p[1]*x","Fitfunktion, unabhängige Variable ist x, Parameter sind p[0], p[1], ... Beispiel: p[0]+p[1]*x",fit function help
+"Description of the data by an adapted function. Example for a linear function: p[0]+p[1]*x (x corresponds to the x-variable of the data set, p[0], p[1] are the parameters which will be fitted). For other examples see documentation","Beschreibung der Daten durch eine angepasste Funktion. Beispiel für eine lineare Funktion: p[0]+p[1]*x (x ist die x-Variable aus dem Datensatz, p[0], p[1] sind die anzupassenden Parameter). Andere Beispiele siehe Dokumentation",fit function help
 Fit Function,Fitfunktion,
 "Start values of the fit-parameter, separated by commatas","Startwerte für die Fit-Parameter, durch Komma getrennt",fit start help
 Start Parameters,Startparameter,
@@ -76,11 +76,11 @@ Country Borders,Landesgrenzen,
 2D-Histogram display format,Art der Darstellung des 2D-Histograms,dim display format help2
 1-dim Display Format,Darstellung 1-dim,dim display format1
 2-dim Display Format,Darstellung 2-dim,dim display format2
-filled,gefüllt,
+Filled,Gefüllt,
 Line,Linie,
 Color,Farbe,
 Contour,Kontur,
-"Includes a box with statistical information of the diagram: n=number of entries,m=mean value, s=standard variation, for 1D-histogr: [p=mode (most frequent value), e=median, w=skew, k=curtosis, x=excess], for 2D-histogr: [c=covariance, a=all","gibt an, welche Werte in der Infobox für das Histogram angegeben werden, es bedeuten: n=Anzahl der Einträge,",statistics box help
+"Includes a box with statistical information of the diagram: n=number of entries, m=mean value, s=standard variation, for 1D-histogr: [p=mode (most frequent value), e=median, w=skew, k=curtosis, x=excess], for 2D-histogr: [c=covariance, a=all","gibt an, welche Werte in der Infobox für das Histogram angegeben werden, es bedeuten: n=Anzahl der Einträge,m=Mittelwert, s=Standard Variation. Für 1D-Histogr: [p=häufigster Wert, e=Median, w=Skew, k=Curtosis, x=Excess], for 2D-histogr: [c=Covariance, a=alle",statistics box help
 Statistics Box,Statistikbox,
 Number of contour lines,Anzahl der Konturlinien,contour lines help
 Contour Lines,Konturlinien,
@@ -150,7 +150,7 @@ bottom,unten,
 center,mitte,
 "Click here, to remove all diagram settings","hier klicken, um alle Diagrammeinstellungen zurückzusetzen",reset help
 Create Diagram,Diagramm erstellen,
-"Please, click on ""Plot Creation""","Bitte unter <a href=#settings>Einstellungen</a> ein Diagramm konfigurieren und auf ""Diagramm erstellen"" klicken.",no result text
+"Please, click on ""Diagram Creation""","Bitte unter <a href=#settings>Einstellungen</a> ein Diagramm konfigurieren und auf ""Diagramm erstellen"" klicken.",no result text
 Stored Diagrams,Gespeicherte Diagramme,
 "You can load stored diagrams and their settings by clicking on <i class=""fa fa-repeat fa-lg icon-green""></i>. By clicking on <i class=""del-btn inverse text""></i> you can remove the diagram. Clicking on the diagram will diplay it in full size.","Gespeicherte Diagramme und ihre Einstellungen können mit einem Klick auf <i class=""fa fa-repeat fa-lg icon-green""></i> geladen und auf <i class=""del-btn inverse text""></i> gelöscht werden. Ein Klick auf das Bild vergrößert es.",stored diagrams explanation
 No stored diagrams available for you.,Momentan existieren keine gespeicherten Diagramme.,no saved diagrams
@@ -163,22 +163,22 @@ Load Session,Session laden,
 "If you want to store a diagram into the session, click on: 'Add to stored diagrams'.","Möchtest du ein Diagramm zu einer Session speichern, klicke auf den Button „Zu gespeicherte Diagramme hinzufügen“.",add to session explanation
 Remember the Session-ID for future work.,Merke oder speichere dir nun die Session-ID für die spätere Arbeit damit.,save session id
 "If you want to load a Session, click on 'Load Session'. Then you can choose a diagram to modify the settings by clicking on the green arrow.","Wenn du eine Session laden willst, klicke aufladen. Wähle dann ein Diagramm aus. Um die Einstellungen zum Diagramm einzusehen oder zu bearbeiten, klicke auf den grünen Pfeil.",load session explanation
-"To load the example diagrams given in the manual for each experiment, choose one of the following Session-ID's:","Wenn man die in der Anleitung zu jedem Experiment aufgeführten Beispiel-Diagramme laden möchte, dann muss eine der folgenden Session-ID's eingegeben werden:",example diagrams explanation top
+"To load the example diagrams given in the manual for each experiment, choose one of the following Session-ID's:","Wenn man die in der Anleitung zu jedem Experiment aufgeführten Beispiel-Diagramme laden möchte, dann muss eines der folgenden Experimente anklicken:",example diagrams explanation top
 Example Diagrams,Beispiel-Diagramme,
-"Then click on 'Load Session'. These example diagrams can be modified. However, they must be stored choosing another, (own) Session-ID, otherwise an error message will appear.","Anschliessend ein Klick auf 'Session laden'. Diese Beispiel-Diagramme können beliebig modifiziert werden, müssen aber unter einer neuen (eigenen) Session-ID abgespeichert werden, sonst gibt es eine Fehlermeldung.",example diagrams explanation bottom
+"These example diagrams can be modified. However, they must be stored choosing another, (own) Session-ID.","Diese Beispiel-Diagramme können beliebig modifiziert werden, müssen aber unter einer neuen (eigenen) Session-ID abgespeichert werden,",example diagrams explanation bottom
 "(please, choose Experiment)",(bitte Experiment auswählen),choose experiment placeholder
-"(please, choose Data Set)",(bitte Datensatz auswählen),choose data set placeholder
-"Here, you have to choose the Experiment for the data analysis.",Hier wird das zu verwendende Experiment ausgewählt.,choose experiment help
-"Here, the Data Set for the corresponding Experiment must be chosen",Hier wird der zu verwendende Datensatz ausgewählt.,choose data set help
+"(please, choose Dataset)",(bitte Datensatz auswählen),choose dataset placeholder
+"Here, you have to choose the experiment for the data analysis.",Hier wird das zu verwendende Experiment ausgewählt.,choose experiment help
+"Here, the Dataset for the corresponding experiment must be chosen",Hier wird der zu verwendende Datensatz ausgewählt.,choose data set help
 Data Array,Datenreihe,
-Data Set,Datensatz,
+Dataset,Datensatz,
 Error loading the settings,Fehler beim Laden der Einstellungen,
 The Session-ID must have at least 8 characters.,Die Session-ID muss mindestens 8 Zeichen lang sein.,session id too short error
 saved Diagram,gespeichertes Diagramm,
-delete Plot,Diagramm löschen,
+delete diagram,Diagramm löschen,
 "Diagram will be generated, wait please","Diagramm wird erstellt, bitte warten",diagram beeing generated
 An error occurred,Es sind Fehler aufgetreten,
-Error in Data Set number,Fehler in der Datenreihe,
+Error in Dataset number,Fehler in der Datenreihe,
 Save Diagram as,Diagramm herunterladen als,
 Add to saved Diagrams,Zu gespeicherten Diagrammen hinzufügen,
 Settings of this Diagram,Einstellungen dieses Diagramms,
@@ -189,51 +189,51 @@ An undefined Error appeared. Check the input Settings and try it again.,Es ist e
 Explanation for the tutorial,Erläuterung zum Ablauf des Tutorials,tut head 0
 "This tutorial aims to simplify the usage of Cosmic@Web. By creating an example diagram step-by-step, it explains the most important functions. Follow the blue arrows","Dieses Tutorial soll die Bedienung und Benutzung von Cosmic@Web erleichtern. Durch das schrittweise Erstellen eines Beispieldiagramms, werden die wichtigsten Funktionen beschrieben. Folge einfach den blauen Pfeilen.",tut expl 0
 Click on NEXT (in the upper right) to continue,Klicke auf NEXT (rechts oben) um fortzufahren,tut task 0
-settingsmode,Einstellungsmodi,tut head 1
-"Here you can choose between the Standard- and the Advancedmode. Die Standardmode is simple, whereas the Advancedmode is way more detailed","Hier kannst du zwischen dem Standard- und dem Erweitertenmodus wählen. Der Standardmodus ist einfacher gehalten, wohingegen der Erweittertenmodus deutlich ausführlicher ist.",tut expl 1
-Choose the Standardmode,Wähle den Standardmodus aus,tut task 1
+Setting modes,Einstellungsmodi,tut head 1
+"Here you can choose between the Standard- and the Detailed mode. Die Standard mode is simple, whereas the Detailed mode gives more possibilities for analysis and presentation","Hier kannst du zwischen dem Standard- und dem Erweiterte Modus wählen. Der Standardmodus ist einfacher gehalten, wohingegen der Erweiterte Modus deutlich ausführlicher ist.",tut expl 1
+Choose the Standard mode, Wähle den Standardmodus aus,tut task 1
 Create a diagram,Diagramm erstellen: Experient,tut head 2
 "With this function you can choose an experiment, whose dataset you want to access. Explanations for the experiments can be found","Mit dieser Funktion kannst du das Experiment auswählen, auf dessen Datensätze du zugreifen möchtest. Erklärungen zu den einzelnen Experimenten findest du",tut expl 2
 Please choose Polarstern,Wähle bitte Polarstern aus.,tut task 2
 Create a diagram: Dataset,Diagramm erstellen: Datensatz,tut head 3
-"All available datasets, for a specific experiment, can be found here. Datasets are marked like the following: TIMEFRAME_EXPERIMENT_ANNOTATION","Alle Datensätze, die dir für das jeweilige Experiment zur Verfügung stehen, sind hier aufgelistet. Datensätze werden folgendermaßen gekennzeichnet: ZEITRAUM_EXPERIMENT_ANMERKUNG",tut expl 3
+"All available datasets for a specific experiment can be found here. Datasets are marked like the following: TIMEFRAME_EXPERIMENT_ANNOTATION","Alle Datensätze, die dir für das jeweilige Experiment zur Verfügung stehen, sind hier aufgelistet. Datensätze werden folgendermaßen gekennzeichnet: ZEITRAUM_EXPERIMENT_ANMERKUNG",tut expl 3
 Choose the dataset from 2017,Wähle nun den Datensatz von 2017,tut task 3
 Create a diagram: representationformat,Diagramm erstellen: Darstellungsform,tut head 4
-Here you can choose a suitable representationformat. There are four types of diagrams:,Nun kann ein geeignetes Diagramm für die Darstellung der Daten ausgesucht werden. Man unterscheidet vier verschiedene Diagrammtypen:,tut expl 4
-For our example choose the xy-diagram.,Wir werden für unser Beispiel ein xy-Diagramm verwenden.,tut task 4
+Here you can choose a suitable representation format. There are four types of diagrams:,Nun kann ein geeignetes Diagramm für die Darstellung der Daten ausgesucht werden. Man unterscheidet vier verschiedene Diagrammtypen:,tut expl 4
+For our example choose the xy-diagram., Wir werden für unser Beispiel ein xy-Diagramm verwenden.,tut task 4
 1D-Histogram: A graphic representation of one varable. The variable is shown on the x-axis and the frequency is shown by the y-axis,"1D-Histogramm: Ermöglicht die grafische Darstellung einer einzelnen Variable. Auf der x-Achse wird die Variable, auf der y-Achse deren Häufigkeit dargestellt.",1d histogram expl
 <b>xy-diagram:</b> To show the dependency between two variables,"<b>xy-Diagramm:</b> Damit kann die Abhängigkeit einer Variable von einer anderen dargestellt werden, so wie man es aus der Schule kennt.",xy diagram expl
 <b>2D-histogram:</b> similar to the xy-diagram but the frequency is shown with a colorscala.,"<b>2D-Histogram:</b> Damit kann die Abhängigkeit einer Variable von einer anderen dargestellt werden (genau wie beim xy-Diagramm), wobei zusätzlich die Häufigkeit durch eine Farbskala gekennzeichnet ist.",2d histogram expl
 <b>Profile:</b> This diagram is mainly used in the advancedmode. Informations can be found here.,"<b>Profil:</b> Dieser Diagramtyp wird hauptsächlich im Expertenmodus verwendet, wird zur Vollständigkeit aber aufgelistet. Informationen dazu findest du",profile expl
 "<b>Card:</b> format of geographic coordinates of the Polarstern. In the best case, another variable can be colored dependent on the coordinates. Careful: With this representation, only variables of the type Longitude and Latitude are practical.",<b>Karte:</b> Darstellung der geographischen Koordinaten der Polarstern. Optional kann eine weitere Variable in Abhängigkeit der Koordinaten farblich skaliert dargestellt werden. Hinweis: Bei dieser Darstellungsform sind nur die Variablen Longitude und Latitude als x- bzw. y-Variable sinnvoll.,map expl
-Create a diagram: X-variable,Dagramm erstellen: X-Variable,tut head 5
-Here you can choose the X-axis variable. Explanations and Descriptions to every variable can be found <a href=http://www.desy.de/school/school_lab/zeuthen_site/cosmic_particles/cosmicweb/documentation/index_eng.html>here</a>.,"Hier kann ausgewählt werden, welche gemessene Größe auf der x-Achse abgetragen werden soll. Beschreibungen und Erklärungen zu den jeweiligen Variablenarten findest du <a href=http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/cosmicweb/dokumentation/#Datenauswahl>hier</a>. Eine Beschreibung und Erklärung der vorhandenen Daten zu jedem Experiment findest du auf der jeweiligen Unterseite unter dem Punkt Datenstruktur. <a href=http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/polarstern_projekt/e288815/index_ger.html>Beispiel Polarstern</a>",tut expl 5
+Create a diagram: x-variable,Diagramm erstellen: x-Variable,tut head 5
+Here you can choose the x-axis variable. Explanations and Descriptions to every variable can be found <a href=http://www.desy.de/school/school_lab/zeuthen_site/cosmic_particles/cosmicweb/documentation/index_eng.html>here</a>.,"Hier kann ausgewählt werden, welche gemessene Größe auf der x-Achse abgetragen werden soll. Beschreibungen und Erklärungen zu den jeweiligen Variablenarten findest du <a href=http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/cosmicweb/dokumentation/#Datenauswahl>hier</a>. Eine Beschreibung und Erklärung der vorhandenen Daten zu jedem Experiment findest du auf der jeweiligen Unterseite unter dem Punkt Datenstruktur. <a href=http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/polarstern_projekt/e288815/index_ger.html>Beispiel Polarstern</a>",tut expl 5
 For our example we want to measure the rate of muons per time. Choose time [s].,In unserem Beispiel soll die Rate gemessener Myonen im zeitlichen Verlauf untersucht werden. Daher wähle als x-Variable time [s] aus.,tut task 5
-Create a diagram: Y-variable,Diagramm erstellen: Y-Variable,tut head 6
-"Here, the Y-axis variable can be set. Notice: It is also possible to set a third variable. The Z-variable","Hier kann die Y-Variable ausgesucht werden. Anmerkung: Es ist darüber hinaus möglich eine dritte Variable, die Z-Variable, zu definieren.",tut expl 6
+Create a diagram: y-variable,Diagramm erstellen: y-Variable,tut head 6
+"Here, the y-axis variable can be set. Notice: It is also possible to set a third variable. The z-variable","Hier kann die y-Variable ausgesucht werden. Anmerkung: Es ist darüber hinaus möglich eine dritte Variable, die z-Variable, zu definieren.",tut expl 6
 Choose mu_rate [1/h]. It shows the amount of muons per hour.,Wähle mu_rate [1/h] aus. Dies zeigt die Anzahl der gemessenen Myonen pro Stunde an.,tut task 6
-Diagramoption: Title,Diagrammoption: Titel,tut head 7
+Diagram Option: Title,Diagrammoption: Titel,tut head 7
 Here you can type in a name for your diagram,Nun kannst du das Diagramm nach eigenem Ermessen benennen,tut expl 7
-Name the diagram,Gebe deinem Diagramm einen Namen,tut task 7
+Give your diagram a name,Gebe deinem Diagramm einen Namen,tut task 7
 Position of the legend,Position der Legende,tut head 8
 Here you can change the position of the legend,Mit dieser Funktion kannst du die Position der Legende verändern.,tut expl 8
 ,,tut task 8
 Create the diagram,Diagramm erstellen,tut head 9
-Click on create diagram,Klicke auf Diagramm erstellen,tut expl 9
+Click on Create Diagram,Klicke auf Diagramm erstellen,tut expl 9
 ,,tut task 9
 Diagram,Diagramm,tut head 10
 "When you don\'t know what the axis show, check what is contained in the dataset. In this example the time in seconds (time[s]) since the 01/01/2010 are shown on the X-axis. More informations to conversions can be found under the <a href=https://www.desy.de/school/school_lab/zeuthen_site/cosmic_particles/index_eng.html>datastructure</a>","Wenn dir nicht klar ist, was auf den Achsen abgetragen ist, prüfe zunächst, was im Datensatz enthalten ist. So wird in diesem Fall die Zeit in Sekunden (time[s]) ab dem 01.01.2010 angegeben. Weitere Informationen zur Umrechnung findest du unter der <a href=http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/glossar/index_ger.html?selected=Z#_zeitumrechnung>Datenstruktur</a>.",tut expl 10
 ,,tut task 10
-Save plot,Plot speichern,tut head 11
-"There are multiple ways to save diagrams for later use: <ol><li>One possibility is to download it as pdf, svg or png.</li></ol>","Es gibt mehrere Möglichkeiten, Diagramme speichern und wieder aufrufen zu können: <ol><li> Eine Möglichkeit ist es, sich die Diagramme in den Formaten ""pdf,svg oder png"" herunterzuladen.</li></ol>",tut expl 11
+Save Diagram,Diagramm speichern,tut head 11
+"There are multiple ways to save diagrams for later use: <ol><li>One possibility is to download it as pdf or png.</li></ol>","Es gibt mehrere Möglichkeiten, Diagramme speichern und wieder aufrufen zu können: <ol><li> Eine Möglichkeit ist es, sich die Diagramme in den Formaten ""pdf oder png"" herunterzuladen.</li></ol>",tut expl 11
 ,,tut task 11
-Save plot,Plot speichern,tut head 12
-"There are multiple ways to save diagrams for later use:<ol><li>One possibility is to download it as pdf, svg or png.</li><li>By saving the settings as txt file and loading it through ""load settings""</li><ol>","Es gibt mehrere Möglichkeiten, Diagramme speichern und wieder aufrufen zu können: <ol><li>Eine Möglichkeit ist es, sich die Diagramme in den Formaten ""pdf,svg oder png"" herunterzuladen.</li><li>Indem man die hier dargestellten Einstellungen beispielsweise als externe Textdatei speichert, kann man durch Kopieren in das untere Feld das Diagramm erneut laden.</li></ol>",tut expl 12
+Save Diagram,Diagramm speichern,tut head 12
+"There are multiple ways to save diagrams for later use:<ol><li>One possibility is to download it as pdf or png.</li><li>By saving the settings as txt file and loading it through ""load settings""</li><ol>","Es gibt mehrere Möglichkeiten, Diagramme speichern und wieder aufrufen zu können: <ol><li>Eine Möglichkeit ist es, sich die Diagramme in den Formaten ""pdf oder png"" herunterzuladen.</li><li>Indem man die hier dargestellten Einstellungen beispielsweise als externe Textdatei speichert, kann man durch Kopieren in das untere Feld das Diagramm erneut laden.</li></ol>",tut expl 12
 ,,tut task 12
-Save plot,Plot speichern,tut head 13
-"There are multiple ways to save diagrams for later use:<ol><li>One possibility is to download it as pdf, svg or png.</li><li>By saving the settings as txt file and loading it through ""load settings"".</li><li>With the help of the Session-ID, which will be explained in the next step</li></ol>","Es gibt mehrere Möglichkeiten, Diagramme speichern und wieder aufrufen zu können: <ol><li>Eine Möglichkeit ist es, sich die Diagramme in den Formaten ""pdf,svg oder png"" herunterzuladen.</li><li>Indem man die hier dargestellten Einstellungen beispielsweise als externe Textdatei speichert, kann man durch kopieren in das untere Feld das Diagramm erneut laden.</li><li>Mithilfe der Session-ID, welche das Tutorial in den nächsten Schritten erklären wird.</li></ol>",tut expl 13
+Save Diagram,Diagramm speichern,tut head 13
+"There are multiple ways to save diagrams for later use:<ol><li>One possibility is to download it as pdf or png.</li><li>By saving the settings as txt file and loading it through ""load settings"".</li><li>With the help of the Session-ID, which will be explained in the next step</li></ol>","Es gibt mehrere Möglichkeiten, Diagramme speichern und wieder aufrufen zu können: <ol><li>Eine Möglichkeit ist es, sich die Diagramme in den Formaten ""pdf oder png"" herunterzuladen.</li><li>Indem man die hier dargestellten Einstellungen beispielsweise als externe Textdatei speichert, kann man durch kopieren in das untere Feld das Diagramm erneut laden.</li><li>Mithilfe der Session-ID, welche das Tutorial in den nächsten Schritten erklären wird.</li></ol>",tut expl 13
 ,,tut task 13
-plot,Plot,tut head 14
+diagram,Diagramm,tut head 14
 "To save a diagram to your Session-ID, you have to click the button","Um ein Diagramm zu deiner Session-ID zu speichern, musst du auf diesen Button klicken.",tut expl 14
 Save the shown diagram,Speichere das angezeigte Diagramm.,tut task 14
 Saved diagrams,Gespeicherte Diagramme,tut head 15
@@ -243,13 +243,13 @@ Saved diagrams,Gespeicherte Diagramme,tut head 16
 With these two buttons you can load or delete a diagram,Mit diesen beiden Buttons kannst du das Diagramm laden oder löschen.,tut expl 16
 ,,tut task 16
 The end,Ende,tut head 17
-"We hope that this tutorial helped you. A more detailed instruction can be found here. If you still have questions, please write an Email to cosmicatweb@desy.de.","Wir hoffen dir mit diesem Tutorial geholfen zu haben. Eine detaillierte Anleitung findest du hier. Bei Fragen, Unklarheiten oder Programmfehlern, schreibe bitte eine E-Mail an cosmicatweb@desy.de.",tut expl 17
+"We hope that this tutorial helped you. A more detailed instruction can be found here. If you still have questions, please write an Email to cosmicatweb@desy.de.","Wir hoffen, dir mit diesem Tutorial geholfen zu haben. Eine detaillierte Anleitung findest du hier. Bei Fragen, Unklarheiten oder Programmfehlern, schreibe bitte eine E-Mail an cosmicatweb@desy.de.",tut expl 17
 ,,tut task 17
-Information for the trigger hodoscope,Informationen zum Trigger-Hodoskop,trigger hodoscope information
+Information for the Trigger Hodoscope,Informationen zum Trigger-Hodoskop,trigger hodoscope information
 Information for the CosMO-Mill,Informationen zur CosMO-Mühle,cosmo information
 Information for the Polarstern-project,Informationen zum Polarstern-Projekt,polarstern information
-Information for the project on the neumayer ||| station,Informationen zum Projekt auf der Neumayer ||| Station,neumayer information
-Information for the weather-data from Zeuthen,Informationen zu den Wetterdaten aus Zeuthen,zeuthen weather information
+Information for the project on the Neumayer ||| station,Informationen zum Projekt auf der Neumayer ||| Station,neumayer information
+Information for the Zeuthen weather-data,Informationen zu den Wetterdaten aus Zeuthen,zeuthen weather information
 http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/trigger_hodoskop/index_ger.html,http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/trigger_hodoskop/index_ger.html,trigger hodoscope url
 http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/cosmo_muehle/index_ger.html,http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/cosmo_muehle/index_ger.html,cosmo url
 http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/polarstern_projekt/index_ger.html,http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/polarstern_projekt/index_ger.html,polarstern url
@@ -257,4 +257,4 @@ http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/exp
 http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/wetterdaten_zeuthen/index_ger.html,http://www.desy.de/schule/schuelerlabore/standort_zeuthen/kosmische_teilchen/experimente/wetterdaten_zeuthen/index_ger.html,zeuthen weather url
 here.,hier.,here
 header_engl,header_dt,header
-cannot save to example session,du kannst nicht auf einer Beispielsession speichern,cannot save to ex sessions
+This session ID is reserved choose another one,du kannst nicht auf den Namen einer Beispielsession speichern,cannot save to ex sessions
