@@ -78,7 +78,7 @@ h4, fieldset label {
 
 legend {
     font-weight: bold;
-    color: rgb(0, 122, 204);
+    color: rgb(0, 166, 245);
 }
 
 header {
@@ -97,7 +97,7 @@ nav {
     font-size: 1.5em;
     width: 1000px;
     margin: 0;
-    background: rgb(0, 122, 204);
+    background: rgb(0, 166, 245);
     color: white;
     position: relative;
     z-index: 5;
@@ -210,7 +210,7 @@ a.internal-link:before {
 
 a {
     text-decoration: none;
-    color: rgb(0, 122, 204);
+    color: rgb(0, 166, 245);
 }
 
 a:hover {
@@ -352,7 +352,7 @@ label {
      -moz-box-sizing: border-box;
           box-sizing: border-box;
   background-image: none;
-  background: #007ACC;
+  background: #00A6EB;
   border: 1px solid transparent;
   border-radius: 4px;
   color: #fff;
@@ -382,7 +382,7 @@ label {
 
 .container input[type="text"]:focus, 
 .container select:focus {
-    border: 1px solid rgb(0, 122, 204);
+    border: 1px solid rgb(0, 166, 245);
 }
 
 label .help {
