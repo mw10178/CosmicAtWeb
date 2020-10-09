@@ -588,7 +588,10 @@ class Plot(object):
         # settings for main and twin axes
         for v, ax in self.axes.iteritems():
             # rotating the x labels for better readability
-            plt.setp(ax.get_xticklabels(), rotation=30, horizontalalignment="right")
+            if (getattr(self, "xunit")[0] == 's'):
+                plt.setp(ax.get_xticklabels(), rotation=30, horizontalalignment="right")
+            if (getattr(self, "yunit")[0] == 's'):
+                plt.setp(ax.get_yticklabels(), rotation=30, horizontalalignment="right")
             plt.axes(ax)
 
             # grid
