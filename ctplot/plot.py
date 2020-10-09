@@ -32,7 +32,7 @@ TableSpecs = namedtuple('TableSpecs', ('title', 'colnames', 'units', 'rows'))
 
 # Helper function to format the timestamps in tables.
 def format_time(timestamp):
-    starttime = dateutil.parser.parse("2004-01-01T00:00:00+0000")
+    starttime = dateutil.parser.parse("2010-01-01T00:00:00+0000")
     starttime = time.mktime(starttime.timetuple())
     return datetime.fromtimestamp(starttime+timestamp)
 
