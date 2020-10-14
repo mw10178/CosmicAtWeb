@@ -127,7 +127,7 @@ Um Zeitangaben automatisiert verarbeiten zu können, müssen Zeitangaben (in ACS
 \end{itemize}
 
 \subsection{in HDF5}
-Die in den Rohdaten als ISO-String kodierten Zeitangaben werden bei der Konvertierung nach HDF5 in Zahlen (double) umgewandelt. Es wird \zb $t=$\texttt{2001-11-09T09:30:00+0100} zu $-67621004.658$. Die Zahl $-67621004.658$ ist Anzahl der Sekunden seit dem Bezugszeitpunkt $t_0=$\texttt{2004-01-01T00:00:00+0000}, also $t-t_0=-67621004.658\si{s}$.
+Die in den Rohdaten als ISO-String kodierten Zeitangaben werden bei der Konvertierung nach HDF5 in Zahlen (double) umgewandelt. Es wird \zb $t=$\texttt{2001-11-09T09:30:00+0100} zu $-67621004.658$. Die Zahl $-67621004.658$ ist Anzahl der Sekunden seit dem Bezugszeitpunkt $t_0=$\texttt{2010-01-01T00:00:00+0000}, also $t-t_0=-67621004.658\si{s}$.
 
 Der Bezugszeitpunkt kann während der Konvertierung frei gewählt werden.
 
@@ -158,7 +158,7 @@ optional arguments:
   -o file, --out file   HDF5 output file (default: out.h5)
   -f, --force           overwrite existing file
   -t datetime, --reftime datetime
-                        reference time t0 (default: 2004-01-01T00:00:00+0000)
+                        reference time t0 (default: 2010-01-01T00:00:00+0000)
   -s, --noskip          do not skip invalid lines, stop on error
   -q, --quiet           do not show progressbar, just print error messages
 \end{lstlisting}
@@ -169,7 +169,7 @@ Die einzelnen Optionen bedeuten:
   \item[\verb"-s"] schaltet das Überspringen von ungültigen Zeilen aus. Schlägt die Überprüfung einer Zeile fehl, so wird die entsprechende Zeile nicht übersprungen, sondern die Konvertierung wird abgebrochen.
   \item[\verb"-f"] erzwingt das Überschreiben einer eventuell vorhandenen Ausgabedatei.
   \item[\verb"-q"] unterdrückt die Anzeige des Fortschrittbalkens.
-  \item[\verb"-t"] legt den Zeit-Bezugspunkt fest, Standardwert \texttt{2004-01-01T00:00:00+0000}
+  \item[\verb"-t"] legt den Zeit-Bezugspunkt fest, Standardwert \texttt{2010-01-01T00:00:00+0000}
 \end{description}
 
 Als \texttt{infiles} können beliebige Dateien oder Verzeichnisse angegeben werden. Wird ein Verzeichnis angegeben, so ließt \texttt{rawdata.py} alle Dateien in diesem Verzeichnis und allen Unterverzeichnissen ein. Den Typ der in den Dateien enthaltenen Daten detektiert \texttt{rawdata.py} automatisch. Die Reihenfolge der Angabe der Dateien/Verzeichnisse ist irrelevant, \texttt{rawdata.py} sortiert die Dateien intern nach dem jeweils ersten Zeiteintrag in der Datei.
@@ -310,7 +310,7 @@ Werden keine Zusatzdaten vor und nach dem aktuellen Event gefunden, oder ist der
 %		            elektrisches Signal umwandelt.</p>
 %		            <p>Die Segmente sind elektronisch miteinander verknüpft. Die Triggerbedingung ist, dass in einem Zeitfenster von 1/10000 Sekunden Länge ein Signal
 %		            in mindestens einem Segment in jeder Ebene registriert wird. Nur dann wird die Information auf einen PC übertragen und abgespeichert.</p>
-%		            <p>Mit dem Trigger-Hodoskop werden seit Mai 2004 Daten genommen und in Datenfiles abgespeichert. Diese Daten erlauben eine Vielzahl von Untersuchungen, wie z.B.
+%		            <p>Mit dem Trigger-Hodoskop werden seit Mai 2010 Daten genommen und in Datenfiles abgespeichert. Diese Daten erlauben eine Vielzahl von Untersuchungen, wie z.B.
 %		            Bestimmung der Rate kosmischer Teilchen  (Anzahl der Trigger pro Zeiteinheit)    Variation der Triggerbedingung    (1 Trigger/Ebene – Myon-Kandidat, Trigger in mehreren Segmenten/Ebene – Luftschauer)
 %		            Rate in Abhängigkeit von den Wetterbedingungen    (Luftdruck, Temperatur, Luftfeuchte)    Vergleich der Ergebnisse verschiedener Jahre.</p>
 %		            <p><a href="https://znwiki3.ifh.de/KosmischeTeilchen/Cosmic%20Trigger%20Zeuthen" target="_blank">weiter lesen...</a></p>
