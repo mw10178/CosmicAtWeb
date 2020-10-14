@@ -888,14 +888,23 @@ class Plot(object):
             if 'linestyle' in kwargs and kwargs['linestyle'] == 'none':
                 kwargs['linestyle'] = ':'
 
-            o = get_args_from(kwargs, markersize = 2, cbfrac = 0.04, cblabel = self.alabel('z'))
-            l = plt.scatter(x, y, c = z, s = o.markersize ** 2, edgecolor = 'none', **kwargs)
-
             m = 6.0
-            dmin, dmax = np.nanmin(z), np.nanmax(z)
-            cticks = ticks.get_ticks(dmin, dmax, m, only_inside = 1)
-            formatter = mpl.ticker.FuncFormatter(func = lambda x, i:number_mathformat(x))
-            cb = plt.colorbar(fraction = o.cbfrac, pad = 0.01, aspect = 40, ticks = cticks, format = formatter)
+            o = get_args_from(kwargs, markersize = 2, cbfrac = 0.04, cblabel = self.alabel('z'))
+            if (isinstance(z[0], datetime)):
+                zz = [mpl.dates.date2num(j) for j in z]
+
+                l = plt.scatter(x, y, c = zz, s = o.markersize ** 2, edgecolor = 'none', **kwargs)
+                dmin, dmax = np.nanmin(zz), np.nanmax(zz)
+                loc = mpl.dates.AutoDateLocator()
+                myFmt = mpl.dates.DateFormatter('%H:%M / %d.%m.%Y')
+                cb = plt.colorbar(fraction = o.cbfrac, pad = 0.01, aspect = 40, ticks = loc, format = myFmt)
+            else:
+                dmin, dmax = np.nanmin(z), np.nanmax(z)
+                cticks = ticks.get_ticks(dmin, dmax, m, only_inside = 1)
+                formatter = mpl.ticker.FuncFormatter(func = lambda x, i:number_mathformat(x))
+                l = plt.scatter(x, y, c = z, s = o.markersize ** 2, edgecolor = 'none', **kwargs)
+                cb = plt.colorbar(fraction = o.cbfrac, pad = 0.01, aspect = 40, ticks = cticks, format = formatter)
+
             cb.set_label(o.cblabel)
 
         self.legend.append((l, self.llabel(i)))
