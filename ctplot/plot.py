@@ -151,6 +151,9 @@ stats_abrv = {'n':'N', 'u':'uflow', 'o':'oflow', 'm':'mean', 's':'std', 'p':'mod
 class Plot(object):
     def __init__(self, config , **kwargs):
         log.debug('config %s', json.dumps(config))
+        if ('xs' in kwargs and kwargs['xs'] == 'linear'):
+            kwargs.pop('xs')
+            kwargs.pop('ys')
         log.debug('settings %s', json.dumps(kwargs))
 
         self.config = config
@@ -281,23 +284,17 @@ class Plot(object):
         # assing data arrays to x/y/z/c-data fields
         timebool = False
         for v in ['x', 'y', 'z', 'c', 'xa', 'ya', 'za']:
-            log.debug(getattr(self,v))
             cleanX = []
             cleanY = []
             cleanZ = []
             for i, x in enumerate(getattr(self, v)):
                 if (x):
                     if (x == "tsec" or x == "time"):
-                        log.debug("expression is time!!")
-                        log.debug("what's that1?: {}".format(expr_data[self.sr[i]]))
-                        log.debug("what's that?: {}".format(expr_data[self.sr[i]][x]))
                         starttime = 0
                         last_timestapm = 0
                         indd = []
                         for j, timestamp in enumerate(expr_data[self.sr[i]][x]):
-                            log.debug(timestamp)
                             if not (np.isnan(timestamp)):
-                                log.debug(timestamp)
                                 last_timestapm = format_time(timestamp)
                                 expr_data_new[x].append(last_timestapm)
                             else:
@@ -345,9 +342,6 @@ class Plot(object):
                         if (all(v is None for v in getattr(self, v))):
                             setattr(self, v + 'data', [None])
                         if (x and self.sr[i] != None):
-                            log.debug(self.sr[i])
-                            log.debug(x)
-                            log.debug(expr_data[self.sr[i]][x])
                             setattr(self, v + 'data', [(expr_data[self.sr[i]][x])])
             setattr(self, v + 'unit', [(units[self.sr[i]][x] if x and self.sr[i] else None) for i, x in enumerate(getattr(self, v))])
 
