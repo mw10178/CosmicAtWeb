@@ -301,7 +301,7 @@ class Plot(object):
                                 indd.append(j)
 
                         if (v == "x"):
-                            cleanY = np.delete(expr_data[self.sr[i]][expr_data[self.sr[i]].keys()[1]],indd)
+                            cleanY = np.delete(expr_data[self.sr[i]][expr_data[self.sr[i]].keys()[0]],indd)
                             if (len(expr_data[self.sr[i]].keys()) >=3 ):
                                 cleanZ = np.delete(expr_data[self.sr[i]][expr_data[self.sr[i]].keys()[2]],indd)
 
@@ -896,6 +896,7 @@ class Plot(object):
                 l = plt.scatter(x, y, c = zz, s = o.markersize ** 2, edgecolor = 'none', **kwargs)
                 dmin, dmax = np.nanmin(zz), np.nanmax(zz)
                 loc = mpl.dates.AutoDateLocator()
+                cticks = ticks.get_ticks(dmin, dmax, m, only_inside = 1)
                 myFmt = mpl.dates.DateFormatter('%H:%M / %d.%m.%Y')
                 cb = plt.colorbar(fraction = o.cbfrac, pad = 0.01, aspect = 40, ticks = loc, format = myFmt)
             else:
