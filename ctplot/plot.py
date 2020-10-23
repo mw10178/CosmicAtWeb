@@ -310,8 +310,8 @@ class Plot(object):
                             if (len(expr_data[self.sr[i]].keys()) >=3 ):
                                 cleanZ = np.delete(expr_data[self.sr[i]][expr_data[self.sr[i]].keys()[2]],indd)
                         elif (v == "z"):
-                            cleanX = np.delete(expr_data[self.sr[i]][expr_data[self.sr[i]].keys()[1]],indd)
-                            cleanY = np.delete(expr_data[self.sr[i]][expr_data[self.sr[i]].keys()[0]],indd)
+                            cleanX = np.delete(expr_data[self.sr[i]][expr_data[self.sr[i]].keys()[0]],indd)
+                            cleanY = np.delete(expr_data[self.sr[i]][expr_data[self.sr[i]].keys()[1]],indd)
 
 
 
