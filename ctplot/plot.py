@@ -845,12 +845,15 @@ class Plot(object):
 
             # add textbox
             t = 'y=' + ff
-            t += '\n$\\chi^2$/N = {}/{}'.format(number_mathformat(chi2), number_mathformat(N))
+            t += '\n$\chi^2$/N = {}/{}'.format(number_mathformat(chi2), number_mathformat(N))
+            #t += '\n$\\chi^2$/N = {}/{}'.format(number_mathformat(chi2), number_mathformat(N))
             for k, v in enumerate(p):
                 try:
-                    t += '\np[{}] = {}$\\pm${}'.format(k, number_mathformat(v), number_mathformat(np.sqrt(c[k, k])))
+                    t += '\np[{}] = {}$\pm${}'.format(k, number_mathformat(v), number_mathformat(np.sqrt(c[k, k])))
+                    #t += '\np[{}] = {}$\\pm${}'.format(k, number_mathformat(v), number_mathformat(np.sqrt(c[k, k])))
                 except:
-                    t += '\np[{}] = {}$\\pm${}'.format(k, v, c)
+                    t += '\np[{}] = {}$\pm${}'.format(k, v, c)
+                    #t += '\np[{}] = {}$\\pm${}'.format(k, v, c)
             self.fitboxes.append(t)
             ll = ('Fit' + fit_status + ' y=' + ff)
             for k, v in  enumerate(p):
