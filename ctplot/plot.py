@@ -1121,8 +1121,11 @@ class Plot(object):
             cticks = ticks.get_ticks(dmin, dmax, m, only_inside = 1)
             formatter = mpl.ticker.FuncFormatter(func = lambda x, i:number_mathformat(x))
             cb = plt.colorbar(fraction = o.cbfrac, pad = 0.01, aspect = 40, ticks = cticks, format = formatter)
-            cb.set_label(o.cblabel)                 
-'''#mw             
+            cb.set_label(o.cblabel)   
+            
+        self.legend.append((l, self.llabel(i)))     
+            #mw
+            '''             
             zz = z
             m = 6.0
             if (isinstance(z[0], datetime)):
@@ -1141,9 +1144,11 @@ class Plot(object):
                 cb = plt.colorbar(fraction = o.cbfrac, pad = 0.01, aspect = 40, ticks = cticks, format = formatter)
 
             cb.set_label(o.cblabel)
-'''#mw            
-            self.legend.append((l, self.llabel(i)))
-
+        
+        self.legend.append((l, self.llabel(i)))
+            '''
+            #mw            
+            
 
 
 
