@@ -1124,31 +1124,8 @@ class Plot(object):
             cb.set_label(o.cblabel)   
             
         self.legend.append((l, self.llabel(i)))     
-            #mw
-            '''             
-            zz = z
-            m = 6.0
-            if (isinstance(z[0], datetime)):
-                zz = [mpl.dates.date2num(j) for j in z]
-
-                l = plt.scatter(x, y, c = zz, s = o.markersize ** 2, edgecolor = 'none', **p)
-                dmin, dmax = np.nanmin(zz), np.nanmax(zz)
-                loc = mpl.dates.AutoDateLocator()
-                myFmt = mpl.dates.DateFormatter('%H:%M / %d.%m.%Y')
-                cb = plt.colorbar(fraction = o.cbfrac, pad = 0.01, aspect = 40, ticks = loc, format = myFmt)
-            else:
-                dmin, dmax = np.nanmin(z), np.nanmax(z)
-                cticks = ticks.get_ticks(dmin, dmax, m, only_inside = 1)
-                formatter = mpl.ticker.FuncFormatter(func = lambda x, i:number_mathformat(x))
-                l = plt.scatter(x, y, c = z, s = o.markersize ** 2, edgecolor = 'none', **p)
-                cb = plt.colorbar(fraction = o.cbfrac, pad = 0.01, aspect = 40, ticks = cticks, format = formatter)
-
-            cb.set_label(o.cblabel)
-        
-        self.legend.append((l, self.llabel(i)))
-            '''
-            #mw            
-            
+            #mw TOM's statements removed
+                       
 
 
 
