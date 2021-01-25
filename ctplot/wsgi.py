@@ -41,16 +41,16 @@ def get_config():
                'plotdir':join(basedir, 'plots'),
                'sessiondir':join(basedir, 'sessions'),
                'sessionexdir':join(basedir, 'sessions_ex'),
-               'ex_sessions':['Trigger-Hodoskop',
-                'CosMO-Mill',
-                'LiDO',
+               'sessions_ex':['Trigger-Hodoskop',
+               #mw 'ex_sessions':['Trigger-Hodoskop',              
+                'CosMO-Muehle',
+                'LiDO-Experiment',
                 'Polarstern',
                 'Neumayer',
-                'Sevan',
+                'SEVAN-Experimente',
                 'Wetterdaten-Zeuthen',
                 'Fit-Beispiele',
-                'Luftdruckkorrektur',
-                'CosMO-MuV',]}
+                'Luftdruckkorrektur']}
 
     for k in _config.keys():
         ek = prefix + k.upper()
