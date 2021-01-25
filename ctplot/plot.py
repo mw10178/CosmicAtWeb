@@ -31,10 +31,10 @@ eval = safeeval()
 TableSpecs = namedtuple('TableSpecs', ('title', 'colnames', 'units', 'rows'))
 
 # Helper function to format the timestamps in tables.
-def format_time(timestamp):
-    starttime = dateutil.parser.parse("2010-01-01T00:00:00+0000")
-    starttime = time.mktime(starttime.timetuple())
-    return datetime.fromtimestamp(starttime+timestamp)
+#mw def format_time(timestamp):
+#mw     starttime = dateutil.parser.parse("2010-01-01T00:00:00+0000")
+#mw     starttime = time.mktime(starttime.timetuple())
+#mw     return datetime.fromtimestamp(starttime+timestamp)
 
 def available_tables(d = os.path.dirname(__file__) + '/data'):
     files = []
@@ -151,9 +151,9 @@ stats_abrv = {'n':'N', 'u':'uflow', 'o':'oflow', 'm':'mean', 's':'std', 'p':'mod
 class Plot(object):
     def __init__(self, config , **kwargs):
         log.debug('config %s', json.dumps(config))
-        if ('xs' in kwargs and kwargs['xs'] == 'linear'):
-            kwargs.pop('xs')
-            kwargs.pop('ys')
+        #mw if ('xs' in kwargs and kwargs['xs'] == 'linear'):
+        #mw     kwargs.pop('xs')
+        #mw     kwargs.pop('ys')
         log.debug('settings %s', json.dumps(kwargs))
 
         self.config = config
@@ -251,7 +251,7 @@ class Plot(object):
         # create dict: source --> all expr for this source
         # prefilled with empty lists
         expr_data = {}
-        expr_data_new = {}
+        #mw expr_data_new = {}
         joined_cuts = {}  # OR of all cuts
         for n, s in enumerate(self.sr):
             if s:
@@ -262,12 +262,12 @@ class Plot(object):
                     log.debug('{}{}, expr: {}'.format(v, n, expr))
                     if expr:
                         expr_data[s][expr] = []
-                        expr_data_new[expr] = []
+                        #mw expr_data_new[expr] = []
                     if v == 'c':
                         if s in joined_cuts:
                             joined_cuts[s] = '{} or ({})'.format(joined_cuts[s], expr)
                         else:
-                            joined_cuts[s] = '({})'.format(expr)
+                            joined_cuts[s] = '({})#mw '.format(expr)
 
         for s in joined_cuts.keys():
             if '(None)' in joined_cuts[s]: del joined_cuts[s]
@@ -282,8 +282,11 @@ class Plot(object):
 
 
         # assing data arrays to x/y/z/c-data fields
-        timebool = False
+        #mw timebool = False 
         for v in ['x', 'y', 'z', 'c', 'xa', 'ya', 'za']:
+            setattr(self, v + 'data', [(expr_data[self.sr[i]][x] if x and self.sr[i] else None) for i, x in enumerate(getattr(self, v))])
+            setattr(self, v + 'unit', [(units[self.sr[i]][x] if x and self.sr[i] else None) for i, x in enumerate(getattr(self, v))])
+        '''#mw
             cleanX = []
             cleanY = []
             cleanZ = []
@@ -343,8 +346,9 @@ class Plot(object):
                             setattr(self, v + 'data', [None])
                         if (x and self.sr[i] != None):
                             setattr(self, v + 'data', [(expr_data[self.sr[i]][x])])
+                         
             setattr(self, v + 'unit', [(units[self.sr[i]][x] if x and self.sr[i] else None) for i, x in enumerate(getattr(self, v))])
-
+''' #mw
         log.debug('source={}'.format(self.s))
         log.debug('srcavg={}'.format(self.sr))
         for v in ['x', 'y', 'z', 'c', 'xa', 'ya', 'za']:
@@ -562,11 +566,11 @@ class Plot(object):
 #        plt.gca().set_position([f, f, 1 - 2 * f, 1 - 2 * f])
 #        plt.subplots_adjust(left = f, bottom = f, right = 1 - f, top = 1 - f, wspace = 0, hspace = 0)
         ticks.set_extended_locator(self.__tick_density)
-        myFmt = mpl.dates.DateFormatter('%H:%M / %d.%m.%Y')
-        if (getattr(self, "xunit")[0] == 's'):
-            plt.gca().xaxis.set_major_formatter(myFmt)
-        if (getattr(self, "yunit")[0] == 's'):
-            plt.gca().yaxis.set_major_formatter(myFmt)
+        #mw myFmt = mpl.dates.DateFormatter('%H:%M / %d.%m.%Y')
+        #mw if (getattr(self, "xunit")[0] == 's'):
+        #mw     plt.gca().xaxis.set_major_formatter(myFmt)
+        #mw if (getattr(self, "yunit")[0] == 's'):
+        #mw     plt.gca().yaxis.set_major_formatter(myFmt)
         self.axes[''] = plt.gca()
 
 
@@ -582,10 +586,10 @@ class Plot(object):
         # settings for main and twin axes
         for v, ax in self.axes.iteritems():
             # rotating the x labels for better readability
-            if (getattr(self, "xunit")[0] == 's'):
-                plt.setp(ax.get_xticklabels(), rotation=30, horizontalalignment="right")
-            if (getattr(self, "yunit")[0] == 's'):
-                plt.setp(ax.get_yticklabels(), rotation=30, horizontalalignment="right")
+            #mw if (getattr(self, "xunit")[0] == 's'):
+            #mw     plt.setp(ax.get_xticklabels(), rotation=30, horizontalalignment="right")
+            #mw if (getattr(self, "yunit")[0] == 's'):
+            #mw     plt.setp(ax.get_yticklabels(), rotation=30, horizontalalignment="right")
             plt.axes(ax)
 
             # grid
@@ -846,11 +850,11 @@ class Plot(object):
             # add textbox
             t = 'y=' + ff
             t += '\n$\chi^2$/N = {}/{}'.format(number_mathformat(chi2), number_mathformat(N))
-            #t += '\n$\\chi^2$/N = {}/{}'.format(number_mathformat(chi2), number_mathformat(N))
+            #mw t += '\n$\\chi^2$/N = {}/{}'.format(number_mathformat(chi2), number_mathformat(N))
             for k, v in enumerate(p):
                 try:
                     t += '\np[{}] = {}$\pm${}'.format(k, number_mathformat(v), number_mathformat(np.sqrt(c[k, k])))
-                    #t += '\np[{}] = {}$\\pm${}'.format(k, number_mathformat(v), number_mathformat(np.sqrt(c[k, k])))
+                    #mw t += '\np[{}] = {}$\\pm${}'.format(k, number_mathformat(v), number_mathformat(np.sqrt(c[k, k])))
                 except:
                     t += '\np[{}] = {}$\pm${}'.format(k, v, c)
                     #t += '\np[{}] = {}$\\pm${}'.format(k, v, c)
@@ -875,40 +879,42 @@ class Plot(object):
             args = (y,)
 
         if z is None:
-            if 'linestyle' in kwargs:
-                kwargs['linestyle'] = 'none'
-            else:
-                kwargs.update({'linestyle':'none'})
-
-            if 'marker' in kwargs:
-                kwargs['marker'] = '.'
-            else:
-                kwargs.update({'marker':'.'})
-
+            #mw if 'linestyle' in kwargs:
+            #mw     kwargs['linestyle'] = 'none'
+            #mw else:
+            #mw     kwargs.update({'linestyle':'none'})
+            #mw
+            #mw if 'marker' in kwargs:
+            #mw     kwargs['marker'] = '.'
+            #mw else:
+            #mw     kwargs.update({'marker':'.'})
+            #mw
             l, = plt.plot(*args, **kwargs)
         else:
             # linestyle must not be 'none' when plotting 3D
             if 'linestyle' in kwargs and kwargs['linestyle'] == 'none':
                 kwargs['linestyle'] = ':'
+            
+            o = get_args_from(kwargs, markersize = 2, cbfrac = 0.04, cblabel = self.alabel('z'))
+            l = plt.scatter(x, y, c = z, s = o.markersize ** 2, edgecolor = 'none', **kwargs)
 
             m = 6.0
-            o = get_args_from(kwargs, markersize = 2, cbfrac = 0.04, cblabel = self.alabel('z'))
-            if (isinstance(z[0], datetime)):
-                zz = [mpl.dates.date2num(j) for j in z]
+            #mw o = get_args_from(kwargs, markersize = 2, cbfrac = 0.04, cblabel = self.alabel('z'))
+            #mw if (isinstance(z[0], datetime)):
+            #mw     zz = [mpl.dates.date2num(j) for j in z]
 
-                l = plt.scatter(x, y, c = zz, s = o.markersize ** 2, edgecolor = 'none', **kwargs)
-                dmin, dmax = np.nanmin(zz), np.nanmax(zz)
-                loc = mpl.dates.AutoDateLocator()
-                cticks = ticks.get_ticks(dmin, dmax, m, only_inside = 1)
-                myFmt = mpl.dates.DateFormatter('%H:%M / %d.%m.%Y')
-                cb = plt.colorbar(fraction = o.cbfrac, pad = 0.01, aspect = 40, ticks = loc, format = myFmt)
-            else:
-                dmin, dmax = np.nanmin(z), np.nanmax(z)
-                cticks = ticks.get_ticks(dmin, dmax, m, only_inside = 1)
-                formatter = mpl.ticker.FuncFormatter(func = lambda x, i:number_mathformat(x))
-                l = plt.scatter(x, y, c = z, s = o.markersize ** 2, edgecolor = 'none', **kwargs)
-                cb = plt.colorbar(fraction = o.cbfrac, pad = 0.01, aspect = 40, ticks = cticks, format = formatter)
-
+            #mw     l = plt.scatter(x, y, c = zz, s = o.markersize ** 2, edgecolor = 'none', **kwargs)
+            #mw     dmin, dmax = np.nanmin(zz), np.nanmax(zz)
+            #mw     loc = mpl.dates.AutoDateLocator()
+            #mw     cticks = ticks.get_ticks(dmin, dmax, m, only_inside = 1)
+            #mw     myFmt = mpl.dates.DateFormatter('%H:%M / %d.%m.%Y')
+            #mw     cb = plt.colorbar(fraction = o.cbfrac, pad = 0.01, aspect = 40, ticks = loc, format = myFmt)
+            #mw else:
+            dmin, dmax = np.nanmin(z), np.nanmax(z)
+            cticks = ticks.get_ticks(dmin, dmax, m, only_inside = 1)
+            formatter = mpl.ticker.FuncFormatter(func = lambda x, i:number_mathformat(x))
+            #mw     l = plt.scatter(x, y, c = z, s = o.markersize ** 2, edgecolor = 'none', **kwargs)
+            cb = plt.colorbar(fraction = o.cbfrac, pad = 0.01, aspect = 40, ticks = cticks, format = formatter)
             cb.set_label(o.cblabel)
 
         self.legend.append((l, self.llabel(i)))
@@ -1108,6 +1114,15 @@ class Plot(object):
 
             o = get_args_from(kwargs, markersize = 6, cbfrac = 0.04, cblabel = self.alabel('z'))
             p = set_defaults(kwargs, zorder = 100)
+            l = plt.scatter(x, y, c = z, s = o.markersize ** 2, edgecolor = 'none', **p)
+
+            m = 6.0
+            dmin, dmax = np.nanmin(z), np.nanmax(z)
+            cticks = ticks.get_ticks(dmin, dmax, m, only_inside = 1)
+            formatter = mpl.ticker.FuncFormatter(func = lambda x, i:number_mathformat(x))
+            cb = plt.colorbar(fraction = o.cbfrac, pad = 0.01, aspect = 40, ticks = cticks, format = formatter)
+            cb.set_label(o.cblabel)                 
+'''#mw             
             zz = z
             m = 6.0
             if (isinstance(z[0], datetime)):
@@ -1126,6 +1141,7 @@ class Plot(object):
                 cb = plt.colorbar(fraction = o.cbfrac, pad = 0.01, aspect = 40, ticks = cticks, format = formatter)
 
             cb.set_label(o.cblabel)
+'''#mw            
             self.legend.append((l, self.llabel(i)))
 
 
