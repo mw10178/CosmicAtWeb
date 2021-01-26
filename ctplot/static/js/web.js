@@ -17,15 +17,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-#mw let example_sessions = 
-let sessions_ex = 
+let example_sessions = 
     ['Trigger-Hodoskop',
     'CosMO-Muehle',
     /*'CosMO-MuV',*/
     'LiDO-Experiment',
     'Polarstern',
     'Neumayer',
-    'Sevan-Experimente',
+    'SEVAN-Experimente',
     'Wetterdaten-Zeuthen',
     'Fit-Beispiele',
     'Luftdruckkorrektur']
@@ -893,9 +892,8 @@ let sessions_ex =
                     
                     saveButton.click(function () {
                         var id = $('#sessionid').val();
-                        #mw if (!example_sessions.includes(id)){
-			if (!sessions_ex.includes(id)){
-                            addPlotToSaved(settings);
+                        if (!example_sessions.includes(id)){
+			    addPlotToSaved(settings);
                             $(this).hide(speed);
                             savePlots();
                             checkSavedPlotsAvail();
