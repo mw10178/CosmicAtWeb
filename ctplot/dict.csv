@@ -197,7 +197,7 @@ Create a diagram,Diagramm erstellen: Experient,tut head 2
 Please choose Polarstern,Wähle bitte Polarstern aus.,tut task 2
 Create a diagram: Dataset,Diagramm erstellen: Datensatz,tut head 3
 "All available datasets for a specific experiment can be found here. Datasets are marked like the following: TIMEFRAME_EXPERIMENT_ANNOTATION","Alle Datensätze, die dir für das jeweilige Experiment zur Verfügung stehen, sind hier aufgelistet. Datensätze werden folgendermaßen gekennzeichnet: ZEITRAUM_EXPERIMENT_ANMERKUNG",tut expl 3
-Choose the dataset from 2017,Wähle nun den Datensatz von 2017,tut task 3
+Choose the dataset from 2014,Wähle nun den Datensatz von 2014,tut task 3
 Create a diagram: representationformat,Diagramm erstellen: Darstellungsform,tut head 4
 Here you can choose a suitable representation format. There are four types of diagrams:,Nun kann ein geeignetes Diagramm für die Darstellung der Daten ausgesucht werden. Man unterscheidet vier verschiedene Diagrammtypen:,tut expl 4
 For our example choose the xy-diagram., Wir werden für unser Beispiel ein xy-Diagramm verwenden.,tut task 4
