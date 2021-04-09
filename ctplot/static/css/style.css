@@ -48,7 +48,7 @@ footer {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #007acc;
+    color: #00a6eb;
     margin: 0;
     padding: 1em 0 .2em 0;
 }
@@ -78,7 +78,7 @@ h4, fieldset label {
 
 legend {
     font-weight: bold;
-    color: rgb(0, 166, 245);
+    color: rgb(0, 166, 235);
 }
 
 header {
@@ -97,7 +97,7 @@ nav {
     font-size: 1.5em;
     width: 1000px;
     margin: 0;
-    background: rgb(0, 166, 245);
+    background: rgb(0, 166, 235);
     color: white;
     position: relative;
     z-index: 5;
@@ -210,7 +210,7 @@ a.internal-link:before {
 
 a {
     text-decoration: none;
-    color: rgb(0, 166, 245);
+    color: rgb(0, 166, 235);
 }
 
 a:hover {
@@ -382,7 +382,7 @@ label {
 
 .container input[type="text"]:focus, 
 .container select:focus {
-    border: 1px solid rgb(0, 166, 245);
+    border: 1px solid rgb(0, 166, 235);
 }
 
 label .help {
@@ -536,7 +536,7 @@ body.firefox .plot .delplot {
 
 #savedplots > div:hover .savedplot,
 #savedplots > div:hover .btns {
-    border: 1px solid #007acc;
+    border: 1px solid #00a6eb;
 }
 
 #savedplots .delete, #savedplots .loadplot {
