@@ -40,7 +40,7 @@ ${[
         explanation: '{{tut expl 3}}',
         task: '{{tut task 3}}',
         highlightSelector: 'select[name=s0]',
-        validator: valueEquals('Polarstern/2017-2018_PS-nm-mt.h5:/raw/PS_mu_nm_data')
+        validator: valueEquals('Polarstern/2014_PS-nm-my.h5:/raw/PS_mu_nm_data')
     },
     4: {
         headline: '{{tut head 4}}',
